@@ -268,5 +268,18 @@ outputDirs.forEach(outDir => {
   });
 });
 
+// Ensure Vercel Express entrypoints and api/ exist in dist/
+const distDir = path.resolve('dist');
+const entrypointContent = "module.exports = require('../server');\n";
+fs.writeFileSync(path.join(distDir, 'index.js'), entrypointContent, 'utf8');
+fs.writeFileSync(path.join(distDir, 'server.js'), entrypointContent, 'utf8');
+fs.writeFileSync(path.join(distDir, 'app.js'), entrypointContent, 'utf8');
+console.log('Created dist/index.js, dist/server.js, and dist/app.js entrypoints for Vercel');
+
+if (fs.existsSync('api')) {
+  fs.cpSync('api', path.join(distDir, 'api'), { recursive: true });
+  console.log('Copied api -> dist/api');
+}
+
 console.log('=== All files updated and build output directories generated successfully! ===');
 
