@@ -11,9 +11,20 @@ const SecurityEvent = require('../models/SecurityEvent');
  * - Strips IPv4-mapped IPv6 prefix (::ffff:1.2.3.4 -> 1.2.3.4)
  * - Trims whitespace
  */
+function safeTrim(val) {
+  if (!val) return '';
+  if (Array.isArray(val)) return String(val[0] || '').trim();
+  return String(val).trim();
+}
+
+/**
+ * Normalizes IP addresses:
+ * - Strips IPv4-mapped IPv6 prefix (::ffff:1.2.3.4 -> 1.2.3.4)
+ * - Trims whitespace
+ */
 function normalizeIp(ip) {
   if (!ip) return null;
-  let clean = String(ip).trim();
+  let clean = safeTrim(ip);
   if (clean.startsWith('::ffff:')) {
     clean = clean.slice(7);
   }
@@ -25,8 +36,9 @@ function normalizeIp(ip) {
  */
 function isIPv4(ip) {
   if (!ip) return false;
-  if (ip === '127.0.0.1') return true;
-  return /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/.test(ip);
+  const clean = safeTrim(ip);
+  if (clean === '127.0.0.1') return true;
+  return /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/.test(clean);
 }
 
 /**
@@ -34,7 +46,8 @@ function isIPv4(ip) {
  */
 function isIPv6(ip) {
   if (!ip) return false;
-  if (ip === '::1' || ip.includes(':')) return true;
+  const clean = safeTrim(ip);
+  if (clean === '::1' || clean.includes(':')) return true;
   return false;
 }
 
@@ -54,17 +67,20 @@ function isIPv6(ip) {
 function extractAndClassifyIp(req) {
   let clientRaw = null;
 
-  // 1. Prioritize Vercel edge router trusted client IP header
-  if (req.headers['x-vercel-forwarded-for']) {
-    clientRaw = req.headers['x-vercel-forwarded-for'].split(',')[0].trim();
-  } else if (req.headers['x-real-ip']) {
-    clientRaw = req.headers['x-real-ip'].trim();
-  } else if (req.headers['x-forwarded-for']) {
-    clientRaw = req.headers['x-forwarded-for'].split(',')[0].trim();
+  const vercelHeader = req.headers ? req.headers['x-vercel-forwarded-for'] : null;
+  const realIpHeader = req.headers ? req.headers['x-real-ip'] : null;
+  const forwardedHeader = req.headers ? req.headers['x-forwarded-for'] : null;
+
+  if (vercelHeader) {
+    clientRaw = safeTrim(vercelHeader).split(',')[0].trim();
+  } else if (realIpHeader) {
+    clientRaw = safeTrim(realIpHeader);
+  } else if (forwardedHeader) {
+    clientRaw = safeTrim(forwardedHeader).split(',')[0].trim();
   } else if (req.ip) {
-    clientRaw = req.ip.trim();
+    clientRaw = safeTrim(req.ip);
   } else if (req.socket?.remoteAddress) {
-    clientRaw = req.socket.remoteAddress.trim();
+    clientRaw = safeTrim(req.socket.remoteAddress);
   }
 
   const clientIp = normalizeIp(clientRaw) || 'unknown';
@@ -78,20 +94,22 @@ function extractAndClassifyIp(req) {
     ipv6 = clientIp;
   }
 
-  // 2. Only if the request genuinely passed an explicit multi-family proxy chain,
-  // check if the other family was legitimately observed in the forwarded chain.
-  if (req.headers['x-vercel-forwarded-for'] || req.headers['x-forwarded-for']) {
-    const chain = [
-      ...(req.headers['x-vercel-forwarded-for'] ? req.headers['x-vercel-forwarded-for'].split(',') : []),
-      ...(req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',') : [])
-    ].map(s => normalizeIp(s)).filter(Boolean);
+  // Check multi-family proxy chain if present
+  if (vercelHeader || forwardedHeader) {
+    const rawChain = [
+      ...(vercelHeader ? safeTrim(vercelHeader).split(',') : []),
+      ...(forwardedHeader ? safeTrim(forwardedHeader).split(',') : [])
+    ];
 
-    for (const entry of chain) {
-      if (!ipv4 && isIPv4(entry)) {
-        ipv4 = entry;
-      }
-      if (!ipv6 && isIPv6(entry)) {
-        ipv6 = entry;
+    for (const item of rawChain) {
+      const normalized = normalizeIp(item);
+      if (normalized) {
+        if (!ipv4 && isIPv4(normalized)) {
+          ipv4 = normalized;
+        }
+        if (!ipv6 && isIPv6(normalized)) {
+          ipv6 = normalized;
+        }
       }
       if (ipv4 && ipv6) break;
     }
@@ -115,7 +133,7 @@ const logSecurityEvent = async (
   try {
     const { primaryIp, ipv4, ipv6 } = extractAndClassifyIp(req);
 
-    const uaString = req.headers['user-agent'] || '';
+    const uaString = req.headers ? (req.headers['user-agent'] || '') : '';
     const parser = new UAParser(uaString);
     const result = parser.getResult();
 
@@ -126,17 +144,17 @@ const logSecurityEvent = async (
     const deviceType = result.device?.type || (result.os?.name ? 'desktop' : 'Unknown');
     const deviceModel = result.device?.model || null;
 
-    await SecurityEvent.create({
+    return await SecurityEvent.create({
       userId,
       usernameAttempt,
       eventType,
       success,
       failureReason,
       authProvider,
-      ipAddress: primaryIp,
+      ipAddress: primaryIp || 'unknown',
       ipv4: ipv4 || null,
       ipv6: ipv6 || null,
-      userAgent: uaString.substring(0, 512),
+      userAgent: typeof uaString === 'string' ? uaString.substring(0, 512) : '',
       browser: browserName,
       browserVersion: browserVersion,
       os: osName,
@@ -146,7 +164,9 @@ const logSecurityEvent = async (
     });
   } catch (error) {
     console.error('Failed to log security event:', error.message);
+    return null;
   }
 };
 
 module.exports = logSecurityEvent;
+

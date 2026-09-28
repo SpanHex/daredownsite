@@ -213,8 +213,8 @@
     }
 
     function formatIpValue(ip, family) {
-      if (!ip || ip === 'unknown' || ip === 'Unavailable') {
-        return '<span class="ip-val na" style="color:rgba(255,255,255,0.3);font-style:italic;">Unavailable</span>';
+      if (!ip || ip === 'unknown' || ip === 'Unavailable' || ip === 'null' || ip === 'undefined') {
+        return '<span class="ip-val na" style="color:rgba(255,255,255,0.4);font-style:italic;">Unavailable</span>';
       }
       const clean = String(ip).trim();
       if (family === 'v4') {
