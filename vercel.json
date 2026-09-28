@@ -3,28 +3,84 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/api/auth/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/auth/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/tournament/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/tournament/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/scores/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/scores/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/admin/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/admin/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/profile/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/profile/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/api"
+    },
+    {
       "source": "/api/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api"
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "/api"
     },
     {
       "source": "/auth/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api"
+    },
+    {
+      "source": "/tournament/:path*",
+      "destination": "/api"
     },
     {
       "source": "/tournament/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api"
+    },
+    {
+      "source": "/scores/:path*",
+      "destination": "/api"
     },
     {
       "source": "/scores/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api"
     },
     {
       "source": "/site-settings",
-      "destination": "/api/index.js"
+      "destination": "/api"
     },
     {
       "source": "/admin/(users|tournaments|matches|export|diagnostics|security|bracket)(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api"
     },
     {
       "source": "/login",
