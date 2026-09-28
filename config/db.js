@@ -42,33 +42,54 @@ async function seedAdmin() {
  * Connects to MongoDB Atlas with connection caching for serverless environments.
  */
 async function connectDB() {
-  const uri = process.env.MONGODB_URI;
+  let uri = process.env.MONGODB_URI;
   if (!uri) {
     const error = new Error('MONGODB_URI environment variable is missing.');
     error.code = 'CONFIG_MISSING_MONGODB_URI';
     throw error;
   }
 
-  // If we already have a live, ready connection, reuse it immediately
-  if (cached.conn && mongoose.connection.readyState === 1) {
+  // Strip surrounding quotes and whitespace if copy-pasted into Vercel dashboard with quotes
+  uri = uri.trim();
+  if ((uri.startsWith('"') && uri.endsWith('"')) || (uri.startsWith("'") && uri.endsWith("'"))) {
+    uri = uri.slice(1, -1).trim();
+  }
+
+  const readyState = mongoose.connection.readyState;
+
+  // 1 = connected: reuse active connection immediately
+  if (cached.conn && readyState === 1) {
     return cached.conn;
   }
 
-  if (!cached.promise) {
+  // 2 = connecting: if a connection attempt is in flight, await it
+  if (readyState === 2 && cached.promise) {
+    return await cached.promise;
+  }
+
+  // If connection dropped (0 = disconnected, 3 = disconnecting) or not yet started, create new promise
+  if (readyState === 0 || readyState === 3 || !cached.promise) {
+    cached.conn = null;
+
     const opts = {
       bufferCommands: false,
       maxPoolSize: 10,
-      serverSelectionTimeoutMS: 7000,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+      family: 4 // Enforce IPv4 to bypass delays/timeouts on serverless environments without IPv6 routing for Atlas
     };
 
     console.log('🔄 Connecting to MongoDB Atlas...');
     cached.promise = mongoose.connect(uri, opts).then(async (mongooseInstance) => {
       console.log('✅ MongoDB Atlas connected successfully');
+      cached.conn = mongooseInstance;
       await seedAdmin();
       return mongooseInstance;
     }).catch((err) => {
       cached.promise = null;
-      console.error('❌ MongoDB Atlas connection error:', err.message);
+      cached.conn = null;
+      console.error('❌ MongoDB Atlas connection error:', err.name, err.message);
       throw err;
     });
   }
@@ -78,8 +99,18 @@ async function connectDB() {
     return cached.conn;
   } catch (err) {
     cached.promise = null;
+    cached.conn = null;
     throw err;
   }
 }
 
+// Clear cache if disconnected event fires
+mongoose.connection.on('disconnected', () => {
+  if (cached) {
+    cached.conn = null;
+    cached.promise = null;
+  }
+});
+
 module.exports = connectDB;
+

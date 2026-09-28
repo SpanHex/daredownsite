@@ -67,9 +67,14 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 let sessionStore;
 if (process.env.MONGODB_URI) {
   sessionStore = MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI,
+    clientPromise: connectDB().then((mongooseInstance) => mongooseInstance.connection.getClient()),
     collectionName: 'sessions',
     touchAfter: 24 * 3600 // Lazy session update (only once per 24 hours unless data changes)
+  });
+
+  // Handle store errors to prevent unhandled EventEmitter exceptions
+  sessionStore.on('error', (err) => {
+    console.error('Session Store Connection Error:', err.message);
   });
 }
 
@@ -111,12 +116,17 @@ app.use(['/api', '/auth', '/tournament', '/profile'], async (req, res, next) => 
     await connectDB();
     next();
   } catch (err) {
-    console.error('API Database Error:', err.message);
+    console.error('API Database Error:', err.name, err.message);
+    const isAtlasWhitelist = err.name === 'MongooseServerSelectionError' ||
+      (err.message && (err.message.includes('whitelist') || err.message.includes('Could not connect to any servers')));
     return res.status(503).json({
       error: 'Database Connection Error',
-      message: process.env.NODE_ENV === 'production'
-        ? 'Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you\'re trying to access the database from an IP that isn\'t whitelisted. Make sure your current IP address is on your Atlas cluster\'s IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/'
-        : err.message
+      name: err.name || 'Error',
+      code: err.code || null,
+      message: err.message || 'Could not connect to database.',
+      details: isAtlasWhitelist
+        ? 'MongoDB Atlas rejected or dropped the connection. In Vercel serverless environments, your Atlas cluster Network Access IP Access List must contain 0.0.0.0/0 (Allow Access from Anywhere).'
+        : undefined
     });
   }
 });
@@ -132,11 +142,35 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.get(['/api/health', '/health'], (req, res) => {
+app.get(['/api/health', '/health'], async (req, res) => {
+  let dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+  let dbError = null;
+
+  if (req.query.checkDb === 'true') {
+    try {
+      await connectDB();
+      dbStatus = 'connected';
+    } catch (err) {
+      dbStatus = 'error';
+      dbError = {
+        name: err.name,
+        code: err.code,
+        message: err.message
+      };
+    }
+  }
+
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    database: dbStatus,
+    readyState: mongoose.connection.readyState,
+    dbError: dbError || undefined,
+    config: {
+      hasMongoUri: Boolean(process.env.MONGODB_URI),
+      hasSessionSecret: Boolean(process.env.SESSION_SECRET),
+      adminConfigured: Boolean(process.env.ADMIN_USERNAME)
+    },
     environment: process.env.NODE_ENV || 'development',
     isVercel: !!process.env.VERCEL,
     url: req.url,
