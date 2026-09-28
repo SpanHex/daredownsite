@@ -17,6 +17,18 @@ const PORT = process.env.PORT || 3000;
 // Crucial for capturing real IPs and secure cookies behind Vercel edge reverse proxy
 app.set('trust proxy', 1);
 
+// === VERCEL REWRITE & ROUTE PATH NORMALIZER ===
+// When Vercel rewrites requests to /api, the original path is preserved in x-matched-path or req.originalUrl
+app.use((req, res, next) => {
+  const matchedPath = req.headers['x-matched-path'] || req.headers['x-now-route-matches'];
+  if (matchedPath && (req.url === '/api' || req.url === '/api/' || req.url === '/api/index.js' || req.url === '/api/index')) {
+    req.url = matchedPath;
+  } else if ((req.url === '/api' || req.url === '/api/' || req.url === '/api/index.js' || req.url === '/api/index') && req.originalUrl && req.originalUrl !== req.url && req.originalUrl !== '/') {
+    req.url = req.originalUrl;
+  }
+  next();
+});
+
 // === ENVIRONMENT VARIABLE AUDIT ===
 const requiredEnvVars = ['MONGODB_URI', 'SESSION_SECRET'];
 const missingRequiredVars = requiredEnvVars.filter(key => !process.env[key]);
@@ -82,6 +94,11 @@ require('./config/passport')(passport);
 
 // === API DATABASE CONNECTION CHECK & MISSING CONFIG GUARD ===
 app.use(['/api', '/auth', '/tournament', '/profile'], async (req, res, next) => {
+  // Allow health checks to respond immediately without waiting on database
+  if (req.path === '/health' || req.path === '/api/health' || req.url === '/health' || req.url.startsWith('/api/health')) {
+    return next();
+  }
+
   if (missingRequiredVars.length > 0) {
     return res.status(503).json({
       error: 'Server Configuration Error',
@@ -98,7 +115,7 @@ app.use(['/api', '/auth', '/tournament', '/profile'], async (req, res, next) => 
     return res.status(503).json({
       error: 'Database Connection Error',
       message: process.env.NODE_ENV === 'production'
-        ? 'Unable to connect to MongoDB Atlas. Ensure network access (0.0.0.0/0) is configured in Atlas.'
+        ? 'Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you\'re trying to access the database from an IP that isn\'t whitelisted. Make sure your current IP address is on your Atlas cluster\'s IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/'
         : err.message
     });
   }
@@ -115,13 +132,15 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
     database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
     environment: process.env.NODE_ENV || 'development',
-    isVercel: !!process.env.VERCEL
+    isVercel: !!process.env.VERCEL,
+    url: req.url,
+    originalUrl: req.originalUrl
   });
 });
 
