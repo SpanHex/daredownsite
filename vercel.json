@@ -3,28 +3,24 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index.js"
-    },
-    {
       "source": "/auth/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api/auth/$1"
     },
     {
       "source": "/tournament/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api/tournament/$1"
     },
     {
       "source": "/scores/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api/scores/$1"
     },
     {
       "source": "/site-settings",
-      "destination": "/api/index.js"
+      "destination": "/api/site-settings"
     },
     {
       "source": "/admin/(users|tournaments|matches|export|diagnostics|security|bracket)(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api/admin/$1$2"
     },
     {
       "source": "/login",
