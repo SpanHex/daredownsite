@@ -78,55 +78,93 @@ router.post('/register', authLimiter, async (req, res) => {
       console.error('Error assigning registered user to tournament slot:', bracketErr.message);
     }
 
-    logSecurityEvent(req, 'register', true, null, newUser._id, username, 'local');
+    try {
+      await logSecurityEvent(req, 'register', true, null, newUser._id, username, 'local');
+    } catch (logErr) {
+      console.error('Security log error during registration (non-fatal):', logErr.message);
+    }
 
     // Automatically log in the user after registration
     req.login(newUser, (err) => {
-      if (err) return res.status(500).json({ error: 'Error logging in after registration' });
-      return res.json({
-        message: 'Registration successful',
-        user: {
-          id: newUser._id,
-          username: newUser.username,
-          displayName: newUser.displayName || newUser.username,
-          role: (newUser.role || 'user').toUpperCase(),
-          avatar: newUser.avatar,
-          avatarUrl: newUser.avatar,
-          bracketSlot: newUser.bracketSlot || null,
-          themePreference: newUser.themePreference || null
+      if (err) {
+        console.error('req.login error after registration:', err);
+        // User was already created successfully in DB, return 200 with user data so client is not blocked
+        return res.json({
+          message: 'Registration successful',
+          user: {
+            id: newUser._id,
+            username: newUser.username,
+            displayName: newUser.displayName || newUser.username,
+            role: (newUser.role || 'user').toUpperCase(),
+            avatar: newUser.avatar,
+            avatarUrl: newUser.avatar,
+            bracketSlot: newUser.bracketSlot || null,
+            themePreference: newUser.themePreference || null
+          }
+        });
+      }
+
+      // Explicitly persist session in store before sending response.
+      // In serverless runtimes (Vercel/Lambda), sending response before session.save() completes
+      // causes execution freeze race conditions that can trigger unhandled deferred 500 errors.
+      req.session.save((saveErr) => {
+        if (saveErr) {
+          console.error('Session save warning after registration:', saveErr);
         }
+
+        return res.json({
+          message: 'Registration successful',
+          user: {
+            id: newUser._id,
+            username: newUser.username,
+            displayName: newUser.displayName || newUser.username,
+            role: (newUser.role || 'user').toUpperCase(),
+            avatar: newUser.avatar,
+            avatarUrl: newUser.avatar,
+            bracketSlot: newUser.bracketSlot || null,
+            themePreference: newUser.themePreference || null
+          }
+        });
       });
     });
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error during registration.' });
+    console.error('Registration route error:', err);
+    res.status(500).json({ error: err.message || 'Server error during registration.' });
   }
 });
 
 // === LOCAL LOGIN ===
 router.post('/login', strictLoginLimiter, (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
-    if (err) return res.status(500).json({ error: 'Server error' });
+    if (err) return res.status(500).json({ error: err.message || 'Server error' });
     if (!user) {
       // Failed logins are already logged inside the passport strategy
       return res.status(401).json({ error: info?.message || 'Login failed' });
     }
 
     req.logIn(user, (loginErr) => {
-      if (loginErr) return res.status(500).json({ error: 'Server error' });
-      return res.json({
-        message: 'Login successful',
-        user: {
-          id: user._id,
-          username: user.username,
-          displayName: user.displayName || user.username,
-          role: (user.role || 'user').toUpperCase(),
-          avatar: user.avatar,
-          avatarUrl: user.avatar,
-          bracketSlot: user.bracketSlot || null,
-          themePreference: user.themePreference || null
+      if (loginErr) return res.status(500).json({ error: loginErr.message || 'Server error' });
+
+      // Explicitly persist session in store before sending response
+      req.session.save((saveErr) => {
+        if (saveErr) {
+          console.error('Session save warning after login:', saveErr);
         }
+
+        return res.json({
+          message: 'Login successful',
+          user: {
+            id: user._id,
+            username: user.username,
+            displayName: user.displayName || user.username,
+            role: (user.role || 'user').toUpperCase(),
+            avatar: user.avatar,
+            avatarUrl: user.avatar,
+            bracketSlot: user.bracketSlot || null,
+            themePreference: user.themePreference || null
+          }
+        });
       });
     });
   })(req, res, next);
