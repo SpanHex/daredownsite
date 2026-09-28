@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "updatedAt": "2026-09-20T15:00:00.000Z",
+  "categories": {
+    "truth": {
+      "label": "TRUTH",
+      "color": "#4f8ef7",
+      "description": "Answer honestly or face elimination."
+    },
+    "dare": {
+      "label": "DARE",
+      "color": "#ff4b82",
+      "description": "Complete the dare or face elimination."
+    }
+  },
+  "challenges": [
+    {
+      "id": "t001",
+      "type": "truth",
+      "text": "What's the most embarrassing thing you've done in public?",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "t002",
+      "type": "truth",
+      "text": "What's a secret you've never told your closest friend?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "t003",
+      "type": "truth",
+      "text": "Have you ever blamed someone else for something you did? What happened?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "t004",
+      "type": "truth",
+      "text": "What's the worst lie you've ever told?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "t005",
+      "type": "truth",
+      "text": "What's your most embarrassing memory from school?",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "t006",
+      "type": "truth",
+      "text": "Have you ever done something just to impress someone? Did it work?",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "t007",
+      "type": "truth",
+      "text": "What's a talent you have that nobody knows about?",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "t008",
+      "type": "truth",
+      "text": "What's the most ridiculous thing you've ever cried about?",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "t009",
+      "type": "truth",
+      "text": "If you had to pick one person in this room to swap lives with, who would it be and why?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "t010",
+      "type": "truth",
+      "text": "What's the pettiest thing you've ever done to get back at someone?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "t011",
+      "type": "truth",
+      "text": "What's a habit you have that you'd be embarrassed if people found out about?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "t012",
+      "type": "truth",
+      "text": "Who in this room would you trust least in a survival situation?",
+      "difficulty": 3,
+      "active": true
+    },
+    {
+      "id": "t013",
+      "type": "truth",
+      "text": "What's the biggest mistake you've made and never admitted to anyone?",
+      "difficulty": 3,
+      "active": true
+    },
+    {
+      "id": "t014",
+      "type": "truth",
+      "text": "Have you ever pretended to be sick to get out of something? What was it?",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "t015",
+      "type": "truth",
+      "text": "What's the strangest thing you've ever searched on Google?",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "d001",
+      "type": "dare",
+      "text": "Do your best impression of someone in this room. They have to guess who it is.",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "d002",
+      "type": "dare",
+      "text": "Sing the chorus of the last song you listened to: full volume, no skipping.",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "d003",
+      "type": "dare",
+      "text": "Let someone in the room style your hair however they want for the rest of the round.",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "d004",
+      "type": "dare",
+      "text": "Text someone you haven't spoken to in over a year, right now, and say 'I miss you'.",
+      "difficulty": 3,
+      "active": true
+    },
+    {
+      "id": "d005",
+      "type": "dare",
+      "text": "Speak in an accent chosen by the host for the next 3 minutes.",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "d006",
+      "type": "dare",
+      "text": "Call a family member and convince them you've joined a band.",
+      "difficulty": 3,
+      "active": true
+    },
+    {
+      "id": "d007",
+      "type": "dare",
+      "text": "Do 20 jumping jacks while narrating what you're doing in a sports commentary voice.",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "d008",
+      "type": "dare",
+      "text": "Let the room write a status on your social media of their choosing. It must stay up for 10 minutes.",
+      "difficulty": 3,
+      "active": true
+    },
+    {
+      "id": "d009",
+      "type": "dare",
+      "text": "Hold a plank position for 30 seconds while everyone counts down.",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "d010",
+      "type": "dare",
+      "text": "Recreate the most iconic photo you've taken. Do your best to get it exactly right.",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "d011",
+      "type": "dare",
+      "text": "Eat a snack chosen by the group. No complaints, no negotiations.",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "d012",
+      "type": "dare",
+      "text": "Let the host read your most recent 5 text messages out loud.",
+      "difficulty": 3,
+      "active": true
+    },
+    {
+      "id": "d013",
+      "type": "dare",
+      "text": "Stand up and do your best catwalk across the room. Do it twice.",
+      "difficulty": 1,
+      "active": true
+    },
+    {
+      "id": "d014",
+      "type": "dare",
+      "text": "Freestyle rap for 30 seconds using the words: 'dare', 'tournament', and 'champion'.",
+      "difficulty": 2,
+      "active": true
+    },
+    {
+      "id": "d015",
+      "type": "dare",
+      "text": "Say something genuinely nice about every person watching: one sentence each.",
+      "difficulty": 2,
+      "active": true
+    }
+  ]
+}

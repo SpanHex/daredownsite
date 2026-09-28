@@ -1,0 +1,3123 @@
+/* ==========================================================================
+   DAREDOWN // DUAL EXPERIENCE ARCHITECTURE
+   BOY:  Classic / Authentic Original Brutalist Arena Design (Baseline Reference)
+   GIRL: Plush Collectible / Warm Strawberry Milk & Cream / Tactile Gacha Realm
+   ========================================================================== */
+
+:root {
+  --theme-transition-speed: 0.45s;
+  --theme-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --theme-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --theme-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ==========================================================================
+   1. BOY THEME // ORIGINAL CLASSIC ARENA (PRESERVED BASELINE)
+   Do NOT modify boy layout, typography, animations, bracket, or colors.
+   ========================================================================== */
+html[data-theme="boy"] {
+  --theme-accent: #ffffff;
+  --theme-highlight: #ffffff;
+  --theme-border-radius: 0px;
+}
+
+/* ==========================================================================
+   2. INITIAL SELECTION EXPERIENCE OVERLAY (#gender-selector)
+   Intentional first-visit entry. Zero flash. Interactive previews.
+   ========================================================================== */
+
+/* Hide when theme is determined */
+html.has-theme #gender-selector,
+html[data-theme="boy"] #gender-selector,
+html[data-theme="girl"] #gender-selector {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Enforce immediate display on first visit before paint to prevent ANY flash */
+html.needs-theme-select #gender-selector {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#gender-selector {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: #09090b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3.5vw, 44px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.65s var(--theme-ease),
+              transform 0.65s var(--theme-ease),
+              visibility 0.65s var(--theme-ease);
+  will-change: opacity, transform;
+}
+
+#gender-selector.is-dismissed {
+  opacity: 0;
+  transform: scale(1.03);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Fine architectural grid background */
+.selector-bg-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
+}
+
+/* Interactive ambient lighting preview layer */
+.selector-ambient-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s var(--theme-ease), background 0.5s var(--theme-ease);
+  opacity: 0.4;
+  background: radial-gradient(circle 800px at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%);
+}
+
+/* Hover Boy: Sharp monochrome arena illumination */
+#gender-selector.hover-boy .selector-ambient-layer {
+  opacity: 0.9;
+  background:
+    radial-gradient(circle 600px at 30% 50%, rgba(255, 255, 255, 0.09), transparent 65%),
+    radial-gradient(ellipse 900px 400px at 30% 70%, rgba(255, 255, 255, 0.04), transparent 60%);
+}
+
+/* Hover Girl: Warm plush strawberry milk & cream peach glow */
+#gender-selector.hover-girl .selector-ambient-layer {
+  opacity: 1;
+  background:
+    radial-gradient(circle 650px at 70% 50%, rgba(235, 94, 134, 0.16), transparent 60%),
+    radial-gradient(circle 500px at 80% 30%, rgba(253, 232, 225, 0.18), transparent 65%),
+    radial-gradient(ellipse 900px 500px at 70% 80%, rgba(245, 179, 200, 0.12), transparent 70%);
+}
+
+.selector-container {
+  position: relative;
+  z-index: 2;
+  width: min(94vw, 980px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(16px, 3.5vh, 36px);
+  padding: 12px 0;
+}
+
+.selector-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(10px, 1.1vw, 11px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #888890;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: selectorReveal 0.6s var(--theme-ease) 0.1s forwards;
+}
+
+.selector-kicker::before,
+.selector-kicker::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.selector-title {
+  font-family: "HelveticaNeueWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.65rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+  text-wrap: balance;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: selectorReveal 0.7s var(--theme-ease) 0.18s forwards;
+}
+
+.selector-subtitle {
+  font-family: "HelveticaNeueWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: #9999a0;
+  max-width: 600px;
+  margin: -4px 0 0 0;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: selectorReveal 0.7s var(--theme-ease) 0.26s forwards;
+}
+
+.selector-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3.2vw, 36px);
+  width: 100%;
+  margin-top: clamp(6px, 1.8vh, 18px);
+}
+
+@media (max-width: 680px) {
+  .selector-options {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-height: 700px), (orientation: landscape) and (max-width: 960px) {
+  #gender-selector {
+    justify-content: flex-start;
+    padding: 14px 12px 28px;
+  }
+  .selector-container {
+    gap: 10px;
+    margin: 4px auto 20px;
+  }
+  .selector-kicker {
+    display: none;
+  }
+  .selector-title {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+  }
+  .selector-subtitle {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  .selector-options {
+    margin-top: 6px;
+    gap: 12px;
+  }
+  .gender-card {
+    min-height: 120px !important;
+    padding: 14px 18px !important;
+  }
+  .gender-card .card-label {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem) !important;
+    margin: 2px 0 4px 0 !important;
+  }
+  .gender-card .card-desc {
+    display: none !important;
+  }
+  .gender-card .card-indicator {
+    display: none !important;
+  }
+}
+
+/* Base Card Attributes */
+.gender-card {
+  position: relative;
+  padding: clamp(22px, 3.2vw, 40px) clamp(18px, 2.8vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  min-height: clamp(160px, 20vh, 230px);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  animation: selectorReveal 0.8s var(--theme-ease) 0.35s forwards;
+  will-change: transform, border-color, box-shadow;
+}
+
+.gender-card:last-child {
+  animation-delay: 0.44s;
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.card-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.card-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.card-label {
+  font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 4px 0 10px 0;
+  letter-spacing: -0.04em;
+}
+
+.card-desc {
+  font-size: clamp(0.78rem, 1.1vw, 0.86rem);
+  line-height: 1.45;
+  margin: 0 0 18px 0;
+  max-width: 320px;
+  text-wrap: balance;
+}
+
+.card-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+}
+
+/* ==========================================
+   BOY CARD: Clean Solid Brutalist Arena
+   ========================================== */
+.gender-card.card-boy {
+  background: #111113;
+  border: 1px solid #28282e;
+  border-radius: 8px;
+  transition: transform 0.35s var(--theme-spring),
+              border-color 0.25s ease,
+              background 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.gender-card.card-boy .card-tag {
+  color: #888890;
+}
+
+.gender-card.card-boy .card-num {
+  color: #666670;
+}
+
+.gender-card.card-boy .card-label {
+  font-family: "HelveticaNeueWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+}
+
+.gender-card.card-boy .card-desc {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #7d7d88;
+}
+
+.gender-card.card-boy .card-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #c4c4cc;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+}
+
+.gender-card.card-boy .card-indicator {
+  position: absolute;
+  bottom: 16px;
+  width: 28px;
+  height: 2px;
+  background: #33333e;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.gender-card.card-boy:hover,
+.gender-card.card-boy:focus-visible {
+  transform: translateY(-5px);
+  border-color: #ffffff;
+  background: #18181c;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.gender-card.card-boy:hover .card-desc {
+  color: #bbbbcc;
+}
+
+.gender-card.card-boy:hover .card-indicator,
+.gender-card.card-boy:focus-visible .card-indicator {
+  width: 52px;
+  background: #ffffff;
+}
+
+/* ==========================================
+   GIRL CARD: Plush Tactile Strawberry Squircle
+   Warm Porcelain, Dimensional Highlights, Spring Bounce
+   ========================================== */
+.gender-card.card-girl {
+  background: #FFFBF9;
+  border: 2.5px solid #F7C5D4;
+  border-radius: 26px;
+  box-shadow: 0 10px 28px rgba(235, 94, 134, 0.12), 0 3px 0 #F5B3C8, inset 0 2px 0 #FFFFFF;
+  transition: transform 0.4s var(--theme-spring),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+}
+
+.gender-card.card-girl .card-tag {
+  color: #D43A6A;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.gender-card.card-girl .card-num {
+  color: #EB5E86;
+  font-weight: 700;
+}
+
+.gender-card.card-girl .card-label {
+  font-family: 'Outfit', sans-serif;
+  color: #2D2126;
+  letter-spacing: -0.02em;
+}
+
+.gender-card.card-girl .card-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #5A3D4A;
+}
+
+.gender-card.card-girl .card-chip {
+  background: #FFEBF1;
+  border: 1.5px solid #F5B3C8;
+  color: #9A274E;
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+}
+
+.gender-card.card-girl .card-indicator {
+  position: absolute;
+  bottom: 16px;
+  width: 32px;
+  height: 4px;
+  border-radius: 999px;
+  background: #F7C5D4;
+  transition: width 0.35s var(--theme-spring), background-color 0.3s ease;
+}
+
+.gender-card.card-girl:hover,
+.gender-card.card-girl:focus-visible {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #EB5E86;
+  box-shadow: 0 18px 42px rgba(235, 94, 134, 0.22), 0 5px 0 #BD385E, inset 0 2px 0 #FFFFFF;
+}
+
+.gender-card.card-girl:hover .card-label {
+  color: #9A274E;
+}
+
+.gender-card.card-girl:hover .card-desc {
+  color: #2D2126;
+}
+
+.gender-card.card-girl:hover .card-chip {
+  background: #EB5E86;
+  color: #FFFFFF;
+  border-color: #EB5E86;
+}
+
+.gender-card.card-girl:hover .card-indicator,
+.gender-card.card-girl:focus-visible .card-indicator {
+  width: 64px;
+  background: #EB5E86;
+}
+
+/* Expansion transition wash */
+.theme-expand-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.65s var(--theme-ease), transform 0.65s var(--theme-ease);
+}
+
+.theme-expand-wash.active-boy {
+  opacity: 1;
+  transform: scale(1.04);
+  background: #000000;
+}
+
+.theme-expand-wash.active-girl {
+  opacity: 1;
+  transform: scale(1.04);
+  background: #FAF5F0;
+}
+
+@keyframes selectorReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   3. GIRL THEME // COMPLETE VISUAL ART DIRECTION
+   Aesthetic: Warm Strawberry Milk & Cream, Tactile Gacha, Plush Squircle UI
+   High Contrast Berry Espresso Text (#2D2126) for Flawless Readability
+   NO AI-Slop: No generic floating blobs, no neon gradients, no template cards
+   ========================================================================== */
+
+html[data-theme="girl"] {
+  --theme-accent: #EB5E86;
+  --theme-accent-hover: #D43A6A;
+  --theme-accent-rgb: 235, 94, 134;
+  --theme-accent-glow: rgba(235, 94, 134, 0.35);
+  --theme-accent-secondary: #FDE8E1;
+  --theme-accent-tertiary: #EEDBFF;
+  --theme-berry: #9A274E;
+  --theme-text-primary: #2D2126;
+  --theme-text-secondary: #5A3D4A;
+  --theme-text-muted: #7E5265;
+  --theme-surface-warm: #FAF5F0;
+  --theme-surface-card: #FFFDFD;
+  --theme-card-border: #F5CAD8;
+  --theme-border-radius: 20px;
+}
+
+/* Girl Base Canvas: Warm Cream (#FAF5F0) with zero black */
+html[data-theme="girl"],
+html[data-theme="girl"] body {
+  background-color: #FAF5F0 !important;
+  background: #FAF5F0 !important;
+  color: #2D2126 !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Typography Hierarchy: Outfit for Selected Headings */
+html[data-theme="girl"] h1,
+html[data-theme="girl"] h2,
+html[data-theme="girl"] h3,
+html[data-theme="girl"] .block-title,
+html[data-theme="girl"] #hero-title,
+html[data-theme="girl"] .winner-title,
+html[data-theme="girl"] .vs-screen__title,
+html[data-theme="girl"] .round-card p.text-\[75px\] {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Warm diffused atmospheric aura over cream canvas */
+html[data-theme="girl"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 95% 50% at 50% -5%, rgba(247, 197, 212, 0.45), transparent 70%),
+    radial-gradient(circle 750px at 92% 18%, rgba(238, 219, 255, 0.32), transparent 65%),
+    radial-gradient(circle 700px at 8% 65%, rgba(254, 226, 218, 0.4), transparent 68%),
+    radial-gradient(circle 650px at 50% 100%, rgba(253, 232, 225, 0.42), transparent 75%) !important;
+  transition: opacity var(--theme-transition-speed) var(--theme-ease);
+}
+
+/* ==========================================================================
+   4. TOURNAMENT BRACKET // PLUSH GACHA PODS & CANDY CONNECTORS
+   ========================================================================== */
+
+/* Bracket Match Pods: Pure Warm Porcelain Squircle with Dimensional Depth */
+html[data-theme="girl"] .bracket-match {
+  border-radius: 18px !important;
+  border: 2px solid #F5CAD8 !important;
+  background: #FFFDFD !important;
+  box-shadow: 0 6px 20px rgba(235, 94, 134, 0.09), inset 0 1px 0 #FFFFFF !important;
+  transition: transform 0.35s var(--theme-spring),
+              border-color 0.25s ease,
+              box-shadow 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.bracket-match::after,
+html[data-theme="girl"] .bracket-match::after {
+  content: none !important;
+  display: none !important;
+}
+
+html[data-theme="girl"] .bracket-match.is-interactive:hover {
+  border-color: #EB5E86 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 12px 30px rgba(235, 94, 134, 0.18), 0 3px 0 #BD385E, inset 0 1px 0 #FFFFFF !important;
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* Bracket Slots: Clean, Legible, High-Contrast Participant Pods */
+html[data-theme="girl"] .bracket-slot {
+  border-radius: 12px;
+  color: #2D2126 !important;
+  border-bottom: 1px solid #FDE8EE !important;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+html[data-theme="girl"] .bracket-slot:hover {
+  background: #FFF5F7 !important;
+}
+
+html[data-theme="girl"] .bracket-slot.is-top {
+  background: linear-gradient(135deg, #FFF0F4 0%, #FDE8EE 100%) !important;
+  color: #2D2126 !important;
+  font-weight: 700;
+  border-bottom: 1.5px solid #F7C5D4 !important;
+}
+
+html[data-theme="girl"] .bracket-slot.is-top .bracket-slot-name {
+  color: #2D2126 !important;
+  font-weight: 700;
+}
+
+html[data-theme="girl"] .bracket-slot-name {
+  color: #2D2126 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.88rem !important;
+}
+
+html[data-theme="girl"] .bracket-slot.is-empty {
+  color: #7E5265 !important;
+  opacity: 0.7;
+}
+
+/* Connectors: Soft Rounded Strawberry Candy Connectors */
+html[data-theme="girl"] .bracket-side-track.is-left:after,
+html[data-theme="girl"] .bracket-side-track.is-right:before,
+html[data-theme="girl"] .bracket-center-side-link,
+html[data-theme="girl"] .bracket-link,
+html[data-theme="girl"] .bracket-branch.is-left > .bracket-children:before,
+html[data-theme="girl"] .bracket-branch.is-right > .bracket-children:before,
+html[data-theme="girl"] .bracket-branch.is-left .bracket-child:after,
+html[data-theme="girl"] .bracket-branch.is-right .bracket-child:after {
+  background: #F4A6BF !important;
+  box-shadow: 0 2px 6px rgba(235, 94, 134, 0.25) !important;
+  border-radius: 999px;
+  height: 3px !important;
+}
+
+/* Avatars in Bracket: Chubby Rounded Squircle Frames */
+html[data-theme="girl"] .bracket-slot img,
+html[data-theme="girl"] .bracket-slot .avatar-fallback {
+  border-radius: 12px !important;
+  border: 1.5px solid #F5CAD8 !important;
+  box-shadow: 0 2px 6px rgba(235, 94, 134, 0.12) !important;
+}
+
+/* ==========================================================================
+   5. VS SCREEN MODAL // COLLECTIBLE GACHA CARD SHOWDOWN
+   ========================================================================== */
+html[data-theme="girl"] [data-vs-modal] {
+  background: rgba(250, 245, 240, 0.85) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+html[data-theme="girl"] [data-vs-modal] [data-vs-panel] {
+  border: 2.5px solid #F5CAD8 !important;
+  border-radius: 28px !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF8FA 100%) !important;
+  box-shadow: 0 24px 64px rgba(235, 94, 134, 0.18), 0 4px 0 #F5CAD8 !important;
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .vs-screen__close {
+  color: #5A3D4A !important;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+html[data-theme="girl"] .vs-screen__close:hover {
+  color: #EB5E86 !important;
+  background: #FFE8EF !important;
+  transform: rotate(90deg) scale(1.1);
+}
+
+html[data-theme="girl"] .vs-screen__participant-name {
+  color: #2D2126 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="girl"] .vs-screen__avatar {
+  background: #FFEBF1 !important;
+  border: 2.5px solid #F5B3C8 !important;
+  border-radius: 22px !important;
+  box-shadow: 0 8px 20px rgba(235, 94, 134, 0.14) !important;
+}
+
+html[data-theme="girl"] .vs-screen__avatar-fallback {
+  color: #EB5E86 !important;
+  font-weight: 800;
+}
+
+html[data-theme="girl"] .vs-screen__divider:before,
+html[data-theme="girl"] .vs-screen__divider:after {
+  background: #F5CAD8 !important;
+  height: 2px !important;
+}
+
+/* VS Center Token: Collectible Candy Coin */
+html[data-theme="girl"] .vs-screen__divider span {
+  color: #9A274E !important;
+  border: 2px solid #F5B3C8 !important;
+  border-radius: 999px !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(235, 94, 134, 0.2), 0 2px 0 #F5B3C8 !important;
+  font-weight: 800 !important;
+  font-family: 'Outfit', sans-serif !important;
+  padding: 6px 14px !important;
+}
+
+html[data-theme="girl"] .vs-screen__video-shell {
+  border: 2px solid #F5CAD8 !important;
+  border-radius: 18px !important;
+  background: #FFF5F8 !important;
+  box-shadow: inset 0 2px 8px rgba(235, 94, 134, 0.08);
+}
+
+html[data-theme="girl"] .vs-screen__video-placeholder {
+  color: #7E5265 !important;
+}
+
+html[data-theme="girl"] .vs-screen__averages-label,
+html[data-theme="girl"] .vs-screen__description-label,
+html[data-theme="girl"] .vs-screen__your-rating-label {
+  color: #5A3D4A !important;
+  font-weight: 700;
+}
+
+html[data-theme="girl"] .vs-screen__average-line {
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] .vs-screen__average-value {
+  color: #2D2126 !important;
+  font-weight: 700;
+}
+
+html[data-theme="girl"] .vs-screen__description-text {
+  color: #2D2126 !important;
+  line-height: 1.5;
+}
+
+html[data-theme="girl"] .vs-screen__your-rating-value {
+  color: #9A274E !important;
+  font-weight: 800;
+}
+
+html[data-theme="girl"] .vs-screen__criterion-topline {
+  color: #2D2126 !important;
+  font-weight: 600;
+}
+
+html[data-theme="girl"] .vs-screen__criterion-value {
+  color: #9A274E !important;
+  font-weight: 700;
+}
+
+/* Range Slider: Strawberry Milk Slider Track & Plush Thumb */
+html[data-theme="girl"] .vs-screen__criterion input[type=range]::-webkit-slider-runnable-track {
+  border: 1.5px solid #F5CAD8 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(#EB5E86, #EB5E86) left center / var(--vs-progress, 0%) 100% no-repeat, #FFEBF1 !important;
+  height: 8px;
+}
+
+html[data-theme="girl"] .vs-screen__criterion input[type=range]::-webkit-slider-thumb {
+  background: #FFFFFF !important;
+  border-radius: 999px !important;
+  box-shadow: 0 2px 10px rgba(235, 94, 134, 0.4), 0 1px 0 #BD385E !important;
+  border: 3px solid #EB5E86 !important;
+  width: 22px;
+  height: 22px;
+  margin-top: -7px;
+  cursor: pointer;
+  transition: transform 0.15s var(--theme-spring);
+}
+
+html[data-theme="girl"] .vs-screen__criterion input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Publish Button: Puffy Strawberry Button with 3D Bottom Depth */
+html[data-theme="girl"] .vs-screen__publish {
+  border: none !important;
+  border-radius: 16px !important;
+  color: #FFFFFF !important;
+  background: #EB5E86 !important;
+  letter-spacing: 0.14em !important;
+  font-weight: 700 !important;
+  padding: 12px 28px !important;
+  box-shadow: 0 4px 0 #BD385E, 0 8px 20px rgba(235, 94, 134, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.2s var(--theme-spring) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+html[data-theme="girl"] .vs-screen__publish:hover:not(:disabled) {
+  background: #D43A6A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 0 #BD385E, 0 14px 28px rgba(235, 94, 134, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+html[data-theme="girl"] .vs-screen__publish:active:not(:disabled) {
+  transform: translateY(3px) scale(0.98);
+  box-shadow: 0 1px 0 #BD385E, 0 4px 10px rgba(235, 94, 134, 0.2) !important;
+}
+
+/* Tooltip Styling */
+html[data-theme="girl"] .vs-screen__criteria-help-tooltip,
+html[data-theme="girl"] .vs-screen__averages-tooltip {
+  border: 2px solid #F5CAD8 !important;
+  border-radius: 18px !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 16px 40px rgba(235, 94, 134, 0.15) !important;
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .vs-screen__criteria-help-title,
+html[data-theme="girl"] .vs-screen__averages-tooltip-title {
+  color: #9A274E !important;
+  font-weight: 700;
+}
+
+html[data-theme="girl"] .vs-screen__criteria-help-text,
+html[data-theme="girl"] .vs-screen__averages-tooltip-key {
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] .vs-screen__averages-tooltip-value {
+  color: #2D2126 !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   6. HEADER & NAVIGATION // FROSTED BLUSH CHIC
+   ========================================================================== */
+html[data-theme="girl"] #site-header {
+  background: rgba(250, 245, 240, 0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(245, 179, 200, 0.35) !important;
+}
+
+html[data-theme="girl"] #site-header.header-bg {
+  background: rgba(250, 245, 240, 0.96) !important;
+  box-shadow: 0 4px 20px rgba(235, 94, 134, 0.08) !important;
+}
+
+html[data-theme="girl"] #site-header a,
+html[data-theme="girl"] #site-header ol,
+html[data-theme="girl"] #site-header li,
+html[data-theme="girl"] #site-header span {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] #site-header a:hover {
+  color: #EB5E86 !important;
+}
+
+html[data-theme="girl"] .header-ngc-link {
+  border: 1.5px solid #F5B3C8 !important;
+  background: #FFEBF1 !important;
+  color: #9A274E !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(235, 94, 134, 0.12) !important;
+  transition: all 0.25s var(--theme-spring) !important;
+}
+
+html[data-theme="girl"] .header-ngc-link:hover {
+  background: #EB5E86 !important;
+  color: #FFFFFF !important;
+  border-color: #EB5E86 !important;
+  box-shadow: 0 4px 14px rgba(235, 94, 134, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. HERO & CONTENT SECTIONS // ART-DIRECTED CUTE COMPETITIVE IDENTITY
+   ========================================================================== */
+
+/* Hero video layer: Warm Cream Translucent Veil */
+html[data-theme="girl"] .hero-winners-pin {
+  background: #FAF5F0 !important;
+}
+
+html[data-theme="girl"] #hero-bg-video-layer div,
+html[data-theme="girl"] #hero-bg-video-layer .bg-black\/50 {
+  background-color: rgba(250, 245, 240, 0.78) !important;
+  backdrop-filter: blur(4px);
+}
+
+html[data-theme="girl"] #hero-title,
+html[data-theme="girl"] #hero-title span {
+  color: #2D2126 !important;
+  text-shadow: 0 4px 24px rgba(235, 94, 134, 0.18);
+}
+
+/* Rounds Cards: Squircle Cards with Strawberry Accent Edge */
+html[data-theme="girl"] .round-card {
+  background: #FFFDFD !important;
+  border: 1.5px solid #F5CAD8 !important;
+  border-left: 6px solid #EB5E86 !important;
+  border-radius: 18px !important;
+  padding: 24px 20px !important;
+  box-shadow: 0 6px 22px rgba(235, 94, 134, 0.08) !important;
+  transition: all 0.35s var(--theme-spring) !important;
+}
+
+html[data-theme="girl"] .round-card:hover {
+  border-left-color: #D43A6A !important;
+  border-color: #EB5E86 !important;
+  transform: translateX(6px) translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(235, 94, 134, 0.18), 0 3px 0 #BD385E !important;
+}
+
+html[data-theme="girl"] .round-card p.text-\[75px\] {
+  color: #EB5E86 !important;
+  font-weight: 800 !important;
+}
+
+html[data-theme="girl"] .round-card p.text-\[24px\] {
+  color: #2D2126 !important;
+  font-weight: 700 !important;
+}
+
+/* Winners Podium: Warm Collectible Showcase */
+html[data-theme="girl"] .winners-screen {
+  border-bottom: 1px solid #F5CAD8 !important;
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .winners-copy h2 {
+  color: #2D2126 !important;
+  text-shadow: 0 4px 24px rgba(235, 94, 134, 0.2);
+}
+
+html[data-theme="girl"] .winner-card {
+  background: #FFFDFD;
+  border: 2px solid #F5CAD8;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(235, 94, 134, 0.1);
+  padding: 24px 18px;
+  transition: transform 0.35s var(--theme-spring), box-shadow 0.35s ease;
+}
+
+html[data-theme="girl"] .winner-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(235, 94, 134, 0.2), 0 3px 0 #BD385E;
+  border-color: #EB5E86;
+}
+
+html[data-theme="girl"] .winner-name-link {
+  color: #2D2126 !important;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+html[data-theme="girl"] .winner-name-link:hover {
+  color: #EB5E86 !important;
+}
+
+html[data-theme="girl"] .winner-detail {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .first-detail { color: #D97706 !important; font-weight: 700; }
+html[data-theme="girl"] .second-detail { color: #6366F1 !important; font-weight: 700; }
+html[data-theme="girl"] .third-detail { color: #DB2777 !important; font-weight: 700; }
+
+html[data-theme="girl"] .winner-title {
+  color: #7E5265 !important;
+}
+
+html[data-theme="girl"] .winner-rule {
+  background: #F5CAD8 !important;
+}
+
+/* ==========================================================================
+   8. UNIVERSAL REPLACEMENT ARCHITECTURE // GUARANTEED READABILITY
+   Eliminates all dark containers and harsh white text on girl theme.
+   ========================================================================== */
+html[data-theme="girl"] .text-white {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .text-white\/85,
+html[data-theme="girl"] .text-white\/80,
+html[data-theme="girl"] .text-white\/75,
+html[data-theme="girl"] .text-white\/70 {
+  color: #3D222E !important;
+}
+
+html[data-theme="girl"] .text-white\/60,
+html[data-theme="girl"] .text-white\/55,
+html[data-theme="girl"] .text-white\/50,
+html[data-theme="girl"] .text-white\/45,
+html[data-theme="girl"] .text-white\/40 {
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] .text-white\/35,
+html[data-theme="girl"] .text-white\/32,
+html[data-theme="girl"] .text-white\/30,
+html[data-theme="girl"] .text-white\/25,
+html[data-theme="girl"] .text-white\/20 {
+  color: #7E5265 !important;
+}
+
+/* Invert all dark background classes to warm cream or white card surfaces */
+html[data-theme="girl"] .bg-black {
+  background-color: #FAF5F0 !important;
+}
+
+html[data-theme="girl"] .bg-black\/50 {
+  background-color: rgba(250, 245, 240, 0.7) !important;
+}
+
+html[data-theme="girl"] .bg-black\/75 {
+  background-color: rgba(250, 245, 240, 0.88) !important;
+}
+
+html[data-theme="girl"] .bg-black\/90,
+html[data-theme="girl"] .bg-black\/95 {
+  background-color: #FAF5F0 !important;
+}
+
+/* Soft strawberry borders replacing harsh white/gray borders */
+html[data-theme="girl"] .border-white\/10,
+html[data-theme="girl"] .border-white\/15,
+html[data-theme="girl"] .border-white\/20,
+html[data-theme="girl"] .border-white\/25,
+html[data-theme="girl"] .border-white\/30 {
+  border-color: rgba(245, 179, 200, 0.35) !important;
+}
+
+html[data-theme="girl"] .border-white\/40,
+html[data-theme="girl"] .border-white\/45,
+html[data-theme="girl"] .border-white\/60,
+html[data-theme="girl"] .border-white {
+  border-color: #F5CAD8 !important;
+}
+
+/* About Section & Special Thanks */
+html[data-theme="girl"] #about .block-title,
+html[data-theme="girl"] #rounds .block-title,
+html[data-theme="girl"] #special-thanks h2 {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] #about-body,
+html[data-theme="girl"] #special-thanks p {
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] #special-thanks a {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] #special-thanks a:hover .word-inner {
+  color: #EB5E86 !important;
+}
+
+/* Application Modal: Porcelain Squircle Card */
+html[data-theme="girl"] #application-modal {
+  background: rgba(250, 245, 240, 0.82) !important;
+  backdrop-filter: blur(16px);
+}
+
+html[data-theme="girl"] #application-modal [data-modal-panel] {
+  background: #FFFFFF !important;
+  border: 2px solid #F5CAD8 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 60px rgba(235, 94, 134, 0.18) !important;
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] #application-modal [data-modal-panel] h2 {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] #application-modal button[data-modal-close] {
+  border: 1.5px solid #F5CAD8 !important;
+  background: #FFEBF1 !important;
+  color: #9A274E !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="girl"] #application-modal button[data-modal-close]:hover {
+  background: #EB5E86 !important;
+  color: #FFFFFF !important;
+  border-color: #EB5E86 !important;
+}
+
+/* Site Loader on Girl Theme */
+html[data-theme="girl"] #site-loader {
+  background: #FAF5F0 !important;
+}
+
+html[data-theme="girl"] #site-loader div[style*="font-family"] {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] #site-loader #loader-progress-bar {
+  background: linear-gradient(90deg, #F7A8BF, #EB5E86, #C084FC) !important;
+  box-shadow: 0 0 14px rgba(235, 94, 134, 0.5) !important;
+}
+
+html[data-theme="girl"] #site-loader span {
+  color: #7E5265 !important;
+}
+
+/* Footer on Girl Theme */
+html[data-theme="girl"] img[src="footer_newgen.svg"] {
+  filter: brightness(0) saturate(100%) invert(45%) sepia(50%) saturate(1800%) hue-rotate(310deg) brightness(98%) contrast(98%);
+}
+
+html[data-theme="girl"] footer {
+  background: #FFF8F6 !important;
+  border-top: 1.5px solid #F5CAD8 !important;
+}
+
+html[data-theme="girl"] footer div,
+html[data-theme="girl"] footer ol,
+html[data-theme="girl"] footer span,
+html[data-theme="girl"] footer a {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] footer a:hover {
+  color: #EB5E86 !important;
+}
+
+/* Custom Scrollbar on Girl Theme */
+html[data-theme="girl"]::-webkit-scrollbar {
+  width: 10px;
+}
+
+html[data-theme="girl"]::-webkit-scrollbar-track {
+  background: #FAF5F0;
+}
+
+html[data-theme="girl"]::-webkit-scrollbar-thumb {
+  background: #F5CAD8;
+  border-radius: 999px;
+  border: 2px solid #FAF5F0;
+}
+
+html[data-theme="girl"]::-webkit-scrollbar-thumb:hover {
+  background: #EB5E86;
+}
+
+/* ==========================================================================
+   9. WINNERS VIEWPORT FITTING & BRACKET SPACING
+   ========================================================================== */
+.hero-winners-transition #winners {
+  transform: translate3d(0, var(--winners-section-offset, 0px), 0) scale(var(--winners-scale, 1)) !important;
+  transform-origin: center top !important;
+}
+
+.winners-screen {
+  overflow: visible !important;
+}
+
+.winner-card,
+.winner-rank-number {
+  overflow: visible !important;
+}
+
+.hero-winners-transition {
+  margin-bottom: -12.5rem !important;
+}
+
+#bracket {
+  padding-top: clamp(48px, 6vw, 84px) !important;
+}
+
+/* Hide sponsors */
+#sponsors {
+  display: none !important;
+}
+
+/* ==========================================================================
+   10. THEME TOGGLE PILL & AUTH NAVBAR STYLING
+   ========================================================================== */
+.theme-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-family: inherit;
+}
+
+.theme-toggle-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.theme-toggle-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+html[data-theme="girl"] .theme-toggle-pill {
+  background: #FFEBF1 !important;
+  border-color: #F5B3C8 !important;
+  color: #9A274E !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(235, 94, 134, 0.12) !important;
+}
+
+html[data-theme="girl"] .theme-toggle-pill:hover {
+  background: #EB5E86 !important;
+  border-color: #EB5E86 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(235, 94, 134, 0.3) !important;
+}
+
+html[data-theme="girl"] .theme-toggle-indicator {
+  background: #EB5E86 !important;
+  box-shadow: 0 0 8px rgba(235, 94, 134, 0.8) !important;
+}
+
+html[data-theme="girl"] .theme-toggle-pill:hover .theme-toggle-indicator {
+  background: #FFFFFF !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* User Account Pill */
+.auth-user-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 4px 14px 4px 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.auth-user-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+html[data-theme="girl"] .auth-user-pill {
+  background: #FFFFFF !important;
+  border: 2px solid #F5CAD8 !important;
+  color: #EB5E86 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 3px 12px rgba(235, 94, 134, 0.12), 0 2px 0 #F5CAD8 !important;
+}
+
+html[data-theme="girl"] .auth-user-pill:hover {
+  border-color: #EB5E86 !important;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   11. ACCESSIBILITY & REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  #gender-selector,
+  .gender-card,
+  .theme-expand-wash,
+  .selector-kicker,
+  .selector-title,
+  .selector-subtitle,
+  .theme-toggle-pill,
+  .bracket-match {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ==========================================================================
+   12. RESPONSIVE & TOUCH-DEVICE ARCHITECTURE (ALL VIEWPORTS & DEVICES)
+   Preserves 100% desktop baseline (>768px / >900px).
+   Optimizes: 320px to 768px, Tablets, Foldables, Touchscreens, Landscape.
+   ========================================================================== */
+
+/* Universal Touch Hit Areas & Fluid Container Safety */
+html, body {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+
+body.modal-open,
+body.drawer-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Ensure no horizontal page overflow */
+main, section, header, footer {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   A. MOBILE HEADER & INTERACTIVE NAVIGATION DRAWER
+   -------------------------------------------------------------------------- */
+.mobile-header-actions {
+  display: none;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.mobile-menu-toggle svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Girl Theme Hamburger Button */
+html[data-theme="girl"] .mobile-menu-toggle {
+  background: #FFEBF1 !important;
+  border-color: #F5B3C8 !important;
+  color: #9A274E !important;
+  box-shadow: 0 2px 8px rgba(235, 94, 134, 0.12) !important;
+}
+
+html[data-theme="girl"] .mobile-menu-toggle:hover {
+  background: #EB5E86 !important;
+  color: #ffffff !important;
+  border-color: #EB5E86 !important;
+}
+
+/* Mobile Nav Drawer Overlay */
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-nav-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-panel {
+  width: min(85vw, 360px);
+  height: 100%;
+  background: #0d0d10;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 24px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--theme-spring);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+}
+
+.mobile-nav-drawer.is-open .mobile-nav-panel {
+  transform: translateX(0);
+}
+
+/* Girl Theme Mobile Nav Panel */
+html[data-theme="girl"] .mobile-nav-drawer {
+  background: rgba(250, 245, 240, 0.65) !important;
+}
+
+html[data-theme="girl"] .mobile-nav-panel {
+  background: #FFFDFD !important;
+  border-left: 2px solid #F5CAD8 !important;
+  box-shadow: -10px 0 40px rgba(235, 94, 134, 0.15) !important;
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+html[data-theme="girl"] .mobile-nav-header {
+  border-bottom-color: #F5CAD8 !important;
+}
+
+.mobile-nav-brand {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+html[data-theme="girl"] .mobile-nav-brand {
+  font-family: 'Outfit', sans-serif !important;
+  color: #2D2126 !important;
+}
+
+.mobile-nav-close {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s;
+}
+
+.mobile-nav-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="girl"] .mobile-nav-close {
+  border-color: #F5CAD8 !important;
+  color: #9A274E !important;
+}
+
+html[data-theme="girl"] .mobile-nav-close:hover {
+  background: #FFEBF1 !important;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+.mobile-nav-link:active,
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(4px);
+}
+
+html[data-theme="girl"] .mobile-nav-link {
+  color: #2D2126 !important;
+  background: #FFF8FA !important;
+  border-color: #FCE6EE !important;
+  border-radius: 14px !important;
+}
+
+html[data-theme="girl"] .mobile-nav-link:active,
+html[data-theme="girl"] .mobile-nav-link:hover {
+  background: #FFEBF1 !important;
+  border-color: #EB5E86 !important;
+  color: #EB5E86 !important;
+  box-shadow: 0 4px 12px rgba(235, 94, 134, 0.12) !important;
+}
+
+.mobile-nav-link.is-highlight {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="girl"] .mobile-nav-link.is-highlight {
+  border-color: #F5B3C8 !important;
+  background: #FFE0EA !important;
+  color: #9A274E !important;
+  font-weight: 700;
+}
+
+.mobile-nav-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+html[data-theme="girl"] .mobile-nav-footer {
+  border-top-color: #F5CAD8 !important;
+}
+
+/* Breakpoint for Mobile Header: <= 768px */
+@media (max-width: 768px) {
+  /* Header Container - Sleek, single-line height */
+  #site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    max-height: 58px !important;
+    padding: 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(8, 8, 12, 0.94) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    transform: none !important;
+    z-index: 1000 !important;
+  }
+
+  html[data-theme="girl"] #site-header {
+    background: rgba(255, 250, 252, 0.96) !important;
+    border-bottom: 1px solid #F5CAD8 !important;
+    box-shadow: 0 4px 16px rgba(235, 94, 134, 0.1) !important;
+  }
+
+  /* Inner Flex Container - Strict single row, no wrapping */
+  #site-header .max-w-450,
+  #site-header .reg-header-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    gap: 8px !important;
+  }
+
+  /* Brand Logo on Mobile */
+  #site-header a[href*="index.html"]:first-child,
+  .reg-logo {
+    font-size: clamp(1.1rem, 4.6vw, 1.45rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  html[data-theme="girl"] #site-header a[href*="index.html"]:first-child,
+  html[data-theme="girl"] .reg-logo {
+    color: #2D2126 !important;
+  }
+
+  /* Hide Desktop Nav on Mobile */
+  #site-header ol.desktop-nav,
+  #site-header nav > .reg-nav {
+    display: none !important;
+  }
+
+  /* Mobile Header Actions (Right Side Controls) */
+  .mobile-header-actions {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Theme Toggle Pill on Mobile */
+  .theme-toggle-pill {
+    height: 34px !important;
+    min-height: 34px !important;
+    max-height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 0.68rem !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  /* Mobile Login Button (Logged-Out State) */
+  .mobile-login-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    max-height: 34px !important;
+    padding: 0 12px !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .mobile-login-btn:active {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+  }
+
+  html[data-theme="girl"] .mobile-login-btn {
+    background: #FFFFFF !important;
+    border: 1.5px solid #F5CAD8 !important;
+    color: #EB5E86 !important;
+    box-shadow: 0 2px 8px rgba(235, 94, 134, 0.12) !important;
+  }
+
+  html[data-theme="girl"] .mobile-login-btn:active {
+    background: #FFEBF1 !important;
+    border-color: #EB5E86 !important;
+  }
+
+  /* Mobile Profile Pill (Logged-In State Trigger) */
+  .mobile-profile-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    max-height: 34px !important;
+    padding: 0 8px 0 4px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+  }
+
+  .mobile-profile-pill:hover,
+  .mobile-profile-pill:active,
+  .mobile-profile-pill[aria-expanded="true"] {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+  }
+
+  html[data-theme="girl"] .mobile-profile-pill {
+    background: #FFFFFF !important;
+    border: 1.5px solid #F5CAD8 !important;
+    color: #EB5E86 !important;
+    box-shadow: 0 2px 8px rgba(235, 94, 134, 0.12) !important;
+  }
+
+  html[data-theme="girl"] .mobile-profile-pill:hover,
+  html[data-theme="girl"] .mobile-profile-pill:active,
+  html[data-theme="girl"] .mobile-profile-pill[aria-expanded="true"] {
+    background: #FFF5F7 !important;
+    border-color: #EB5E86 !important;
+  }
+
+  .mobile-profile-avatar {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    flex-shrink: 0 !important;
+  }
+
+  html[data-theme="girl"] .mobile-profile-avatar {
+    background: #FFEBF1 !important;
+    color: #EB5E86 !important;
+  }
+
+  .mobile-avatar-initial {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="girl"] .mobile-avatar-initial {
+    color: #EB5E86 !important;
+  }
+
+  .mobile-profile-name {
+    font-size: 0.74rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    max-width: 78px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+
+  .mobile-profile-chevron {
+    width: 10px !important;
+    height: 10px !important;
+    flex-shrink: 0 !important;
+    opacity: 0.65 !important;
+    transition: transform 0.2s ease !important;
+  }
+
+  .mobile-profile-pill[aria-expanded="true"] .mobile-profile-chevron {
+    transform: rotate(180deg) !important;
+  }
+
+  /* Mobile Profile Dropdown Panel */
+  .mobile-profile-dropdown {
+    position: absolute !important;
+    top: calc(100% + 7px) !important;
+    right: 0 !important;
+    min-width: 185px !important;
+    max-width: 230px !important;
+    z-index: 1100 !important;
+    border-radius: 12px !important;
+    padding: 6px !important;
+    background: rgba(14, 14, 20, 0.97) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    animation: mobileDropIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .mobile-profile-dropdown.hidden {
+    display: none !important;
+  }
+
+  @keyframes mobileDropIn {
+    0% { opacity: 0; transform: translateY(-6px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  html[data-theme="girl"] .mobile-profile-dropdown {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1.5px solid #F5CAD8 !important;
+    box-shadow: 0 12px 32px rgba(235, 94, 134, 0.2), 0 2px 8px rgba(235, 94, 134, 0.1) !important;
+  }
+
+  .mobile-dropdown-header {
+    padding: 6px 10px 4px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .mobile-dropdown-user {
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-user {
+    color: #2D2126 !important;
+  }
+
+  .mobile-dropdown-badge {
+    font-size: 0.62rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    line-height: 1 !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-badge {
+    color: #EB5E86 !important;
+  }
+
+  .mobile-dropdown-divider {
+    height: 1px !important;
+    margin: 4px 2px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-divider {
+    background: #F8E2EA !important;
+  }
+
+  .mobile-dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
+    text-align: left !important;
+    -webkit-tap-highlight-color: transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-dropdown-item:active,
+  .mobile-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.09) !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-item {
+    color: #4A343F !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-item:active,
+  html[data-theme="girl"] .mobile-dropdown-item:hover {
+    background: #FFEBF1 !important;
+    color: #EB5E86 !important;
+  }
+
+  .mobile-dropdown-item.is-logout {
+    color: #FF5E8A !important;
+  }
+
+  .mobile-dropdown-item.is-logout:active,
+  .mobile-dropdown-item.is-logout:hover {
+    background: rgba(255, 94, 138, 0.12) !important;
+    color: #FF3B70 !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-item.is-logout {
+    color: #EB5E86 !important;
+  }
+
+  html[data-theme="girl"] .mobile-dropdown-item.is-logout:active,
+  html[data-theme="girl"] .mobile-dropdown-item.is-logout:hover {
+    background: #FFEBF1 !important;
+    color: #BD385E !important;
+  }
+
+  .mobile-dropdown-icon {
+    width: 15px !important;
+    height: 15px !important;
+    flex-shrink: 0 !important;
+    opacity: 0.85 !important;
+  }
+
+  /* Hamburger Menu Toggle Button on Mobile */
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    color: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .mobile-menu-toggle:active {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+  }
+
+  .mobile-menu-toggle svg {
+    width: 17px !important;
+    height: 17px !important;
+    stroke: currentColor !important;
+    stroke-width: 2 !important;
+  }
+
+  html[data-theme="girl"] .mobile-menu-toggle {
+    background: #FFFFFF !important;
+    border: 1.5px solid #F5CAD8 !important;
+    color: #EB5E86 !important;
+    box-shadow: 0 2px 8px rgba(235, 94, 134, 0.12) !important;
+  }
+
+  html[data-theme="girl"] .mobile-menu-toggle:active {
+    background: #FFEBF1 !important;
+    border-color: #EB5E86 !important;
+  }
+}
+
+/* Specific optimizations for screens <= 360px */
+@media (max-width: 360px) {
+  #site-header {
+    padding: 0 8px !important;
+  }
+
+  #site-header .max-w-450,
+  #site-header .reg-header-inner {
+    gap: 4px !important;
+  }
+
+  .mobile-header-actions {
+    gap: 5px !important;
+  }
+
+  .theme-toggle-pill {
+    padding: 0 7px !important;
+    font-size: 0.62rem !important;
+    gap: 4px !important;
+  }
+
+  .mobile-profile-name {
+    max-width: 58px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .mobile-login-btn {
+    padding: 0 9px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .mobile-profile-dropdown {
+    right: -4px !important;
+    min-width: 175px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. TOURNAMENT BRACKET TOUCH & MOBILE ENHANCEMENTS
+   -------------------------------------------------------------------------- */
+.bracket-mobile-controls {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media (max-width: 900px) {
+  .bracket-mobile-controls {
+    display: flex;
+  }
+}
+
+.bracket-swipe-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  animation: pulseHint 2.4s infinite ease-in-out;
+}
+
+@keyframes pulseHint {
+  0%, 100% { transform: translateX(0); opacity: 0.85; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+html[data-theme="girl"] .bracket-swipe-hint {
+  background: #FFEBF1 !important;
+  border-color: #F5B3C8 !important;
+  color: #9A274E !important;
+  font-weight: 600;
+}
+
+.bracket-round-chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.bracket-round-chip {
+  min-height: 38px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.bracket-round-chip:active,
+.bracket-round-chip.is-active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+html[data-theme="girl"] .bracket-round-chip {
+  background: #FFF0F4 !important;
+  border-color: #F5CAD8 !important;
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] .bracket-round-chip:active,
+html[data-theme="girl"] .bracket-round-chip.is-active {
+  background: #EB5E86 !important;
+  color: #ffffff !important;
+  border-color: #EB5E86 !important;
+  box-shadow: 0 3px 10px rgba(235, 94, 134, 0.3) !important;
+}
+
+/* Touchscreens: Reveal Avatar Visuals on Match Cards Without Requiring Hover */
+@media (hover: none) {
+  .bracket-match.is-interactive:active {
+    transform: scale(0.97);
+  }
+
+  .bracket-slot.has-visual .bracket-slot-visual {
+    width: 32px !important;
+    opacity: 0.85 !important;
+  }
+
+  .bracket-slot.has-visual.shift-left .bracket-slot-main {
+    transform: translate(-10px) !important;
+  }
+
+  .bracket-slot.has-visual.shift-right .bracket-slot-main {
+    transform: translate(10px) !important;
+  }
+}
+
+/* Smooth momentum scrolling for bracket container */
+.bracket-viewport {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  touch-action: pan-x pan-y;
+}
+
+/* --------------------------------------------------------------------------
+   C. VS MODAL // MOBILE STICKY TOPBAR & COMFORTABLE RANGE THUMBS
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  [data-vs-modal] {
+    padding: 0 !important;
+  }
+
+  [data-vs-modal] [data-vs-panel] {
+    border-radius: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    min-height: 100dvh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 !important;
+  }
+
+  .vs-screen__topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 40 !important;
+    background: rgba(8, 8, 8, 0.94) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    padding: 10px 16px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  html[data-theme="girl"] .vs-screen__topbar {
+    background: rgba(255, 251, 249, 0.95) !important;
+    border-bottom: 1.5px solid #F5CAD8 !important;
+  }
+
+  .vs-screen__close {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 32px !important;
+    touch-action: manipulation !important;
+  }
+
+  .vs-screen__body {
+    padding: 16px 14px 40px !important;
+  }
+
+  /* Range inputs on touch: generous thumb size */
+  .vs-screen__criterion input[type=range] {
+    height: 36px !important;
+    touch-action: pan-y !important;
+  }
+
+  .vs-screen__criterion input[type=range]::-webkit-slider-thumb {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    margin-top: -10px !important;
+  }
+
+  .vs-screen__criterion input[type=range]::-moz-range-thumb {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+  }
+
+  .vs-screen__publish {
+    min-height: 52px !important;
+    font-size: 1.1rem !important;
+    touch-action: manipulation !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   D. ADMIN DASHBOARD RESPONSIVE PASS (<= 900px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .admin-container {
+    flex-direction: column !important;
+    min-height: 100vh !important;
+  }
+
+  .admin-sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
+    padding: 12px 16px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    background: rgba(10, 10, 12, 0.95) !important;
+    backdrop-filter: blur(14px) !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    overflow-y: visible !important;
+  }
+
+  .admin-sidebar > div[style*="margin-top:auto"] {
+    margin-top: 0 !important;
+  }
+
+  .admin-nav {
+    flex-direction: row !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .admin-nav a {
+    min-height: 42px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 8px 14px !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+    font-size: 0.8rem !important;
+  }
+
+  .admin-content {
+    padding: clamp(16px, 3.5vw, 24px) !important;
+    overflow-x: hidden !important;
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .stat-card {
+    padding: 14px 12px !important;
+  }
+
+  .stat-value {
+    font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
+  }
+
+  .modal-overlay {
+    padding: 12px !important;
+    align-items: center !important;
+  }
+
+  .modal-content {
+    padding: 24px 16px !important;
+    border-radius: 8px !important;
+  }
+
+  .modal-close {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   E. FORMS & INPUT TOUCH ACCESSIBILITY
+   -------------------------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  font-size: 16px !important; /* Prevents unwanted auto-zoom on iOS */
+  min-height: 46px;
+  touch-action: manipulation;
+}
+
+.auth-tab {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+.oauth-btn {
+  min-height: 46px;
+  touch-action: manipulation;
+}
+
+.reg-consent {
+  min-height: 44px;
+  padding: 4px 0;
+}
+
+.reg-consent-check {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+}
+
+/* --------------------------------------------------------------------------
+   F. APPLICATION MODAL MOBILE PASS
+   -------------------------------------------------------------------------- */
+#application-modal [data-modal-panel] {
+  max-height: 92vh !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: clamp(24px, 5vw, 48px) clamp(16px, 4vw, 40px) !important;
+  margin: 12px !important;
+}
+
+#application-modal button[data-modal-close] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+/* --------------------------------------------------------------------------
+   G. FOOTER RESPONSIVE INTEGRATION
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  footer ol {
+    gap: 12px !important;
+  }
+  footer a, footer span {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* ==========================================================================
+   PHASE 2: DEEP RESPONSIVE PASS — ALL REMAINING SECTIONS
+   Covers: Winners, Rounds, About, Profile, Register, VS Screen, Heroes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   H. WINNERS PODIUM — MOBILE-FIRST STACK
+   On small screens the three-card side-by-side layout wraps and scales
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  /* Let the winners stage scroll / wrap without overflow */
+  .winners-stage {
+    flex-wrap: wrap !important;
+    gap: clamp(12px, 3vw, 24px) !important;
+    justify-content: center !important;
+  }
+
+  .winner-card {
+    width: min(280px, 88vw) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .winner-rank-number {
+    height: 120px !important;
+  }
+
+  .winner-rank-text {
+    font-size: 100px !important;
+  }
+
+  .winner-prize-text {
+    font-size: 0.9em !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .winners-screen {
+    padding: 12px 8px !important;
+  }
+
+  .winner-card {
+    width: min(260px, 92vw) !important;
+    padding: 16px 12px !important;
+  }
+
+  .winner-rank-number {
+    height: 90px !important;
+  }
+
+  .winner-rank-text {
+    font-size: 76px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   I. HERO SECTION — KEEP TITLE LEGIBLE ON VERY SMALL PHONES
+   -------------------------------------------------------------------------- */
+@media (max-width: 390px) {
+  #hero-title {
+    font-size: clamp(0.95rem, 6.5vw, 2.2rem) !important;
+    padding: 0 8px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   J. EVENT ROUNDS — FULL-WIDTH SINGLE COLUMN ON SMALL PHONES
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  #rounds-reveal {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .round-card {
+    max-width: 100% !important;
+    padding: 18px 16px !important;
+    gap: 20px !important;
+  }
+
+  .round-card p.text-\[75px\] {
+    font-size: clamp(3rem, 14vw, 5rem) !important;
+  }
+
+  .round-card p.text-\[24px\] {
+    font-size: clamp(0.95rem, 4vw, 1.2rem) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   K. ABOUT SECTION — BETTER VERTICAL RHYTHM ON MOBILE
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  #about {
+    padding-top: 48px !important;
+    padding-bottom: 40px !important;
+    gap: 24px !important;
+  }
+
+  #about-heading {
+    font-size: clamp(2.5rem, 12vw, 5rem) !important;
+    padding: 0 8px !important;
+  }
+
+  #about-body {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+    padding: 0 8px !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   L. SPECIAL THANKS / WANT IN — READABLE AND USABLE
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  #special-thanks {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 60px !important;
+    gap: 20px !important;
+  }
+
+  #special-thanks-reveal h2 {
+    font-size: clamp(2rem, 10vw, 4rem) !important;
+  }
+
+  #special-thanks ul {
+    font-size: clamp(1.1rem, 5vw, 1.8rem) !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   M. PROFILE PAGE — CARD LAYOUT & FORM TOUCH TARGETS
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .profile-container {
+    padding-top: clamp(88px, 14vh, 120px) !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .profile-card {
+    padding: clamp(14px, 4vw, 22px) !important;
+    border-radius: 10px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .avatar-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  .avatar-preview-box {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  .btn-action-row {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    min-height: 44px !important;
+    padding: 10px 18px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Display name form input + save on mobile */
+  #form-display-name div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+  }
+
+  .slot-display-box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.2rem !important;
+    gap: 8px !important;
+  }
+
+  .section-desc {
+    font-size: 0.88rem !important;
+  }
+
+  .profile-container h1 {
+    font-size: clamp(1.6rem, 8vw, 2.4rem) !important;
+  }
+}
+
+/* Girl Theme Profile Page Overrides */
+html[data-theme="girl"] .profile-card {
+  background: #FFFFFF !important;
+  border-color: #F5CAD8 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 16px rgba(235, 94, 134, 0.07) !important;
+}
+
+html[data-theme="girl"] .profile-card:hover {
+  border-color: #EB5E86 !important;
+  box-shadow: 0 8px 28px rgba(235, 94, 134, 0.13) !important;
+}
+
+html[data-theme="girl"] .section-title {
+  color: #2D2126 !important;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+html[data-theme="girl"] .section-desc,
+html[data-theme="girl"] .form-label,
+html[data-theme="girl"] .form-hint,
+html[data-theme="girl"] .info-item-label {
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] .form-input,
+html[data-theme="girl"] .reg-input {
+  background: #FFF8FA !important;
+  border-color: #F5CAD8 !important;
+  color: #2D2126 !important;
+  border-radius: 10px !important;
+}
+
+html[data-theme="girl"] .form-input:focus {
+  border-color: #EB5E86 !important;
+  box-shadow: 0 0 0 2px rgba(235, 94, 134, 0.18) !important;
+}
+
+html[data-theme="girl"] .btn-primary {
+  background: #EB5E86 !important;
+  color: #FFFFFF !important;
+  border-radius: 10px !important;
+  box-shadow: 0 3px 0 #BD385E, 0 6px 16px rgba(235, 94, 134, 0.2) !important;
+}
+
+html[data-theme="girl"] .btn-primary:hover {
+  background: #D43A6A !important;
+}
+
+html[data-theme="girl"] .btn-secondary {
+  border-color: #F5B3C8 !important;
+  color: #9A274E !important;
+  background: #FFEBF1 !important;
+  border-radius: 10px !important;
+}
+
+html[data-theme="girl"] .btn-secondary:hover {
+  background: #EB5E86 !important;
+  color: #FFFFFF !important;
+  border-color: #EB5E86 !important;
+}
+
+html[data-theme="girl"] .badge {
+  border-color: #F5CAD8 !important;
+  color: #9A274E !important;
+  background: #FFEBF1 !important;
+}
+
+html[data-theme="girl"] .slot-display-box {
+  background: #FFF5F7 !important;
+  border-color: #F5CAD8 !important;
+  border-radius: 12px !important;
+}
+
+html[data-theme="girl"] .slot-number-pill {
+  color: #EB5E86 !important;
+}
+
+html[data-theme="girl"] .slot-subtext {
+  color: #7E5265 !important;
+}
+
+html[data-theme="girl"] .info-item-val {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .alert-success {
+  background: rgba(196, 230, 196, 0.3) !important;
+  border-color: rgba(100, 180, 100, 0.5) !important;
+  color: #2a6e2a !important;
+}
+
+html[data-theme="girl"] .alert-error {
+  background: rgba(255, 200, 210, 0.3) !important;
+  border-color: rgba(235, 94, 134, 0.4) !important;
+  color: #9A274E !important;
+}
+
+/* --------------------------------------------------------------------------
+   N. VS SCREEN — STACKED MOBILE LAYOUT (SIDE A + SIDE B)
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .vs-screen__body {
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 12px 10px 40px !important;
+  }
+
+  .vs-screen__side {
+    width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 16px !important;
+  }
+
+  html[data-theme="girl"] .vs-screen__side {
+    border-bottom-color: #F5CAD8 !important;
+  }
+
+  .vs-screen__divider {
+    display: none !important;
+  }
+
+  .vs-screen__participant {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .vs-screen__participant-main {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .vs-screen__avatar {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    border-radius: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .vs-screen__participant-name {
+    font-size: 1.15rem !important;
+  }
+
+  .vs-screen__media-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .vs-screen__criteria-columns {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .vs-screen__publish {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   O. BRACKET SECTION HEADER & CHIPS — VERY SMALL SCREENS
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .bracket-round-chips {
+    gap: 4px !important;
+  }
+
+  .bracket-round-chip {
+    font-size: 0.65rem !important;
+    padding: 5px 10px !important;
+    min-height: 34px !important;
+  }
+
+  .bracket-swipe-hint {
+    font-size: 0.65rem !important;
+    padding: 4px 10px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   P. REGISTER PAGE — ADDITIONAL SMALL SCREEN POLISH
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .reg-title {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
+
+  .reg-subtitle {
+    font-size: clamp(0.85rem, 3.5vw, 1rem) !important;
+    margin-bottom: 28px !important;
+  }
+
+  .reg-main {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .reg-badge {
+    font-size: 0.7rem !important;
+    padding: 4px 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .reg-entry-amounts {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .auth-tabs {
+    font-size: 0.78rem !important;
+  }
+}
+
+/* Landscape phone: Selector override to prevent overflow */
+@media (orientation: landscape) and (max-height: 520px) {
+  .selector-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .gender-card {
+    min-height: 100px !important;
+    padding: 10px 14px !important;
+  }
+
+  .gender-card .card-label {
+    font-size: clamp(1.4rem, 5vw, 2rem) !important;
+    margin: 0 0 2px 0 !important;
+  }
+
+  #gender-selector {
+    padding: 8px 10px 16px !important;
+  }
+
+  .selector-container {
+    gap: 8px !important;
+  }
+
+  .selector-title {
+    font-size: clamp(1.1rem, 4vw, 1.6rem) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Q. MAIN SITE-WIDE SMALL SCREEN SAFETY NETS
+   -------------------------------------------------------------------------- */
+/* Ensure text never causes horizontal scroll */
+@media (max-width: 480px) {
+  .block-title {
+    font-size: clamp(1.3rem, 6vw, 2.2rem) !important;
+    padding: 0 8px !important;
+  }
+
+  main.max-w-450 {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* Foldable / very narrow screens */
+@media (max-width: 320px) {
+  .mobile-header-actions {
+    gap: 4px !important;
+  }
+
+  .theme-toggle-pill {
+    padding: 0 5px !important;
+    font-size: 0.6rem !important;
+    height: 32px !important;
+    min-height: 32px !important;
+  }
+
+  .mobile-menu-toggle {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+  }
+
+  .mobile-profile-name {
+    max-width: 50px !important;
+  }
+
+  .bracket-round-chip {
+    font-size: 0.6rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .gender-card .card-label {
+    font-size: 1.6rem !important;
+  }
+}
+
+/* Touch: Disable hover transform side effects on bracket match cards */
+@media (hover: none) and (pointer: coarse) {
+  .bracket-match.is-interactive {
+    cursor: pointer;
+  }
+
+  .bracket-match.is-interactive:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  html[data-theme="girl"] .bracket-match.is-interactive:hover {
+    transform: none !important;
+  }
+
+  .round-card:hover {
+    transform: none !important;
+  }
+
+  .gender-card.card-boy:hover,
+  .gender-card.card-girl:hover {
+    transform: none !important;
+  }
+}
+
+/* Ensure iOS momentum scrolling on all overflow containers */
+.bracket-viewport,
+.mobile-nav-panel,
+[data-vs-modal] [data-vs-panel],
+#gender-selector {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   DAREDOWN // RULES PAGE ARCHITECTURE
+   Cohesive responsive styling integrated with Boy and Girl design systems.
+   ========================================================================== */
+
+@keyframes rulesEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rules-page {
+  min-height: 100vh;
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.rules-main {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(120px, 15vh, 160px) 20px clamp(72px, 10vh, 120px);
+}
+
+.rules-wrap {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: rulesEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.rules-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+
+.rules-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(36px, 5vh, 56px) auto;
+}
+
+.rules-sections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vh, 28px);
+  width: 100%;
+}
+
+.rules-section {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: clamp(24px, 3.5vw, 36px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.rules-section:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+}
+
+.rules-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #FF4B82;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+}
+
+.rules-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rules-section-body p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+.rules-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rules-bullets li {
+  position: relative;
+  padding-left: 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rules-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: -1px;
+  color: #FF4B82;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .rules-main {
+    padding-top: clamp(100px, 14vh, 128px);
+    padding-bottom: 56px;
+  }
+  .rules-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .rules-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+  .rules-sections {
+    gap: 18px;
+  }
+  .rules-section {
+    padding: 20px 18px;
+  }
+  .rules-section-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+  .rules-section-body p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .rules-bullets li {
+    font-size: 0.95rem;
+  }
+}
+
+/* Girl Theme Rules Page Overrides */
+html[data-theme="girl"] .rules-page {
+  background: #FAF5F0;
+  color: #2D2126;
+}
+
+html[data-theme="girl"] .rules-title {
+  color: #2D2126 !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="girl"] .rules-subtitle {
+  color: #5A3D4A !important;
+}
+
+html[data-theme="girl"] .rules-section {
+  background: #FFFFFF !important;
+  border: 1.5px solid #F5CAD8 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 20px rgba(235, 94, 134, 0.06) !important;
+}
+
+html[data-theme="girl"] .rules-section:hover {
+  border-color: #EB5E86 !important;
+  box-shadow: 0 8px 30px rgba(235, 94, 134, 0.12) !important;
+}
+
+html[data-theme="girl"] .rules-section-title {
+  color: #EB5E86 !important;
+}
+
+html[data-theme="girl"] .rules-section-body p {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .rules-bullets li {
+  color: #2D2126 !important;
+}
+
+html[data-theme="girl"] .rules-bullets li::before {
+  color: #EB5E86 !important;
+}
+
+

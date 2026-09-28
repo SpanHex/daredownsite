@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="en"> 
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>Judge | NWGN T1</title><meta name="description" content="NO PROMPTS. NO SHORTCUTS. PROVE YOURSELF. NEWGEN. TOURNAMENT. NWGN."><meta name="robots" content="index,follow"><link rel="canonical" href="index.html"><meta name="keywords" content="newgen, anime, tournament, editing, contest, nwgn, amv, ньюген, турнир, аниме, эдитинг, контест"><meta property="og:type" content="website"><meta property="og:title" content="Judge | NWGN T1"><meta property="og:description" content="NO PROMPTS. NO SHORTCUTS. PROVE YOURSELF. NEWGEN. TOURNAMENT. NWGN."><meta property="og:url" content="index.html"><meta property="og:image" content="/meta_img.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Judge | NWGN T1"><meta name="twitter:description" content="NO PROMPTS. NO SHORTCUTS. PROVE YOURSELF. NEWGEN. TOURNAMENT. NWGN."><meta name="twitter:image" content="/meta_img.jpg"><script>
+      (function () {
+        const t = localStorage.getItem("theme");
+        const d =
+          t === "dark" ||
+          (!t && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (d) document.documentElement.classList.add("dark");
+      })();
+    </script><script>
+      (() => {
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "manual";
+        }
+
+        const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+        const isReload =
+          navEntry?.type === "reload" || performance.navigation?.type === 1;
+
+        if (!isReload) return;
+
+        const resetToTop = () => {
+          window.scrollTo(0, 0);
+        };
+
+        resetToTop();
+        window.addEventListener("pageshow", resetToTop, { once: true });
+      })();
+    </script><link rel="stylesheet" href="/_astro/Layout.BHgu_56x.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        function readTheme() {
+          try { var l = localStorage.getItem("ngt_gender_theme"); if (l === "boy" || l === "girl") return l; } catch(e) {}
+          try { var s = sessionStorage.getItem("ngt_gender_theme"); if (s === "boy" || s === "girl") return s; } catch(e) {}
+          try { var m = document.cookie.match(/(?:^|; )ngt_gender_theme=([^;]*)/); if (m && (m[1] === "boy" || m[1] === "girl")) return m[1]; } catch(e) {}
+          try { if (window.name && (window.name === "ngt_theme:boy" || window.name === "ngt_theme:girl")) return window.name.replace("ngt_theme:", ""); } catch(e) {}
+          return null;
+        }
+        var savedTheme = readTheme();
+        if (savedTheme === "boy" || savedTheme === "girl") {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          document.documentElement.classList.add("has-theme");
+        }
+      } catch(e) {}
+    })();
+  </script>
+<link rel="stylesheet" href="/theme.css"><script src="/_astro/bracket-data.js"></script>
+<style>
+  #judge-load-matches { min-height: 44px; padding: 10px 20px; display: inline-flex; align-items: center; justify-content: center; touch-action: manipulation; }
+  #judge-filter-search { min-height: 44px; font-size: 16px; }
+  button[data-field="publish"] { min-height: 44px; padding: 10px 24px; display: inline-flex; align-items: center; justify-content: center; touch-action: manipulation; }
+</style>
+</head> <body class="bg-black overflow-x-hidden" data-api-base-url=""> <header id="site-header" class="fixed top-0 left-[50%] transform -translate-x-1/2 z-50 w-full min-h-24 py-3 md:py-0 flex justify-center items-center"> <div class="max-w-450 w-full mx-auto px-3 flex flex-col md:flex-row justify-center md:justify-between items-center gap-2 md:gap-0"> <a href="../index.html" class="text-[clamp(0.95rem,3.7vw,1.875rem)] tracking-tight text-white text-center md:text-left transition-colors duration-130 hover:text-white/70">
+DAREDOWN
+</a> <ol class="desktop-nav decoration-transparent decoration-0 text-white text-[clamp(0.95rem,3.2vw,1.5rem)] tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-1 md:gap-8"> <li> <a class="header-ngc-link" href="../ngc/index.html" aria-label="Challenges">Challenges</a> </li> <li> <a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../index.html#bracket">Bracket</a> </li> <li> <a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../rules/index.html">Rules</a> </li> <li> <a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../index.html#about">About</a> </li> <li>
+  <button id="theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+    <span class="theme-toggle-indicator"></span>
+    <span class="theme-toggle-text">BOY</span>
+  </button>
+</li> <li> <a id="login-link" class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../register/index.html">Register / Log In</a> <div id="auth-menu" class="relative hidden"> <button id="auth-avatar-button" type="button" class="auth-user-pill" aria-haspopup="menu" aria-expanded="false"> <div class="w-6 h-6 rounded-full bg-white/20 overflow-hidden flex items-center justify-center flex-shrink-0"> <img id="auth-avatar-image" src="#" alt="Avatar" class="w-full h-full object-cover hidden"> <span id="auth-avatar-fallback" class="text-xs uppercase font-bold text-white">U</span> </div> <span id="auth-username-display" class="text-sm font-medium">User</span> </button> <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 min-w-45 bg-black/95 backdrop-blur-xl border border-white/20 rounded-md p-1.5 shadow-2xl z-50" role="menu"> <a href="/profile" class="block px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Profile</a> <a id="judge-link" href="index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Host Panel</a> <a id="admin-link" href="/admin/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Admin Dashboard</a> <button id="theme-switch-menu-btn" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Switch Style (Boy/Girl)</button> <button id="logout-button" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Log out</button> </div> </div> </li> </ol>
+<!-- Mobile Header Bar Controls -->
+<div class="mobile-header-actions">
+  <button id="mobile-theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+    <span class="theme-toggle-indicator"></span>
+    <span class="theme-toggle-text">BOY</span>
+  </button>
+  <div id="mobile-auth-wrapper" class="relative">
+    <a id="mobile-login-link" class="mobile-login-btn" href="../register/index.html">Log In</a>
+    <div id="mobile-auth-menu" class="relative hidden">
+      <button id="mobile-auth-trigger" type="button" class="mobile-profile-pill" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu">
+        <div class="mobile-profile-avatar">
+          <img id="mobile-auth-avatar-img" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+          <span id="mobile-auth-avatar-fallback" class="mobile-avatar-initial">U</span>
+        </div>
+        <span id="mobile-auth-username" class="mobile-profile-name">User</span>
+        <svg class="mobile-profile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M2.5 4.5L6 8L9.5 4.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div id="mobile-auth-dropdown" class="mobile-profile-dropdown hidden" role="menu">
+        <div class="mobile-dropdown-header">
+          <span id="mobile-dropdown-display-name" class="mobile-dropdown-user">User</span>
+          <span id="mobile-dropdown-user-role" class="mobile-dropdown-badge">Contestant</span>
+        </div>
+        <div class="mobile-dropdown-divider"></div>
+        <a id="mobile-dropdown-profile-link" href="/profile" class="mobile-dropdown-item" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span>Profile</span>
+        </a>
+        <a id="mobile-dropdown-judge-link" href="index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" />
+          </svg>
+          <span>Host Panel</span>
+        </a>
+        <a id="mobile-dropdown-admin-link" href="/admin/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Admin Dashboard</span>
+        </a>
+        <div class="mobile-dropdown-divider"></div>
+        <button id="mobile-dropdown-logout-btn" type="button" class="mobile-dropdown-item is-logout" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button id="mobile-menu-toggle" type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+  </button>
+</div>
+</div> </header>
+
+<!-- Mobile Navigation Drawer -->
+<div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-brand">DAREDOWN</span>
+      <button id="mobile-nav-close-btn" type="button" class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../ngc/index.html" class="mobile-nav-link"><span>Challenges (Truth/Dare)</span><span>&rarr;</span></a></li>
+      <li><a href="../index.html#bracket" class="mobile-nav-link"><span>Tournament Bracket</span><span>&rarr;</span></a></li>
+      <li><a href="../rules/index.html" class="mobile-nav-link"><span>Official Rules</span><span>&rarr;</span></a></li>
+      <li><a href="../index.html#about" class="mobile-nav-link"><span>About DAREDOWN</span><span>&rarr;</span></a></li>
+      <li><a href="/profile" class="mobile-nav-link" id="mobile-drawer-auth-link"><span>Profile</span><span>&rarr;</span></a></li>
+      <li id="mobile-drawer-judge-item" class="hidden"><a href="index.html" class="mobile-nav-link is-highlight"><span>Host Panel</span><span>&rarr;</span></a></li>
+      <li id="mobile-drawer-admin-item" class="hidden"><a href="/admin/index.html" class="mobile-nav-link"><span>Admin Dashboard</span><span>&rarr;</span></a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <button id="mobile-drawer-theme-btn" type="button" class="mobile-nav-link" style="width:100%;text-align:left;cursor:pointer;">
+        <span>Switch Theme (Boy / Girl)</span>
+        <span id="mobile-drawer-theme-name" style="font-size:0.8rem;opacity:0.7;">BOY</span>
+      </button>
+      <button id="mobile-drawer-logout-btn" type="button" class="mobile-nav-link hidden" style="width:100%;text-align:left;cursor:pointer;color:#ff4b82;">
+        <span>Log Out</span>
+        <span>&times;</span>
+      </button>
+    </div>
+  </div>
+</div> <main class="max-w-450 w-full mx-auto px-3">  <section class="w-full min-h-screen pt-32 pb-20 px-5 text-white" id="judge-page"> <div id="judge-loading" class="max-w-6xl mx-auto"> <p class="text-white/80 text-[18px] leading-[130%]">
+Checking your authorization...
+</p> </div> <div id="judge-denied" class="max-w-6xl mx-auto hidden"> <p class="text-red-300 text-[16px] leading-[140%]">
+Access denied. JURY or ADMIN role required.
+</p> </div> <div id="judge-error" class="max-w-6xl mx-auto hidden"> <p id="judge-error-text" class="text-red-300 text-[16px] leading-[140%]"></p> </div> <div id="judge-content" class="max-w-6xl mx-auto hidden"> <h1 class="text-[40px] leading-[110%] tracking-tight">Judge</h1> <p class="mt-3 text-sm text-white/55">
+Rate tournament works and leave jury comments visible to participants in
+        their cabinet.
+</p> <div class="mt-8 flex flex-wrap items-center gap-3"> <button id="judge-load-matches" type="button" class="border border-white/30 px-4 py-1 text-xs uppercase tracking-widest hover:border-white transition-colors disabled:opacity-40">
+Load Matches
+</button> <input id="judge-filter-search" type="text" placeholder="Search by round, match, participant or id" class="bg-black border border-white/30 px-3 py-1 text-xs text-white placeholder:text-white/30 min-w-70"> </div> <div id="judge-round-tabs" class="mt-5 flex flex-wrap gap-2" aria-label="Judge rounds"></div> <div class="mt-8 grid gap-6 xl:grid-cols-[minmax(0,360px),1fr]"> <aside class="border border-white/15 p-5"> <p class="text-[11px] uppercase tracking-[0.15em] text-white/50">
+Matches
+</p> <div id="judge-matches-list" class="mt-4 text-sm text-white/40">
+Click Load Matches to fetch tournament works.
+</div> </aside> <section class="border border-white/15 p-5"> <p class="text-[11px] uppercase tracking-[0.15em] text-white/50">
+Match Details
+</p> <div id="judge-match-empty" class="mt-4 text-sm text-white/40">
+Select a match to rate its works.
+</div> <div id="judge-match-panel" class="mt-6 hidden"> <div class="flex flex-wrap items-start justify-between gap-4 border-b border-white/10 pb-5"> <div> <p id="judge-round-title" class="text-[24px] leading-[110%] tracking-tight uppercase">
+-
+</p> <p id="judge-round-meta" class="mt-2 text-sm text-white/60">
+-
+</p> </div> <p id="judge-global-status" class="min-h-5 text-sm text-white/60"></p> </div> <div class="mt-6 grid gap-6 xl:grid-cols-2"> <article class="border border-white/10 bg-white/[0.02] p-5" data-judge-side="A"> <header class="flex items-center gap-4"> <div class="h-16 w-16 overflow-hidden rounded-full bg-white/10 border border-white/15"> <img data-field="avatar-image" src="#" alt="" class="hidden h-full w-full object-cover"> <div data-field="avatar-fallback" class="flex h-full w-full items-center justify-center text-sm uppercase text-white/70">
+?
+</div> </div> <div class="min-w-0"> <p data-field="name" class="text-[24px] leading-[110%] tracking-tight">
+TBD
+</p> <div data-field="socials" class="mt-2 flex flex-wrap gap-3 text-xs text-white/60"></div> </div> </header> <div class="mt-5"> <div class="relative aspect-video overflow-hidden border border-white/20 bg-black"> <iframe data-field="video-frame" class="hidden h-full w-full border-0" src="#" title="Judge participant A video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> <div data-field="video-placeholder" class="absolute inset-0 flex items-center justify-center px-6 text-center text-xs uppercase tracking-[0.14em] text-white/40">
+Submission not available yet
+</div> </div> <div class="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-white/70"> <p>
+Users average:  <span data-field="users-average">-</span> </p> <p>
+Jury average: <span data-field="jury-average">-</span> </p> </div> <div class="mt-4"> <p class="text-[11px] uppercase tracking-[0.15em] text-white/45">
+Description by author
+</p> <p data-field="description" class="mt-2 text-sm leading-[150%] text-white/70">
+No description yet.
+</p> </div> </div> <form data-field="form" class="mt-6 space-y-4" novalidate> <div class="grid gap-4 md:grid-cols-2"> <label class="block " data-criterion="storyboard"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> concept </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block " data-criterion="individuality"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> individuality </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block " data-criterion="execution"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> execution </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block " data-criterion="styleImplementation"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> style implementation </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block md:col-span-2" data-criterion="overall"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> overall </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label> </div> <label class="block"> <span class="text-[11px] uppercase tracking-[0.15em] text-white/45">
+Comment (Optional)
+</span> <textarea data-field="comment" rows="4" class="mt-2 w-full resize-y border border-white/20 bg-transparent p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="Optional comment visible to the participant."></textarea> </label> <div class="flex flex-wrap items-end justify-between gap-4"> <div> <p class="text-[11px] uppercase tracking-[0.15em] text-white/45">
+Your Rating
+</p> <p data-field="your-rating" class="mt-2 text-[34px] leading-none tracking-tight">
+0
+</p> </div> <button type="submit" data-field="publish" class="border border-white/60 px-6 py-2 text-xs uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+Publish Jury Score
+</button> </div> <p data-field="status" class="min-h-5 text-sm text-white/60" aria-live="polite"></p> </form> </article><article class="border border-white/10 bg-white/[0.02] p-5" data-judge-side="B"> <header class="flex items-center gap-4"> <div class="h-16 w-16 overflow-hidden rounded-full bg-white/10 border border-white/15"> <img data-field="avatar-image" src="#" alt="" class="hidden h-full w-full object-cover"> <div data-field="avatar-fallback" class="flex h-full w-full items-center justify-center text-sm uppercase text-white/70">
+?
+</div> </div> <div class="min-w-0"> <p data-field="name" class="text-[24px] leading-[110%] tracking-tight">
+TBD
+</p> <div data-field="socials" class="mt-2 flex flex-wrap gap-3 text-xs text-white/60"></div> </div> </header> <div class="mt-5"> <div class="relative aspect-video overflow-hidden border border-white/20 bg-black"> <iframe data-field="video-frame" class="hidden h-full w-full border-0" src="#" title="Judge participant B video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> <div data-field="video-placeholder" class="absolute inset-0 flex items-center justify-center px-6 text-center text-xs uppercase tracking-[0.14em] text-white/40">
+Submission not available yet
+</div> </div> <div class="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-white/70"> <p>
+Users average:  <span data-field="users-average">-</span> </p> <p>
+Jury average: <span data-field="jury-average">-</span> </p> </div> <div class="mt-4"> <p class="text-[11px] uppercase tracking-[0.15em] text-white/45">
+Description by author
+</p> <p data-field="description" class="mt-2 text-sm leading-[150%] text-white/70">
+No description yet.
+</p> </div> </div> <form data-field="form" class="mt-6 space-y-4" novalidate> <div class="grid gap-4 md:grid-cols-2"> <label class="block " data-criterion="storyboard"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> concept </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block " data-criterion="individuality"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> individuality </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block " data-criterion="execution"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> execution </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block " data-criterion="styleImplementation"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> style implementation </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label><label class="block md:col-span-2" data-criterion="overall"> <span class="flex items-end justify-between gap-3"> <span class="text-sm uppercase tracking-[0.08em] text-white/80"> overall </span> <span data-field="criterion-value" class="text-sm text-white/45">
+0
+</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" class="mt-3 w-full"> </label> </div> <label class="block"> <span class="text-[11px] uppercase tracking-[0.15em] text-white/45">
+Comment (Optional)
+</span> <textarea data-field="comment" rows="4" class="mt-2 w-full resize-y border border-white/20 bg-transparent p-3 text-sm text-white focus:border-white focus:outline-none" placeholder="Optional comment visible to the participant."></textarea> </label> <div class="flex flex-wrap items-end justify-between gap-4"> <div> <p class="text-[11px] uppercase tracking-[0.15em] text-white/45">
+Your Rating
+</p> <p data-field="your-rating" class="mt-2 text-[34px] leading-none tracking-tight">
+0
+</p> </div> <button type="submit" data-field="publish" class="border border-white/60 px-6 py-2 text-xs uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+Publish Jury Score
+</button> </div> <p data-field="status" class="min-h-5 text-sm text-white/60" aria-live="polite"></p> </form> </article> </div> </div> </section> </div> </div> </section>   <script src="/_astro/bundle.judge.js"></script></main> <div> <img class="relative bottom-[-8px] px-3 w-full max-w-450 mx-auto" src="/footer_newgen.svg" alt="NEWGEN"> <footer class="w-full px-3 md:px-18 py-5 bg-white"> <div class="max-w-450 w-full mx-auto grid grid-cols-1 gap-8 items-start sm:grid-cols-2 lg:grid-cols-4 lg:items-stretch lg:gap-10"> <div class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <span>NEWGEN</span> <span>TOURNAMENT</span> <span>2026</span> </div> <ol class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../rules/index.html">Rules</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../index.html#bracket">Bracket</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../index.html#about">About</a> </li> </ol> <ol class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="https://discord.gg/n3wg3n" target="_blank" rel="noopener noreferrer">
+Discord
+</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="https://www.instagram.com/newgen.unit/" target="_blank" rel="noopener noreferrer">
+Instagram
+</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="https://t.me/newgen_editing" target="_blank" rel="noopener noreferrer">
+Telegram
+</a> </li> </ol> <div class="w-full flex flex-col gap-3 text-black text-[18px] leading-tight tracking-tight sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <span>
+Dev by <a class="underline transition-colors duration-130 hover:text-black/70" target="_blank" rel="noopener noreferrer" href="https://t.me/aepstore_official">aepstore</a> </span> <span>
+Design by <a class="underline transition-colors duration-130 hover:text-black/70" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/gplaya__/">14</a> </span> </div> </div> </footer> </div>  <script>
+      (() => {
+        const header = document.getElementById("site-header");
+        if (!header) return;
+
+        const toggleHeaderBg = () => {
+          header.classList.toggle("header-bg", window.scrollY > 0);
+        };
+
+        toggleHeaderBg();
+        window.addEventListener("scroll", toggleHeaderBg, { passive: true });
+      })();
+    </script> <script>
+      (() => {
+        const header = document.getElementById("site-header");
+        if (!(header instanceof HTMLElement)) return;
+
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        const anchorLinks = header.querySelectorAll('a[href^="/#"]');
+        anchorLinks.forEach((link) => {
+          if (!(link instanceof HTMLAnchorElement)) return;
+
+          link.addEventListener("click", (event) => {
+            const url = new URL(link.href, window.location.origin);
+            if (url.pathname !== window.location.pathname) {
+              return;
+            }
+
+            const targetId = url.hash.replace(/^#/, "");
+            if (!targetId) return;
+
+            const target = document.getElementById(targetId);
+            if (!(target instanceof HTMLElement)) return;
+
+            event.preventDefault();
+
+            const headerOffset = header.getBoundingClientRect().height;
+            const top =
+              window.scrollY +
+              target.getBoundingClientRect().top -
+              headerOffset -
+              12;
+
+            window.scrollTo({
+              top: Math.max(0, top),
+              behavior: prefersReducedMotion ? "auto" : "smooth",
+            });
+
+            window.history.pushState(
+              {},
+              "",
+              `${window.location.pathname}${window.location.search}#${targetId}`,
+            );
+          });
+        });
+      })();
+    </script>
+    <script src="/auth-client.js"></script>
+</body> 
+</html>

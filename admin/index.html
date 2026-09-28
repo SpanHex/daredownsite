@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Admin Dashboard | DAREDOWN</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/_astro/Layout.BHgu_56x.css">
+  <link rel="stylesheet" href="/theme.css">
+  <style>
+    body {
+      background: #050505;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .admin-container { display: flex; min-height: 100vh; }
+    .admin-sidebar {
+      width: 260px;
+      background: rgba(255,255,255,0.02);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      padding: 32px 20px;
+      display: flex; flex-direction: column; gap: 32px;
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    }
+    .admin-logo { font-size: 1.5rem; font-weight: bold; letter-spacing: -0.03em; color: #fff; text-decoration: none; }
+    .admin-logo span { color: #ff4b82; font-size: 0.8rem; vertical-align: top; text-transform: uppercase; letter-spacing: 0.2em; }
+    .admin-nav { display: flex; flex-direction: column; gap: 8px; }
+    .admin-nav a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      padding: 10px 14px; font-size: 0.85rem; letter-spacing: 0.05em;
+      text-transform: uppercase; border: 1px solid transparent; transition: all 0.2s;
+    }
+    .admin-nav a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    .admin-nav a.active { border-color: rgba(255,255,255,0.2); color: #fff; background: rgba(255,255,255,0.03); }
+    .admin-content { flex: 1; padding: 40px; overflow-y: auto; }
+    .admin-header { margin-bottom: 32px; }
+    .admin-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.04em; margin: 0 0 8px; }
+    .overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .stat-card { border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); padding: 20px; }
+    .stat-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+    .stat-value { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.05em; }
+    .stat-value.danger { color: #ff4b82; }
+    .table-container { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.01); }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.83rem; }
+    th { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); font-weight: normal; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover { background: rgba(255,255,255,0.02); }
+    .badge { padding: 3px 7px; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 2px; white-space: nowrap; }
+    .badge.success { background: rgba(46,204,113,0.1); color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+    .badge.danger { background: rgba(255,75,130,0.1); color: #ff4b82; border: 1px solid rgba(255,75,130,0.3); }
+    .badge.neutral { background: rgba(255,255,255,0.05); color: #ccc; border: 1px solid rgba(255,255,255,0.1); }
+    .action-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 14px; min-height: 44px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; touch-action: manipulation; display: inline-flex; align-items: center; justify-content: center; }
+    .action-btn:hover { background: #fff; color: #000; }
+    .action-btn.danger:hover { background: #ff4b82; color: #fff; border-color: #ff4b82; }
+    .ip-block { font-size: 0.75rem; }
+    .ip-block .ip-row { display: flex; gap: 6px; align-items: center; margin-bottom: 2px; }
+    .ip-label { color: rgba(255,255,255,0.35); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; width: 28px; flex-shrink: 0; }
+    .ip-val { color: rgba(255,255,255,0.8); font-family: monospace; font-size: 0.72rem; }
+    .ip-val.localhost { color: #8bb4f7; }
+    .ip-tag { color: #4f8ef7; font-size: 0.65rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: normal; margin-left: 2px; }
+    .ip-val.na { color: rgba(255,255,255,0.25); font-style: italic; }
+    .device-block { font-size: 0.75rem; color: #888; line-height: 1.5; }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: flex-start; z-index: 100; overflow-y: auto; padding: 40px 20px; box-sizing: border-box; }
+    .modal-content { background: #111; border: 1px solid rgba(255,255,255,0.15); width: 100%; max-width: 960px; padding: 32px; position: relative; margin: auto; }
+    .modal-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: rgba(255,255,255,0.7); font-size: 1.6rem; cursor: pointer; line-height: 1; touch-action: manipulation; }
+    .modal-close:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,0.1); }
+    .loading { opacity: 0.5; padding: 40px 0; text-align: center; }
+    .error-msg { color: #ff4b82; padding: 20px; }
+
+    /* ─── Bracket Manager Graphical Styles ─── */
+    .bracket-mgr-layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start; }
+    .bracket-mgr-sidebar { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; }
+    .user-pool-list { display: flex; flex-direction: column; gap: 10px; max-height: calc(100vh - 280px); overflow-y: auto; padding-right: 4px; }
+    .user-draggable-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; cursor: grab; user-select: none; transition: all 0.15s ease;
+    }
+    .user-draggable-card:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+    .user-draggable-card.is-dragging { opacity: 0.4; }
+    .user-draggable-card .card-avatar {
+      width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;
+    }
+    .user-draggable-card .card-info { flex: 1; min-width: 0; }
+    .user-draggable-card .card-name { font-size: 0.82rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
+    .user-draggable-card .card-handle { font-size: 0.7rem; color: rgba(255,255,255,0.4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Graphical Tree Container */
+    .bracket-tree-wrap {
+      overflow-x: auto; -webkit-overflow-scrolling: touch; background: rgba(255,255,255,0.01);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;
+    }
+    .bracket-tree-columns { display: flex; gap: 36px; min-width: 900px; justify-content: space-between; }
+    .bracket-column { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+    .bracket-column-header {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 4px; text-align: center;
+    }
+    .bracket-matches-col { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 16px; }
+
+    /* Graphical Match Box */
+    .match-box {
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.6); border-radius: 6px;
+      overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .match-box-header {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.03); padding: 4px 8px; border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; justify-content: space-between;
+    }
+    .bracket-slot-dropzone {
+      padding: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08); min-height: 48px; transition: background 0.15s, border-color 0.15s;
+    }
+    .bracket-slot-dropzone:last-child { border-bottom: none; }
+    .bracket-slot-dropzone.drop-hover { background: rgba(255,255,255,0.15) !important; outline: 2px dashed #ffffff; }
+    .bracket-slot-dropzone.is-occupied { background: rgba(255,255,255,0.03); }
+    .slot-player-info { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; }
+    .slot-num-badge {
+      font-size: 0.62rem; font-weight: 700; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06);
+      padding: 2px 6px; border-radius: 3px; flex-shrink: 0;
+    }
+    .slot-avatar {
+      width: 26px; height: 26px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: bold; flex-shrink: 0;
+    }
+    .slot-name { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
+    .slot-name.is-empty { color: rgba(255,255,255,0.35); font-style: italic; font-weight: normal; }
+    .slot-actions { display: flex; gap: 4px; }
+    .slot-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7);
+      padding: 3px 6px; font-size: 0.65rem; border-radius: 3px; cursor: pointer; min-height: 28px;
+    }
+    .slot-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .slot-btn.danger:hover { background: rgba(255,75,130,0.2); color: #ff4b82; border-color: #ff4b82; }
+
+    @media (max-width: 900px) {
+      .admin-container { flex-direction: column; min-height: 100vh; }
+      .admin-sidebar {
+        width: 100%; height: auto; position: sticky; top: 0; z-index: 50;
+        padding: 12px 16px; flex-direction: row; align-items: center;
+        justify-content: space-between; gap: 12px;
+        background: rgba(8, 8, 10, 0.95); backdrop-filter: blur(14px);
+        border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        box-sizing: border-box;
+      }
+      .admin-sidebar > div[style*="margin-top:auto"] { margin-top: 0 !important; }
+      .admin-nav { flex-direction: row; gap: 6px; }
+      .admin-nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 6px; touch-action: manipulation; }
+      .admin-content { padding: clamp(14px, 3.5vw, 24px); overflow-x: hidden; }
+      .overview-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 28px; }
+      .stat-card { padding: 14px 12px; }
+      .stat-value { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+      .modal-overlay { padding: 14px 10px; }
+      .modal-content { padding: 24px 14px; }
+      .bracket-mgr-layout { grid-template-columns: 1fr; }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <a href="/" class="admin-logo">DAREDOWN <span>Admin</span></a>
+      <nav class="admin-nav">
+        <a href="#" class="active" id="nav-overview" onclick="loadView('overview');return false;">Overview</a>
+        <a href="#" id="nav-bracket" onclick="loadView('bracket');return false;">Bracket Manager</a>
+        <a href="#" id="nav-users" onclick="loadView('users');return false;">Users</a>
+      </nav>
+      <div style="margin-top:auto; font-size:0.7rem; color:rgba(255,255,255,0.2);">
+        <a href="/api/auth/logout" onclick="doLogout(event)" style="color:rgba(255,255,255,0.3); text-decoration:none;">← Logout</a>
+      </div>
+    </aside>
+    <main class="admin-content" id="main-content">
+      <div class="loading">Checking session…</div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="user-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modal-body" class="loading">Loading…</div>
+    </div>
+  </div>
+
+  <script>
+    // ─── Helpers ─────────────────────────────────────────────────────────────
+    const $ = id => document.getElementById(id);
+    const mainContent = $('main-content');
+    let currentView = 'overview';
+
+    // Safe display of any value — never shows "null", "undefined", or empty string
+    function disp(val, fallback = 'Unknown') {
+      if (val === null || val === undefined || val === '' || val === 'null' || val === 'undefined') return fallback;
+      return String(val);
+    }
+
+    function formatDate(d) {
+      if (!d) return 'N/A';
+      try { return new Date(d).toLocaleString(); } catch { return 'N/A'; }
+    }
+
+    function formatDateShort(d) {
+      if (!d) return 'N/A';
+      try { return new Date(d).toLocaleDateString(); } catch { return 'N/A'; }
+    }
+
+    function formatIpValue(ip, family) {
+      if (!ip || ip === 'unknown' || ip === 'Unavailable') {
+        return '<span class="ip-val na" style="color:rgba(255,255,255,0.3);font-style:italic;">Unavailable</span>';
+      }
+      const clean = String(ip).trim();
+      if (family === 'v4') {
+        if (clean === '127.0.0.1' || clean.startsWith('127.0.0.1')) {
+          return '<span class="ip-val localhost">127.0.0.1 <span class="ip-tag">(Localhost)</span></span>';
+        }
+        return `<span class="ip-val">${clean}</span>`;
+      }
+      if (family === 'v6') {
+        if (clean === '::1' || clean.startsWith('::1')) {
+          return '<span class="ip-val localhost">::1 <span class="ip-tag">(Localhost)</span></span>';
+        }
+        return `<span class="ip-val">${clean}</span>`;
+      }
+      return `<span class="ip-val">${clean}</span>`;
+    }
+
+    function renderIp(ev) {
+      let ip4 = ev.ipv4 || null;
+      let ip6 = ev.ipv6 || null;
+      const raw = ev.ipAddress || null;
+
+      // Backwards-compat: classify from raw ipAddress if legacy records lack ipv4/ipv6
+      if (!ip4 && !ip6 && raw && raw !== 'unknown') {
+        if (raw === '::1' || raw.startsWith('::1')) {
+          ip6 = '::1';
+        } else if (raw.startsWith('::ffff:')) {
+          ip4 = raw.slice(7);
+        } else if (/^\d{1,3}(\.\d{1,3}){3}$/.test(raw)) {
+          ip4 = raw;
+        } else if (raw.includes(':')) {
+          ip6 = raw;
+        }
+      }
+
+      return `<div class="ip-block">
+        <div class="ip-row"><span class="ip-label">IPv4:</span> ${formatIpValue(ip4, 'v4')}</div>
+        <div class="ip-row"><span class="ip-label">IPv6:</span> ${formatIpValue(ip6, 'v6')}</div>
+      </div>`;
+    }
+
+    function renderDevice(ev) {
+      const browser = disp(ev.browser);
+      const bv = disp(ev.browserVersion);
+      const os = disp(ev.os);
+      const osv = disp(ev.osVersion);
+      const device = disp(ev.deviceType, 'desktop');
+      return `<div class="device-block">
+        <div>${browser}${bv !== 'Unknown' ? ' ' + bv : ''}</div>
+        <div>${os}${osv !== 'Unknown' ? ' ' + osv : ''}</div>
+        <div style="color:rgba(255,255,255,0.4); font-size:0.65rem;">${device}</div>
+      </div>`;
+    }
+
+    // ─── Auth & Authorization Lifecycle ───────────────────────────────────────
+    let currentAdminUser = null;
+
+    async function init() {
+      // 1. Explicit loading state while checking session
+      mainContent.innerHTML = `
+        <div style="padding: 70px 20px; text-align: center;">
+          <div style="display: inline-block; width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.12); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 18px;"></div>
+          <div style="font-size: 1.05rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Checking Authorization…</div>
+          <div style="font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-top: 6px;">Verifying server session and administrator credentials</div>
+        </div>
+      `;
+
+      try {
+        const res = await fetch('/api/auth/me', {
+          headers: { 'Accept': 'application/json' },
+          credentials: 'include'
+        });
+
+        // 1. Not Authenticated (401)
+        if (res.status === 401) {
+          redirectToLogin();
+          return;
+        }
+
+        // 2. Server Error or unexpected status (500, 502, 503, etc.)
+        if (!res.ok) {
+          showAuthError(`Server error (${res.status}). Could not verify session.`);
+          return;
+        }
+
+        const data = await res.json();
+        currentAdminUser = data?.user;
+
+        // If user object not present in successful response
+        if (!currentAdminUser) {
+          redirectToLogin();
+          return;
+        }
+
+        // 3. Verify role authorization (distinguish authenticated vs admin)
+        const role = (currentAdminUser.role || '').toLowerCase();
+        if (role !== 'admin') {
+          showAccessDenied(currentAdminUser);
+          return;
+        }
+
+        // 4. Authorized administrator confirmed: load initial dashboard view
+        loadView('overview');
+      } catch (err) {
+        console.error('Admin authentication verification failed:', err);
+        showAuthError('Network error connecting to authentication server. Please check your connection.');
+      }
+    }
+
+    function showAccessDenied(user) {
+      const username = user?.displayName || user?.username || 'User';
+      const role = user?.role || 'USER';
+      mainContent.innerHTML = `
+        <div style="max-width: 580px; margin: 60px auto; background: rgba(255, 75, 130, 0.06); border: 1px solid rgba(255, 75, 130, 0.35); border-radius: 8px; padding: 36px 24px; text-align: center;">
+          <div style="font-size: 2.8rem; margin-bottom: 14px;">🛡️</div>
+          <h1 style="font-size: 1.35rem; font-weight: 700; color: #ff4b82; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase;">403 Forbidden: Admin Access Required</h1>
+          <p style="color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6; margin-bottom: 24px;">
+            You are currently signed in as <strong>@${escapeHtml(user?.username || username)}</strong> (Role: <span style="color:#ff4b82; font-weight:600;">${escapeHtml(role)}</span>). This management area is restricted to administrators only.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <a href="/profile" class="action-btn" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff; text-decoration: none; padding: 10px 20px; font-size: 0.85rem;">Go to Profile</a>
+            <a href="/" class="action-btn" style="background: #fff; color: #000; border-color: #fff; text-decoration: none; padding: 10px 20px; font-size: 0.85rem; font-weight: 600;">Main Website</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function showAuthError(message) {
+      mainContent.innerHTML = `
+        <div style="max-width: 500px; margin: 60px auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 28px 20px; text-align: center;">
+          <div style="font-size: 1.1rem; color: #ff4b82; margin-bottom: 10px; font-weight: 600;">Authentication Check Failed</div>
+          <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px;">${escapeHtml(message)}</p>
+          <div style="display: flex; justify-content: center; gap: 10px;">
+            <button class="action-btn" onclick="init()" style="background:#fff; color:#000; padding:8px 18px; font-weight:600;">Retry</button>
+            <a href="/" class="action-btn" style="text-decoration:none; padding:8px 18px;">Return to Site</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function redirectToLogin() {
+      window.location.href = '/register/index.html?next=' + encodeURIComponent('/admin/index.html');
+    }
+
+    async function doLogout(e) {
+      e.preventDefault();
+      try { await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' }); } catch {}
+      redirectToLogin();
+    }
+
+    // ─── Navigation ───────────────────────────────────────────────────────────
+    function setActiveNav(view) {
+      document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
+      const el = $('nav-' + view);
+      if (el) el.classList.add('active');
+    }
+
+    async function loadView(view) {
+      currentView = view;
+      setActiveNav(view);
+      mainContent.innerHTML = '<div class="loading">Loading…</div>';
+      try {
+        if (view === 'overview') await renderOverview();
+        if (view === 'bracket') await renderBracketManager();
+        if (view === 'users') await renderUsers();
+      } catch (err) {
+        mainContent.innerHTML = `<div class="error-msg">Error: ${err.message}</div>`;
+      }
+    }
+
+    // ─── Overview ─────────────────────────────────────────────────────────────
+    async function renderOverview() {
+      const [secRes, diagRes] = await Promise.all([
+        fetch('/api/admin/security/overview', { credentials: 'include' }),
+        fetch('/api/admin/diagnostics', { credentials: 'include' }).catch(() => null)
+      ]);
+      if (!secRes.ok) throw new Error('Failed to load overview');
+      const data = await secRes.json();
+      const diag = diagRes && diagRes.ok ? await diagRes.json() : null;
+
+      let failedHtml = '';
+      if (data.recentSuspicious?.length > 0) {
+        failedHtml = `
+          <div class="admin-header" style="margin-top:40px;"><h2 class="admin-title" style="font-size:1.4rem;">Recent Failed Logins</h2></div>
+          <div class="table-container">
+            <table>
+              <thead><tr><th>Time</th><th>Username Attempted</th><th>IP</th><th>Reason</th><th>Browser / OS</th></tr></thead>
+              <tbody>
+                ${data.recentSuspicious.map(ev => `
+                  <tr>
+                    <td>${formatDate(ev.timestamp)}</td>
+                    <td>${disp(ev.usernameAttempt, 'N/A')}</td>
+                    <td>${renderIp(ev)}</td>
+                    <td><span style="color:#ff4b82; font-size:0.8rem;">${disp(ev.failureReason, 'Unknown')}</span></td>
+                    <td>${renderDevice(ev)}</td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+      }
+
+      let diagHtml = '';
+      if (diag) {
+        diagHtml = `
+          <div class="admin-header" style="margin-top:36px;">
+            <h2 class="admin-title" style="font-size:1.25rem;">Server Request &amp; IP Environment Diagnostics</h2>
+          </div>
+          <div style="margin-top:12px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:0.75rem; line-height:1.6; background:#0d0d0d; border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:18px;">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
+              <div>
+                <div style="color:#ff4b82; font-weight:700; margin-bottom:6px; letter-spacing:0.1em; text-transform:uppercase;">Observed Client IP</div>
+                <div><strong>Detected IP:</strong> <span style="color:#fff;">${diag.detectedClientIp || 'Unavailable'}</span></div>
+                <div><strong>Express req.ip:</strong> <span style="color:#fff;">${diag.expressIp || 'Unavailable'}</span></div>
+                <div><strong>Socket Address:</strong> <span style="color:#fff;">${diag.remoteAddress || 'Unavailable'}</span></div>
+              </div>
+              <div>
+                <div style="color:#ff4b82; font-weight:700; margin-bottom:6px; letter-spacing:0.1em; text-transform:uppercase;">Proxy / Vercel Headers</div>
+                <div><strong>x-vercel-forwarded-for:</strong> <span style="color:#fff;">${diag.headers?.['x-vercel-forwarded-for'] || '<span style="color:rgba(255,255,255,0.35);font-style:italic;">(Not present - running local)</span>'}</span></div>
+                <div><strong>x-real-ip:</strong> <span style="color:#fff;">${diag.headers?.['x-real-ip'] || '<span style="color:rgba(255,255,255,0.35);font-style:italic;">(Not present)</span>'}</span></div>
+                <div><strong>x-forwarded-for:</strong> <span style="color:#fff;">${diag.headers?.['x-forwarded-for'] || '<span style="color:rgba(255,255,255,0.35);font-style:italic;">(Not present)</span>'}</span></div>
+              </div>
+              <div>
+                <div style="color:#ff4b82; font-weight:700; margin-bottom:6px; letter-spacing:0.1em; text-transform:uppercase;">Runtime Environment</div>
+                <div><strong>Platform:</strong> <span style="color:#fff;">${diag.environment?.platform || 'node'}</span></div>
+                <div><strong>Vercel Detected:</strong> ${diag.environment?.isVercel ? '<span style="color:#10b981;font-weight:700;">Yes (Production)</span>' : '<span style="color:#60a5fa;">No (Localhost Dev)</span>'}</div>
+                <div><strong>Node Env:</strong> <span style="color:#fff;">${diag.environment?.nodeEnv || 'development'}</span></div>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      mainContent.innerHTML = `
+        <div class="admin-header"><h1 class="admin-title">Security Overview</h1></div>
+        <div class="overview-grid">
+          <div class="stat-card"><div class="stat-label">Total Users</div><div class="stat-value">${data.totalUsers}</div></div>
+          <div class="stat-card"><div class="stat-label">New Users (24h)</div><div class="stat-value">${data.newUsers24h}</div></div>
+          <div class="stat-card"><div class="stat-label">Logins (24h)</div><div class="stat-value">${data.recentLogins}</div></div>
+          <div class="stat-card" style="border-color:${data.failedLogins24h > 10 ? '#ff4b82' : 'rgba(255,255,255,0.1)'};">
+            <div class="stat-label">Failed Logins (24h)</div>
+            <div class="stat-value ${data.failedLogins24h > 10 ? 'danger' : ''}">${data.failedLogins24h}</div>
+          </div>
+        </div>
+        ${diagHtml}
+        ${failedHtml}`;
+    }
+
+    // ─── Users ────────────────────────────────────────────────────────────────
+    async function renderUsers() {
+      const res = await fetch('/api/admin/users', { credentials: 'include' });
+      if (!res.ok) throw new Error('Failed to load users');
+      const data = await res.json();
+
+      mainContent.innerHTML = `
+        <div class="admin-header">
+          <h1 class="admin-title">User Management</h1>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.4);">${data.totalUsers} total · page ${data.currentPage}/${data.totalPages}</div>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead><tr><th>Username</th><th>Provider</th><th>Role</th><th>Status</th><th>Tournament</th><th>Joined</th><th>Last Login</th><th>Actions</th></tr></thead>
+            <tbody>
+              ${data.users.map(u => `
+                <tr>
+                  <td>
+                    <div style="font-weight:600;">${u.username}</div>
+                    <div style="font-size:0.7rem; color:#666;">${u.email || 'No email'}</div>
+                  </td>
+                  <td><span class="badge neutral">${u.authProvider}</span></td>
+                  <td><span class="badge ${(u.role || '').toLowerCase() === 'admin' ? 'danger' : 'neutral'}">${u.role}</span></td>
+                  <td><span class="badge ${u.accountStatus === 'active' ? 'success' : 'danger'}">${u.accountStatus}</span></td>
+                  <td><span class="badge neutral">${u.tournamentStatus || 'registered'}</span></td>
+                  <td>${formatDateShort(u.createdAt)}</td>
+                  <td>${u.lastLoginAt ? formatDateShort(u.lastLoginAt) : 'N/A'}</td>
+                  <td><button class="action-btn" onclick="openUserModal('${u._id}')">Details</button></td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+    }
+
+    // ─── User Detail Modal ─────────────────────────────────────────────────────
+    async function openUserModal(id) {
+      $('user-modal').style.display = 'flex';
+      $('modal-body').innerHTML = '<div class="loading">Loading…</div>';
+
+      try {
+        const [userRes, evRes] = await Promise.all([
+          fetch(`/api/admin/users/${id}`, { credentials: 'include' }),
+          fetch(`/api/admin/users/${id}/security-events?limit=20`, { credentials: 'include' })
+        ]);
+        const user = await userRes.json();
+        const evData = await evRes.json();
+
+        $('modal-body').innerHTML = `
+          <h2 class="admin-title" style="font-size:1.6rem; margin-bottom:24px;">${user.username}</h2>
+
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap:20px; margin-bottom:32px; font-size:0.85rem;">
+            <div><div class="stat-label">Email</div><div>${disp(user.email, 'None')}</div></div>
+            <div><div class="stat-label">Provider</div><div>${user.authProvider}</div></div>
+            <div><div class="stat-label">Role</div><div>${user.role}</div></div>
+            <div><div class="stat-label">Status</div><span class="badge ${user.accountStatus === 'active' ? 'success' : 'danger'}">${user.accountStatus}</span></div>
+            <div><div class="stat-label">Tournament</div><div>${disp(user.tournamentStatus)}</div></div>
+            <div><div class="stat-label">Joined</div><div>${formatDate(user.createdAt)}</div></div>
+            <div><div class="stat-label">Last Login</div><div>${formatDate(user.lastLoginAt)}</div></div>
+            <div>
+              <div class="stat-label">Action</div>
+              ${user.role !== 'admin' ? `<button class="action-btn ${user.accountStatus === 'active' ? 'danger' : ''}"
+                onclick="toggleUserStatus('${user._id}','${user.accountStatus === 'active' ? 'suspended' : 'active'}')">
+                ${user.accountStatus === 'active' ? 'Suspend' : 'Restore'}
+              </button>` : '<span style="color:#666;font-size:0.75rem;">Protected</span>'}
+            </div>
+          </div>
+
+          <h3 class="admin-title" style="font-size:1.2rem; margin-bottom:16px;">Security Activity (${evData.totalEvents} total)</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th><th>Event</th><th>Result</th>
+                  <th>IPv4</th><th>IPv6</th>
+                  <th>Browser</th><th>OS</th><th>Device</th>
+                  <th>Provider</th><th>Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${evData.events.map(ev => {
+                  let ip4 = ev.ipv4 || null;
+                  let ip6 = ev.ipv6 || null;
+                  const raw = ev.ipAddress || null;
+                  if (!ip4 && !ip6 && raw && raw !== 'unknown') {
+                    if (raw === '::1' || raw.startsWith('::1')) {
+                      ip6 = '::1';
+                    } else if (raw.startsWith('::ffff:')) {
+                      ip4 = raw.slice(7);
+                    } else if (/^\d{1,3}(\.\d{1,3}){3}/.test(raw)) {
+                      ip4 = raw;
+                    } else if (raw.includes(':')) {
+                      ip6 = raw;
+                    }
+                  }
+                  return `<tr>
+                    <td style="white-space:nowrap; font-size:0.75rem;">${formatDate(ev.timestamp)}</td>
+                    <td><span class="badge neutral">${ev.eventType}</span></td>
+                    <td><span class="badge ${ev.success ? 'success' : 'danger'}">${ev.success ? 'OK' : 'Fail'}</span></td>
+                    <td style="font-family:monospace; font-size:0.72rem;">${formatIpValue(ip4, 'v4')}</td>
+                    <td style="font-family:monospace; font-size:0.72rem;">${formatIpValue(ip6, 'v6')}</td>
+                    <td style="font-size:0.75rem;">${disp(ev.browser)}${disp(ev.browserVersion) !== 'Unknown' ? ' ' + disp(ev.browserVersion,'') : ''}</td>
+                    <td style="font-size:0.75rem;">${disp(ev.os)}${disp(ev.osVersion) !== 'Unknown' ? ' ' + disp(ev.osVersion,'') : ''}</td>
+                    <td style="font-size:0.75rem;">${disp(ev.deviceType, 'desktop')}</td>
+                    <td><span class="badge neutral">${disp(ev.authProvider)}</span></td>
+                    <td style="font-size:0.72rem; color:#ff4b82;">${ev.success ? '' : disp(ev.failureReason, 'N/A')}</td>
+                  </tr>`;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>`;
+      } catch (err) {
+        $('modal-body').innerHTML = `<div class="error-msg">Error loading user: ${err.message}</div>`;
+      }
+    }
+
+    function closeModal() {
+      $('user-modal').style.display = 'none';
+    }
+    // Close modal on backdrop click
+    $('user-modal').addEventListener('click', e => { if (e.target === $('user-modal')) closeModal(); });
+
+    async function toggleUserStatus(id, newStatus) {
+      if (!confirm(`Set account status to "${newStatus}"?`)) return;
+      try {
+        const res = await fetch(`/api/admin/users/${id}/status`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        if (res.ok) { openUserModal(id); if (currentView === 'users') loadView('users'); }
+        else { const d = await res.json(); alert(d.error); }
+      } catch { alert('Failed to update status.'); }
+    }
+
+    // ─── Bracket Manager ──────────────────────────────────────────────────────
+    let cachedBracketData = null;
+
+    async function renderBracketManager() {
+      const res = await fetch('/api/admin/bracket', { credentials: 'include' });
+      if (!res.ok) throw new Error('Failed to load bracket data.');
+      const data = await res.json();
+      cachedBracketData = data;
+
+      const bracket = data.bracket || {};
+      const slots = bracket.slots || [];
+      const rounds = bracket.rounds || [];
+      const users = data.registeredUsers || [];
+
+      const occupiedCount = slots.filter(s => s.isOccupied).length;
+
+      mainContent.innerHTML = `
+        <div class="admin-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+          <div>
+            <h1 class="admin-title">Tournament Bracket Manager</h1>
+            <p style="color:rgba(255,255,255,0.6); margin:0; font-size:0.9rem;">
+              Graphical 16-player tournament bracket. Drag registered users onto bracket slots, drag from slot to slot, or use accessible click controls.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span class="badge ${occupiedCount === 16 ? 'success' : 'neutral'}" style="font-size:0.75rem; padding:6px 12px;">
+              ${occupiedCount} / 16 Slots Occupied
+            </span>
+            <button class="action-btn" onclick="loadView('bracket')">↻ Refresh</button>
+          </div>
+        </div>
+
+        <div id="bracket-mgr-alert" style="display:none; padding:12px 18px; border-radius:6px; margin-bottom:20px; font-size:0.85rem;"></div>
+
+        <div class="bracket-mgr-layout">
+          <!-- Left: Registered Users Pool -->
+          <div class="bracket-mgr-sidebar">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <h2 style="font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin:0;">
+                Registered Users (${users.length})
+              </h2>
+            </div>
+            <div style="margin-bottom:14px;">
+              <input type="text" id="bracket-user-search" placeholder="Filter users..." oninput="filterBracketUsers(this.value)"
+                style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:8px 12px; color:#fff; font-size:0.8rem; box-sizing:border-box;">
+            </div>
+            <div class="user-pool-list" id="bracket-user-pool">
+              ${renderUserPoolCards(users)}
+            </div>
+          </div>
+
+          <!-- Right: Graphical Bracket Tree -->
+          <div class="bracket-tree-wrap">
+            <div class="bracket-tree-columns">
+              <!-- Round 1: Round of 16 (8 matches) -->
+              <div class="bracket-column">
+                <div class="bracket-column-header">Round 1 (Round of 16)</div>
+                <div class="bracket-matches-col">
+                  ${renderRound1Matches(slots, rounds)}
+                </div>
+              </div>
+
+              <!-- Round 2: Quarterfinals (4 matches) -->
+              <div class="bracket-column">
+                <div class="bracket-column-header">Quarterfinals</div>
+                <div class="bracket-matches-col">
+                  ${renderFutureRoundMatches(rounds, 2)}
+                </div>
+              </div>
+
+              <!-- Round 3: Semifinals (2 matches) -->
+              <div class="bracket-column">
+                <div class="bracket-column-header">Semifinals</div>
+                <div class="bracket-matches-col">
+                  ${renderFutureRoundMatches(rounds, 3)}
+                </div>
+              </div>
+
+              <!-- Round 4: Grand Final (1 match) -->
+              <div class="bracket-column">
+                <div class="bracket-column-header">Grand Final</div>
+                <div class="bracket-matches-col">
+                  ${renderFutureRoundMatches(rounds, 4)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderUserPoolCards(users) {
+      if (!users || users.length === 0) {
+        return '<div style="color:rgba(255,255,255,0.35); font-size:0.8rem; padding:10px;">No registered users yet.</div>';
+      }
+
+      return users.map(u => {
+        const name = u.displayName || u.username;
+        const initial = name.charAt(0).toUpperCase();
+        const avatarHtml = u.avatar
+          ? `<img src="${u.avatar}" class="card-avatar" alt="">`
+          : `<div class="card-avatar">${initial}</div>`;
+        const slotBadge = u.bracketSlot
+          ? `<span class="badge success">Slot #${u.bracketSlot}</span>`
+          : `<span class="badge neutral">Unassigned</span>`;
+
+        return `
+          <div class="user-draggable-card" draggable="true"
+            ondragstart="handleUserDragStart(event, '${u._id}', '${escapeHtml(name)}')"
+            data-user-id="${u._id}" data-name="${escapeHtml(name)}">
+            ${avatarHtml}
+            <div class="card-info">
+              <div class="card-name">${escapeHtml(name)}</div>
+              <div class="card-handle">@${escapeHtml(u.username)}</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+              ${slotBadge}
+              <button type="button" class="slot-btn" onclick="openAssignModal('${u._id}', '${escapeHtml(name)}')" style="font-size:0.6rem;">
+                Assign
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterBracketUsers(query) {
+      const q = query.toLowerCase().trim();
+      const cards = document.querySelectorAll('#bracket-user-pool .user-draggable-card');
+      cards.forEach(c => {
+        const text = c.textContent.toLowerCase();
+        c.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    function renderRound1Matches(slots, rounds) {
+      const r1 = rounds.find(r => r.roundNumber === 1);
+      const matches = r1?.matches || [];
+      const html = [];
+
+      for (let m = 1; m <= 8; m++) {
+        const slotAIndex = (m * 2) - 1;
+        const slotBIndex = m * 2;
+        const slotA = slots.find(s => s.slotNumber === slotAIndex) || { slotNumber: slotAIndex, displayName: `Player #${slotAIndex}`, isOccupied: false };
+        const slotB = slots.find(s => s.slotNumber === slotBIndex) || { slotNumber: slotBIndex, displayName: `Player #${slotBIndex}`, isOccupied: false };
+
+        html.push(`
+          <div class="match-box">
+            <div class="match-box-header">
+              <span>Match #${m}</span>
+              <span>1v1</span>
+            </div>
+            ${renderSlotDropzone(slotA)}
+            ${renderSlotDropzone(slotB)}
+          </div>
+        `);
+      }
+
+      return html.join('');
+    }
+
+    function renderSlotDropzone(slot) {
+      const isOccupied = slot.isOccupied && (slot.displayName || slot.username);
+      const name = isOccupied ? (slot.displayName || slot.username) : `Player #${slot.slotNumber}`;
+      const initial = name.charAt(0).toUpperCase();
+      const avatarHtml = (isOccupied && slot.avatar)
+        ? `<img src="${slot.avatar}" class="slot-avatar" alt="">`
+        : `<div class="slot-avatar" style="${!isOccupied ? 'opacity:0.3;' : ''}">${isOccupied ? initial : '#'}</div>`;
+
+      return `
+        <div class="bracket-slot-dropzone ${isOccupied ? 'is-occupied' : ''}"
+          data-slot-number="${slot.slotNumber}"
+          ondragover="handleSlotDragOver(event)"
+          ondragleave="handleSlotDragLeave(event)"
+          ondrop="handleSlotDrop(event, ${slot.slotNumber})">
+          <div class="slot-player-info" ${isOccupied ? `draggable="true" ondragstart="handleSlotDragStart(event, ${slot.slotNumber})"` : ''} style="${isOccupied ? 'cursor:grab;' : ''}">
+            <span class="slot-num-badge">#${slot.slotNumber}</span>
+            ${avatarHtml}
+            <span class="slot-name ${!isOccupied ? 'is-empty' : ''}">${escapeHtml(name)}</span>
+          </div>
+          <div class="slot-actions">
+            ${isOccupied ? `
+              <button class="slot-btn" onclick="openMoveModal(${slot.slotNumber}, '${escapeHtml(name)}')">Move</button>
+              <button class="slot-btn danger" onclick="clearSlot(${slot.slotNumber})">✕</button>
+            ` : `
+              <button class="slot-btn" onclick="openSlotAssignModal(${slot.slotNumber})">+ Assign</button>
+            `}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFutureRoundMatches(rounds, roundNumber) {
+      const r = rounds.find(item => item.roundNumber === roundNumber);
+      const matches = r?.matches || [];
+      if (matches.length === 0) {
+        return '<div style="color:rgba(255,255,255,0.3); font-size:0.75rem; text-align:center;">Pending previous round</div>';
+      }
+
+      return matches.map((m, idx) => `
+        <div class="match-box" style="opacity:0.85;">
+          <div class="match-box-header">
+            <span>Match #${m.order || idx + 1}</span>
+            <span>${m.status || 'PENDING'}</span>
+          </div>
+          <div class="bracket-slot-dropzone">
+            <div class="slot-player-info">
+              <span class="slot-num-badge">A</span>
+              <span class="slot-name is-empty">${escapeHtml(m.participantA?.displayName || 'Winner TBD')}</span>
+            </div>
+          </div>
+          <div class="bracket-slot-dropzone">
+            <div class="slot-player-info">
+              <span class="slot-num-badge">B</span>
+              <span class="slot-name is-empty">${escapeHtml(m.participantB?.displayName || 'Winner TBD')}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // ─── Drag and Drop Handlers ───
+    function handleUserDragStart(e, userId, name) {
+      e.dataTransfer.effectAllowed = 'copyMove';
+      e.dataTransfer.setData('application/json', JSON.stringify({ type: 'user', userId, name }));
+      e.currentTarget.classList.add('is-dragging');
+      setTimeout(() => e.target.classList.remove('is-dragging'), 50);
+    }
+
+    function handleSlotDragStart(e, slotNumber) {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('application/json', JSON.stringify({ type: 'slot', fromSlot: slotNumber }));
+    }
+
+    function handleSlotDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      e.currentTarget.classList.add('drop-hover');
+    }
+
+    function handleSlotDragLeave(e) {
+      e.currentTarget.classList.remove('drop-hover');
+    }
+
+    async function handleSlotDrop(e, targetSlotNumber) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('drop-hover');
+
+      const raw = e.dataTransfer.getData('application/json');
+      if (!raw) return;
+
+      try {
+        const payload = JSON.parse(raw);
+        if (payload.type === 'user') {
+          await assignUser(targetSlotNumber, payload.userId);
+        } else if (payload.type === 'slot') {
+          if (payload.fromSlot !== targetSlotNumber) {
+            await swapTwoSlots(payload.fromSlot, targetSlotNumber);
+          }
+        }
+      } catch (err) {
+        showBracketAlert(err.message || 'Drop action failed.', 'error');
+      }
+    }
+
+    // ─── Bracket Actions ───
+    async function assignUser(slotNumber, userId) {
+      try {
+        const res = await fetch('/api/admin/bracket/assign', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slotNumber, userId })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to assign user.');
+        showBracketAlert(data.message || `User assigned to Slot #${slotNumber}.`, 'success');
+        await loadView('bracket');
+      } catch (err) {
+        showBracketAlert(err.message, 'error');
+      }
+    }
+
+    async function clearSlot(slotNumber) {
+      if (!confirm(`Are you sure you want to clear Slot #${slotNumber}?`)) return;
+      try {
+        const res = await fetch('/api/admin/bracket/remove', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slotNumber })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to clear slot.');
+        showBracketAlert(data.message || `Slot #${slotNumber} cleared.`, 'success');
+        await loadView('bracket');
+      } catch (err) {
+        showBracketAlert(err.message, 'error');
+      }
+    }
+
+    async function swapTwoSlots(slotNumberA, slotNumberB) {
+      try {
+        const res = await fetch('/api/admin/bracket/swap', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slotNumberA, slotNumberB })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to swap slots.');
+        showBracketAlert(data.message || `Slots #${slotNumberA} and #${slotNumberB} swapped.`, 'success');
+        await loadView('bracket');
+      } catch (err) {
+        showBracketAlert(err.message, 'error');
+      }
+    }
+
+    function showBracketAlert(msg, type = 'success') {
+      const el = $('bracket-mgr-alert');
+      if (!el) return;
+      el.textContent = msg;
+      el.style.display = 'block';
+      if (type === 'success') {
+        el.style.background = 'rgba(46, 204, 113, 0.15)';
+        el.style.border = '1px solid rgba(46, 204, 113, 0.4)';
+        el.style.color = '#2ecc71';
+      } else {
+        el.style.background = 'rgba(255, 75, 130, 0.15)';
+        el.style.border = '1px solid rgba(255, 75, 130, 0.4)';
+        el.style.color = '#ff4b82';
+      }
+      setTimeout(() => { if (el) el.style.display = 'none'; }, 5000);
+    }
+
+    // ─── Accessible Modals for Touch Devices ───
+    function openAssignModal(userId, userName) {
+      const slots = cachedBracketData?.bracket?.slots || [];
+      const options = slots.map(s => {
+        const occ = s.isOccupied ? `(Occupied: ${s.displayName || s.username})` : '(Available)';
+        return `<option value="${s.slotNumber}">Slot #${s.slotNumber} ${occ}</option>`;
+      }).join('');
+
+      $('modal-body').innerHTML = `
+        <div style="font-size:1.2rem; font-weight:700; margin-bottom:12px;">Assign User to Bracket Slot</div>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; margin-bottom:18px;">
+          Choose a bracket slot for <strong>${escapeHtml(userName)}</strong>:
+        </p>
+        <div style="margin-bottom:20px;">
+          <select id="assign-slot-select" style="width:100%; background:#222; border:1px solid rgba(255,255,255,0.2); padding:10px; color:#fff; border-radius:4px; font-size:0.9rem;">
+            ${options}
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button class="action-btn" onclick="closeModal()">Cancel</button>
+          <button class="action-btn" style="background:#fff; color:#000;" onclick="submitAssignModal('${userId}')">Assign to Slot</button>
+        </div>
+      `;
+      $('user-modal').style.display = 'flex';
+    }
+
+    async function submitAssignModal(userId) {
+      const slotNum = parseInt($('assign-slot-select').value, 10);
+      closeModal();
+      await assignUser(slotNum, userId);
+    }
+
+    function openSlotAssignModal(slotNumber) {
+      const users = cachedBracketData?.registeredUsers || [];
+      const options = users.map(u => {
+        const slotText = u.bracketSlot ? `[Currently in Slot #${u.bracketSlot}]` : '[Unassigned]';
+        return `<option value="${u._id}">${escapeHtml(u.displayName || u.username)} (@${u.username}) ${slotText}</option>`;
+      }).join('');
+
+      $('modal-body').innerHTML = `
+        <div style="font-size:1.2rem; font-weight:700; margin-bottom:12px;">Assign User to Slot #${slotNumber}</div>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; margin-bottom:18px;">
+          Select a registered participant to place into Slot #${slotNumber}:
+        </p>
+        <div style="margin-bottom:20px;">
+          <select id="slot-assign-user-select" style="width:100%; background:#222; border:1px solid rgba(255,255,255,0.2); padding:10px; color:#fff; border-radius:4px; font-size:0.9rem;">
+            ${options}
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button class="action-btn" onclick="closeModal()">Cancel</button>
+          <button class="action-btn" style="background:#fff; color:#000;" onclick="submitSlotAssignModal(${slotNumber})">Confirm Assignment</button>
+        </div>
+      `;
+      $('user-modal').style.display = 'flex';
+    }
+
+    async function submitSlotAssignModal(slotNumber) {
+      const userId = $('slot-assign-user-select').value;
+      closeModal();
+      await assignUser(slotNumber, userId);
+    }
+
+    function openMoveModal(fromSlot, participantName) {
+      const slots = cachedBracketData?.bracket?.slots || [];
+      const options = slots.filter(s => s.slotNumber !== fromSlot).map(s => {
+        const occ = s.isOccupied ? `(Occupied: ${s.displayName || s.username}) - will swap` : '(Empty)';
+        return `<option value="${s.slotNumber}">Slot #${s.slotNumber} ${occ}</option>`;
+      }).join('');
+
+      $('modal-body').innerHTML = `
+        <div style="font-size:1.2rem; font-weight:700; margin-bottom:12px;">Move Participant (Slot #${fromSlot})</div>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; margin-bottom:18px;">
+          Move <strong>${escapeHtml(participantName)}</strong> to another slot:
+        </p>
+        <div style="margin-bottom:20px;">
+          <select id="move-slot-select" style="width:100%; background:#222; border:1px solid rgba(255,255,255,0.2); padding:10px; color:#fff; border-radius:4px; font-size:0.9rem;">
+            ${options}
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button class="action-btn" onclick="closeModal()">Cancel</button>
+          <button class="action-btn" style="background:#fff; color:#000;" onclick="submitMoveModal(${fromSlot})">Move Participant</button>
+        </div>
+      `;
+      $('user-modal').style.display = 'flex';
+    }
+
+    async function submitMoveModal(fromSlot) {
+      const targetSlot = parseInt($('move-slot-select').value, 10);
+      closeModal();
+      await swapTwoSlots(fromSlot, targetSlot);
+    }
+
+    init();
+  </script>
+</body>
+</html>

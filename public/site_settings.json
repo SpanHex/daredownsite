@@ -1,0 +1,68 @@
+{
+  "eventName": "DAREDOWN",
+  "eventTagline": "NO RULES. NO MERCY. SURVIVE THE DARE.",
+  "entryFee": "£0.50",
+  "prize": "£50",
+  "timerIso": "2026-10-05T20:00:00.000Z",
+  "timerHeaderText": "EVENT STARTS IN",
+  "tournamentBracketHidden": false,
+  "description": "NO RULES. NO MERCY. SURVIVE THE DARE.",
+  "subDescription": "DAREDOWN is a live Truth or Dare elimination tournament where 16 players face off in randomised challenge matchups. Each round, one player is eliminated. The last one standing takes the prize. Entry fee: £0.50. Prize pool: £50.",
+  "backgroundVideoFilename": "Comp 1_9.mp4",
+  "rounds": [
+    {
+      "id": "1",
+      "name": "ROUND OF 16",
+      "description": "16 players. Random matchups. Truth or Dare assigned live.",
+      "duration": "TBD",
+      "duration_amount": "1"
+    },
+    {
+      "id": "2",
+      "name": "QUARTERFINALS",
+      "description": "8 survivors. Harder challenges. Double or nothing.",
+      "duration": "TBD",
+      "duration_amount": "1"
+    },
+    {
+      "id": "3",
+      "name": "SEMIFINALS",
+      "description": "4 left. One slip and you're out.",
+      "duration": "TBD",
+      "duration_amount": "1"
+    },
+    {
+      "id": "4",
+      "name": "THE FINAL",
+      "description": "Two players. One dare. Winner takes £50.",
+      "duration": "TBD",
+      "duration_amount": "1"
+    }
+  ],
+  "winners": [
+    {
+      "place": "first",
+      "name": "TBD",
+      "title": "THE CHAMPION",
+      "prize": "£50"
+    },
+    {
+      "place": "second",
+      "name": "TBD",
+      "title": "THE FINALIST",
+      "prize": "Runner Up"
+    },
+    {
+      "place": "third",
+      "name": "TBD",
+      "title": "THE BRAVE",
+      "prize": "Survived"
+    }
+  ],
+  "updatedAt": "2026-09-20T15:00:00.000Z",
+  "backgroundVideoUrl": "videos/Comp%201_9.mp4",
+  "apiBaseUrl": "",
+  "loginUrl": "register/index.html",
+  "cabinetUrl": "register/index.html",
+  "adminUrl": "judge/index.html"
+}

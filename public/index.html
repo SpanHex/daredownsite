@@ -1,0 +1,1157 @@
+<!DOCTYPE html><html lang="en"> 
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="icon" type="image/png" href="/favicon.png"><title>DAREDOWN: Truth or Dare Tournament</title><meta name="description" content="NO RULES. NO MERCY. SURVIVE THE DARE. DAREDOWN is a live Truth or Dare elimination tournament. £0.50 entry. £50 prize."><meta name="robots" content="index,follow"><link rel="canonical" href="index.html"><meta name="keywords" content="truth or dare, tournament, daredown, dare challenge, elimination game, live event, prize, party game"><meta property="og:type" content="website"><meta property="og:title" content="DAREDOWN: Truth or Dare Tournament"><meta property="og:description" content="NO RULES. NO MERCY. SURVIVE THE DARE. Live Truth or Dare elimination tournament. £0.50 entry. £50 prize."><meta property="og:url" content="index.html"><meta property="og:image" content="/meta_img.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="DAREDOWN: Truth or Dare Tournament"><meta name="twitter:description" content="NO RULES. NO MERCY. SURVIVE THE DARE. Live Truth or Dare elimination tournament. £0.50 entry. £50 prize."><meta name="twitter:image" content="/meta_img.jpg"><script>
+      (function () {
+        const t = localStorage.getItem("theme");
+        const d =
+          t === "dark" ||
+          (!t && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (d) document.documentElement.classList.add("dark");
+      })();
+    </script><script>
+      (() => {
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "manual";
+        }
+
+        const navEntry = performance.getEntriesByType?.("navigation")?.[0];
+        const isReload =
+          navEntry?.type === "reload" || performance.navigation?.type === 1;
+
+        if (!isReload) return;
+
+        const resetToTop = () => {
+          window.scrollTo(0, 0);
+        };
+
+        resetToTop();
+        window.addEventListener("pageshow", resetToTop, { once: true });
+      })();
+    </script><link rel="stylesheet" href="/_astro/index%40_%40astro.D4QzF_Pf.css">
+<link rel="stylesheet" href="/_astro/Layout.BHgu_56x.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        function readTheme() {
+          try {
+            var l = localStorage.getItem("ngt_gender_theme");
+            if (l === "boy" || l === "girl") return l;
+          } catch(e) {}
+          try {
+            var s = sessionStorage.getItem("ngt_gender_theme");
+            if (s === "boy" || s === "girl") return s;
+          } catch(e) {}
+          try {
+            var m = document.cookie.match(/(?:^|; )ngt_gender_theme=([^;]*)/);
+            if (m && (m[1] === "boy" || m[1] === "girl")) return m[1];
+          } catch(e) {}
+          try {
+            if (window.name && (window.name === "ngt_theme:boy" || window.name === "ngt_theme:girl")) {
+              return window.name.replace("ngt_theme:", "");
+            }
+          } catch(e) {}
+          return null;
+        }
+        var savedTheme = readTheme();
+        if (savedTheme === "boy" || savedTheme === "girl") {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          document.documentElement.classList.add("has-theme");
+        } else {
+          document.documentElement.classList.add("needs-theme-select");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/theme.css">
+  </head> <body class="bg-black overflow-x-hidden" data-api-base-url="">
+  <!-- EXPANDING THEME WASH TRANSITION LAYER -->
+  <div id="theme-expand-wash" class="theme-expand-wash" aria-hidden="true"></div>
+
+  <!-- INTERACTIVE OPENING QUESTION SELECTOR OVERLAY (Hidden by default to prevent FOUC on reload) -->
+  <div id="gender-selector" role="dialog" aria-modal="true" aria-label="Visual Personality Selector" style="display: none;">
+    <div class="selector-ambient-layer"></div>
+    <div class="selector-bg-grid"></div>
+
+    <div class="selector-container">
+      <h1 class="selector-title">are you a boy or girl?</h1>
+
+      <div class="selector-options">
+        <!-- BOY OPTION -->
+        <button id="select-boy-btn" type="button" class="gender-card card-boy" aria-label="Boy">
+          <span class="card-label">BOY</span>
+        </button>
+
+        <!-- GIRL OPTION -->
+        <button id="select-girl-btn" type="button" class="gender-card card-girl" aria-label="Girl">
+          <span class="card-label">GIRL</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      const THEME_KEY = "ngt_gender_theme";
+      const selector = document.getElementById("gender-selector");
+      const wash = document.getElementById("theme-expand-wash");
+      const boyBtn = document.getElementById("select-boy-btn");
+      const girlBtn = document.getElementById("select-girl-btn");
+
+      function saveTheme(theme) {
+        try { localStorage.setItem(THEME_KEY, theme); } catch(e) {}
+        try { sessionStorage.setItem(THEME_KEY, theme); } catch(e) {}
+        try { document.cookie = "ngt_gender_theme=" + theme + "; path=/; max-age=31536000; SameSite=Lax"; } catch(e) {}
+        try { window.name = "ngt_theme:" + theme; } catch(e) {}
+      }
+
+      function getSavedTheme() {
+        try {
+          var l = localStorage.getItem(THEME_KEY);
+          if (l === "boy" || l === "girl") return l;
+        } catch(e) {}
+        try {
+          var s = sessionStorage.getItem(THEME_KEY);
+          if (s === "boy" || s === "girl") return s;
+        } catch(e) {}
+        try {
+          var m = document.cookie.match(/(?:^|; )ngt_gender_theme=([^;]*)/);
+          if (m && (m[1] === "boy" || m[1] === "girl")) return m[1];
+        } catch(e) {}
+        try {
+          if (window.name && (window.name === "ngt_theme:boy" || window.name === "ngt_theme:girl")) {
+            return window.name.replace("ngt_theme:", "");
+          }
+        } catch(e) {}
+        return null;
+      }
+
+      const storedTheme = getSavedTheme();
+
+      if (storedTheme === "boy" || storedTheme === "girl") {
+        document.documentElement.setAttribute("data-theme", storedTheme);
+        document.documentElement.classList.add("has-theme");
+        if (selector) {
+          selector.style.display = "none";
+          selector.remove();
+        }
+      } else {
+        // First-time visitors: unhide selector and attach listeners
+        if (selector) {
+          selector.style.display = "flex";
+
+          boyBtn?.addEventListener("mouseenter", () => selector.classList.add("hover-boy"));
+          boyBtn?.addEventListener("mouseleave", () => selector.classList.remove("hover-boy"));
+          girlBtn?.addEventListener("mouseenter", () => selector.classList.add("hover-girl"));
+          girlBtn?.addEventListener("mouseleave", () => selector.classList.remove("hover-girl"));
+
+          const handleSelect = (theme) => {
+            saveTheme(theme);
+            document.documentElement.setAttribute("data-theme", theme);
+            document.documentElement.classList.add("has-theme");
+
+            if (wash) {
+              wash.className = "theme-expand-wash active-" + theme;
+            }
+
+            setTimeout(() => {
+              selector.classList.add("is-dismissed");
+              setTimeout(() => {
+                if (wash) {
+                  wash.className = "theme-expand-wash";
+                }
+                selector.remove();
+              }, 750);
+            }, 300);
+          };
+
+          boyBtn?.addEventListener("click", () => handleSelect("boy"));
+          girlBtn?.addEventListener("click", () => handleSelect("girl"));
+
+          boyBtn?.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              handleSelect("boy");
+            }
+          });
+          girlBtn?.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              handleSelect("girl");
+            }
+          });
+        }
+      }
+
+      window.__openThemeSelector = () => {
+        try { localStorage.removeItem(THEME_KEY); } catch(e) {}
+        try { sessionStorage.removeItem(THEME_KEY); } catch(e) {}
+        try { document.cookie = "ngt_gender_theme=; path=/; max-age=0"; } catch(e) {}
+        try { window.name = ""; } catch(e) {}
+        window.location.reload();
+      };
+    })();
+  </script>
+
+  <!-- FIRSTHAND SITE LOADER -->
+  <div id="site-loader" style="position: fixed; inset: 0; z-index: 99999; background: #050505; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: auto;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 24px; max-width: 90vw;">
+      <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: clamp(1.2rem, 3.5vw, 2.2rem); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; text-align: center; text-shadow: 0 0 30px rgba(255,255,255,0.2);">
+        DAREDOWN
+      </div>
+      <div style="width: clamp(220px, 40vw, 360px); height: 2px; background: rgba(255, 255, 255, 0.1); border-radius: 999px; overflow: hidden; position: relative;">
+        <div id="loader-progress-bar" style="position: absolute; left: 0; top: 0; bottom: 0; width: 0%; background: linear-gradient(90deg, #c78a56, #e2c275, #ffffff); border-radius: 999px; transition: width 0.15s ease-out; box-shadow: 0 0 12px rgba(226, 194, 117, 0.6);"></div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; width: clamp(220px, 40vw, 360px); font-family: monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.5);">
+        <span id="loader-status-text">INITIALIZING...</span>
+        <span id="loader-percent-text">0%</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      const loader = document.getElementById("site-loader");
+      const bar = document.getElementById("loader-progress-bar");
+      const status = document.getElementById("loader-status-text");
+      const percent = document.getElementById("loader-percent-text");
+      if (!loader || !bar || !status || !percent) return;
+
+      let targetProgress = 10;
+      let currentProgress = 0;
+      let animFrame = null;
+
+      const updateDisplay = () => {
+        currentProgress += (targetProgress - currentProgress) * 0.18;
+        const rounded = Math.min(100, Math.round(currentProgress));
+        bar.style.width = rounded + "%";
+        percent.textContent = rounded + "%";
+        if (currentProgress < 99.5 || targetProgress < 100) {
+          animFrame = requestAnimationFrame(updateDisplay);
+        } else {
+          bar.style.width = "100%";
+          percent.textContent = "100%";
+          status.textContent = "READY";
+          setTimeout(() => {
+            loader.style.opacity = "0";
+            loader.style.transform = "scale(1.02)";
+            loader.style.pointerEvents = "none";
+            document.body.style.overflow = "";
+            setTimeout(() => {
+              if (loader.parentNode) loader.parentNode.removeChild(loader);
+            }, 600);
+          }, 200);
+        }
+      };
+      animFrame = requestAnimationFrame(updateDisplay);
+
+      const tasks = [];
+
+      if ("fonts" in document && document.fonts.ready) {
+        tasks.push(document.fonts.ready.then(() => {
+          targetProgress = Math.max(targetProgress, 35);
+          status.textContent = "FONTS READY";
+        }).catch(() => {}));
+      }
+
+      // No avatar preloads needed — participants added dynamically
+      const preloadPromise = Promise.resolve();
+      tasks.push(preloadPromise);
+      targetProgress = Math.max(targetProgress, 80);
+      status.textContent = "LOADING EVENT DATA";
+
+      const docReady = new Promise(resolve => {
+        if (document.readyState === "complete") resolve();
+        else window.addEventListener("load", resolve, { once: true });
+      });
+      tasks.push(docReady);
+
+      const timeoutPromise = new Promise(resolve => setTimeout(resolve, 2000));
+
+      Promise.race([
+        Promise.all(tasks),
+        timeoutPromise
+      ]).then(() => {
+        targetProgress = 100;
+        status.textContent = "ALL ASSETS READY";
+      });
+    })();
+  </script>
+ <header id="site-header" class="fixed top-0 left-[50%] transform -translate-x-1/2 z-50 w-full min-h-24 py-3 md:py-0 flex justify-center items-center"> <div class="max-w-450 w-full mx-auto px-3 flex flex-col md:flex-row justify-center md:justify-between items-center gap-2 md:gap-0"> <a href="index.html" class="text-[clamp(0.95rem,3.7vw,1.875rem)] tracking-tight text-white text-center md:text-left transition-colors duration-130 hover:text-white/70">
+DAREDOWN
+</a> <ol class="desktop-nav decoration-transparent decoration-0 text-white text-[clamp(0.95rem,3.2vw,1.5rem)] tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-1 md:gap-8">
+  <li> <a class="header-ngc-link" href="ngc/index.html" aria-label="Challenges">Challenges</a> </li>
+  <li> <a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="index.html#bracket">Bracket</a> </li>
+  <li> <a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="rules/index.html">Rules</a> </li>
+  <li> <a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="index.html#about">About</a> </li>
+  <li>
+    <button id="theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+      <span class="theme-toggle-indicator"></span>
+      <span class="theme-toggle-text">BOY</span>
+    </button>
+  </li>
+  <li>
+    <a id="login-link" class="transition-colors duration-130 hover:text-white/70 hover:underline" href="register/index.html">Register / Log In</a>
+    <div id="auth-menu" class="relative hidden">
+      <button id="auth-avatar-button" type="button" class="auth-user-pill" aria-haspopup="menu" aria-expanded="false">
+        <div class="w-6 h-6 rounded-full bg-white/20 overflow-hidden flex items-center justify-center flex-shrink-0">
+          <img id="auth-avatar-image" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+          <span id="auth-avatar-fallback" class="text-xs uppercase font-bold text-white">U</span>
+        </div>
+        <span id="auth-username-display" class="text-sm font-medium">User</span>
+      </button>
+      <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 min-w-45 bg-black/95 backdrop-blur-xl border border-white/20 rounded-md p-1.5 shadow-2xl z-50" role="menu">
+        <a href="/profile" class="block px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Profile</a>
+        <a id="judge-link" href="judge/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Host Panel</a>
+        <a id="admin-link" href="/admin/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Admin Dashboard</a>
+        <button id="theme-switch-menu-btn" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Switch Style (Boy/Girl)</button>
+        <button id="logout-button" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Log out</button>
+      </div>
+    </div>
+  </li>
+</ol>
+<!-- Mobile Header Bar Controls -->
+<div class="mobile-header-actions">
+  <button id="mobile-theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+    <span class="theme-toggle-indicator"></span>
+    <span class="theme-toggle-text">BOY</span>
+  </button>
+  <div id="mobile-auth-wrapper" class="relative">
+    <a id="mobile-login-link" class="mobile-login-btn" href="register/index.html">Log In</a>
+    <div id="mobile-auth-menu" class="relative hidden">
+      <button id="mobile-auth-trigger" type="button" class="mobile-profile-pill" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu">
+        <div class="mobile-profile-avatar">
+          <img id="mobile-auth-avatar-img" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+          <span id="mobile-auth-avatar-fallback" class="mobile-avatar-initial">U</span>
+        </div>
+        <span id="mobile-auth-username" class="mobile-profile-name">User</span>
+        <svg class="mobile-profile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M2.5 4.5L6 8L9.5 4.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div id="mobile-auth-dropdown" class="mobile-profile-dropdown hidden" role="menu">
+        <div class="mobile-dropdown-header">
+          <span id="mobile-dropdown-display-name" class="mobile-dropdown-user">User</span>
+          <span id="mobile-dropdown-user-role" class="mobile-dropdown-badge">Contestant</span>
+        </div>
+        <div class="mobile-dropdown-divider"></div>
+        <a id="mobile-dropdown-profile-link" href="/profile" class="mobile-dropdown-item" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span>Profile</span>
+        </a>
+        <a id="mobile-dropdown-judge-link" href="judge/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" />
+          </svg>
+          <span>Host Panel</span>
+        </a>
+        <a id="mobile-dropdown-admin-link" href="/admin/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Admin Dashboard</span>
+        </a>
+        <div class="mobile-dropdown-divider"></div>
+        <button id="mobile-dropdown-logout-btn" type="button" class="mobile-dropdown-item is-logout" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button id="mobile-menu-toggle" type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+  </button>
+</div>
+</div> </header>
+
+<!-- Mobile Navigation Drawer -->
+<div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-brand">DAREDOWN</span>
+      <button id="mobile-nav-close-btn" type="button" class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="ngc/index.html" class="mobile-nav-link is-highlight"><span>Challenges (Truth/Dare)</span><span>&rarr;</span></a></li>
+      <li><a href="index.html#bracket" class="mobile-nav-link" data-mobile-nav-close><span>Tournament Bracket</span><span>&rarr;</span></a></li>
+      <li><a href="rules/index.html" class="mobile-nav-link"><span>Official Rules</span><span>&rarr;</span></a></li>
+      <li><a href="index.html#about" class="mobile-nav-link" data-mobile-nav-close><span>About DAREDOWN</span><span>&rarr;</span></a></li>
+      <li><a href="/profile" class="mobile-nav-link" id="mobile-drawer-auth-link"><span>Profile</span><span>&rarr;</span></a></li>
+      <li id="mobile-drawer-judge-item" class="hidden"><a href="judge/index.html" class="mobile-nav-link"><span>Host Panel</span><span>&rarr;</span></a></li>
+      <li id="mobile-drawer-admin-item" class="hidden"><a href="/admin/index.html" class="mobile-nav-link"><span>Admin Dashboard</span><span>&rarr;</span></a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <button id="mobile-drawer-theme-btn" type="button" class="mobile-nav-link" style="width:100%;text-align:left;cursor:pointer;">
+        <span>Switch Theme (Boy / Girl)</span>
+        <span id="mobile-drawer-theme-name" style="font-size:0.8rem;opacity:0.7;">BOY</span>
+      </button>
+      <button id="mobile-drawer-logout-btn" type="button" class="mobile-nav-link hidden" style="width:100%;text-align:left;cursor:pointer;color:#ff4b82;">
+        <span>Log Out</span>
+        <span>&times;</span>
+      </button>
+    </div>
+  </div>
+</div> <main class="max-w-450 w-full mx-auto px-3">  <div class="w-full h-full flex flex-col gap-50"> <section id="hero-winners-transition" class="hero-winners-transition" aria-label="Hero to winners transition" data-astro-cid-efhtxqxr> <div class="hero-winners-pin" data-astro-cid-efhtxqxr> <div class="hero-transition-layer" data-transition-hero data-astro-cid-efhtxqxr> <section id="hero-section" class="relative h-dvh w-screen left-1/2 -translate-x-1/2 flex justify-center items-center overflow-hidden" data-astro-cid-4z5ypzu4> <div id="hero-bg-video-layer" class="hero-bg-video-layer" aria-hidden="true" data-astro-cid-4z5ypzu4> <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover" data-astro-cid-4z5ypzu4> <source src="videos/Comp%201_9.mp4" type="video/mp4" data-astro-cid-4z5ypzu4> </video> <div class="absolute inset-0 bg-black/50" data-astro-cid-4z5ypzu4></div> </div> <p id="hero-title" class="relative z-20 w-full px-4 flex flex-wrap items-center justify-center gap-x-[0.35em] gap-y-[0.05em] leading-[0.92] text-white font-extralight text-center text-[clamp(1.05rem,5.35vw,6.5rem)] transition-opacity duration-150" data-astro-cid-4z5ypzu4> <span data-astro-cid-4z5ypzu4>DARE<span class="font-bold" data-astro-cid-4z5ypzu4>DOWN</span><span style="font-size:0.55em;letter-spacing:0.06em;opacity:0.7" data-astro-cid-4z5ypzu4>TRUTH&nbsp;OR&nbsp;DARE&nbsp;TOURNAMENT</span></span> </p> </section> <script>
+  (() => {
+    window.addEventListener("siteSettings:loaded", (event) => {
+      const videoUrl = event.detail?.backgroundVideoUrl;
+      if (!videoUrl || videoUrl.includes("background_v1783289610658.mp4")) return;
+      const bgVideo = document.querySelector("#hero-bg-video-layer video");
+      if (!(bgVideo instanceof HTMLVideoElement)) return;
+      const source = bgVideo.querySelector("source");
+      if (source instanceof HTMLSourceElement) {
+        source.setAttribute("src", videoUrl);
+        bgVideo.load();
+        bgVideo.play().catch(() => {});
+      }
+    });
+  })();
+</script> </div> <div class="winners-transition-layer" data-transition-winners data-astro-cid-efhtxqxr> <div class="winners-transition-shell" data-astro-cid-efhtxqxr> <section id="winners" class="winners-screen" aria-labelledby="winners-title" data-astro-cid-6ur5r5pq> <div class="winners-copy" data-winners-title-reveal data-astro-cid-6ur5r5pq> <h2 id="winners-title" data-astro-cid-6ur5r5pq>DAREDOWN CHAMPIONS</h2> </div> <div class="winners-stage" aria-label="DAREDOWN Truth or Dare Tournament champions" data-astro-cid-6ur5r5pq> <article class="winner-card winner-card-second" data-winner-reveal="second" data-astro-cid-6ur5r5pq> <svg class="winner-rank-number rank-silver" viewBox="0 0 430 720" aria-hidden="true" data-astro-cid-6ur5r5pq> <defs data-astro-cid-6ur5r5pq> <linearGradient id="winner-rank-silver" x1="360" y1="-70" x2="-50" y2="735" gradientUnits="userSpaceOnUse" data-astro-cid-6ur5r5pq> <stop stop-color="#F1F4F8" data-astro-cid-6ur5r5pq></stop> <stop offset="1" stop-color="#343B45" data-astro-cid-6ur5r5pq></stop> </linearGradient> </defs> <text class="winner-rank-text" x="28" y="655" fill="url(#winner-rank-silver)" data-astro-cid-6ur5r5pq> 2 </text> </svg> <div class="winner-detail second-detail" data-astro-cid-6ur5r5pq> <p class="winner-place" data-astro-cid-6ur5r5pq>2ND PLACE</p> <span class="winner-rule" data-astro-cid-6ur5r5pq></span> <h3 data-astro-cid-6ur5r5pq> <a class="winner-name-link" data-winner-name data-winner-place="second" data-astro-cid-6ur5r5pq> TBD </a> </h3> <svg class="winner-prize prize-silver" viewBox="0 0 500 230" role="img" aria-label="Runner Up" data-astro-cid-6ur5r5pq> <title>Runner Up</title> <defs data-astro-cid-6ur5r5pq> <linearGradient id="winner-prize-silver" x1="330" y1="-40" x2="0" y2="210" gradientUnits="userSpaceOnUse" data-astro-cid-6ur5r5pq> <stop stop-color="#D7DBE0" data-astro-cid-6ur5r5pq></stop> <stop offset="1" stop-color="#343B45" data-astro-cid-6ur5r5pq></stop> </linearGradient> </defs> <text class="winner-prize-text" x="16" y="170" fill="url(#winner-prize-silver)" data-astro-cid-6ur5r5pq style="font-size:0.65em"> Runner Up </text> </svg> <p class="winner-title" data-winner-title data-winner-place="second" data-astro-cid-6ur5r5pq> The Finalist </p> </div> </article> <article class="winner-card winner-card-first" data-winner-reveal="first" data-astro-cid-6ur5r5pq> <svg class="winner-rank-number rank-gold" viewBox="0 0 330 720" aria-hidden="true" data-astro-cid-6ur5r5pq> <defs data-astro-cid-6ur5r5pq> <linearGradient id="winner-rank-gold" x1="-40" y1="130" x2="410" y2="580" gradientUnits="userSpaceOnUse" data-astro-cid-6ur5r5pq> <stop stop-color="#E2C275" data-astro-cid-6ur5r5pq></stop> <stop offset="1" stop-color="#050402" data-astro-cid-6ur5r5pq></stop> </linearGradient> </defs> <text class="winner-rank-text" x="34" y="655" fill="url(#winner-rank-gold)" data-astro-cid-6ur5r5pq> 1 </text> </svg> <div class="winner-detail first-detail" data-astro-cid-6ur5r5pq> <p class="winner-place" data-astro-cid-6ur5r5pq>1ST PLACE</p> <span class="winner-rule" data-astro-cid-6ur5r5pq></span> <h3 data-astro-cid-6ur5r5pq> <a class="winner-name-link" data-winner-name data-winner-place="first" data-astro-cid-6ur5r5pq> TBD </a> </h3> <svg class="winner-prize prize-gold" viewBox="0 0 500 230" role="img" aria-label="50 pounds prize" data-astro-cid-6ur5r5pq> <title>£50</title> <defs data-astro-cid-6ur5r5pq> <linearGradient id="winner-prize-gold" x1="-20" y1="35" x2="430" y2="155" gradientUnits="userSpaceOnUse" data-astro-cid-6ur5r5pq> <stop stop-color="#E2C275" data-astro-cid-6ur5r5pq></stop> <stop offset="1" stop-color="#080604" data-astro-cid-6ur5r5pq></stop> </linearGradient> </defs> <text class="winner-prize-text" x="16" y="170" fill="url(#winner-prize-gold)" data-astro-cid-6ur5r5pq> £50 </text> </svg> <p class="winner-title" data-winner-title data-winner-place="first" data-astro-cid-6ur5r5pq> The Champion </p> </div> </article> <article class="winner-card winner-card-third" data-winner-reveal="third" data-astro-cid-6ur5r5pq> <svg class="winner-rank-number rank-bronze" viewBox="0 0 430 720" aria-hidden="true" data-astro-cid-6ur5r5pq> <defs data-astro-cid-6ur5r5pq> <linearGradient id="winner-rank-bronze" x1="-50" y1="720" x2="460" y2="130" gradientUnits="userSpaceOnUse" data-astro-cid-6ur5r5pq> <stop stop-color="#C78A56" data-astro-cid-6ur5r5pq></stop> <stop offset="1" stop-color="#56361C" data-astro-cid-6ur5r5pq></stop> </linearGradient> </defs> <text class="winner-rank-text" x="28" y="655" fill="url(#winner-rank-bronze)" data-astro-cid-6ur5r5pq> 3 </text> </svg> <div class="winner-detail third-detail" data-astro-cid-6ur5r5pq> <p class="winner-place" data-astro-cid-6ur5r5pq>3RD PLACE</p> <span class="winner-rule" data-astro-cid-6ur5r5pq></span> <h3 data-astro-cid-6ur5r5pq> <a class="winner-name-link" data-winner-name data-winner-place="third" data-astro-cid-6ur5r5pq> TBD </a> </h3> <svg class="winner-prize prize-bronze" viewBox="0 0 500 230" role="img" aria-label="Survived" data-astro-cid-6ur5r5pq> <title>Survived</title> <defs data-astro-cid-6ur5r5pq> <linearGradient id="winner-prize-bronze" x1="-20" y1="180" x2="430" y2="20" gradientUnits="userSpaceOnUse" data-astro-cid-6ur5r5pq> <stop stop-color="#C78A56" data-astro-cid-6ur5r5pq></stop> <stop offset="1" stop-color="#56361C" data-astro-cid-6ur5r5pq></stop> </linearGradient> </defs> <text class="winner-prize-text" x="16" y="170" fill="url(#winner-prize-bronze)" data-astro-cid-6ur5r5pq style="font-size:0.65em"> Survived </text> </svg> <p class="winner-title" data-winner-title data-winner-place="third" data-astro-cid-6ur5r5pq> THE BRAVE </p> </div> </article> </div> </section>   </div> </div> </div> </section>  <script>
+  (() => {
+    const root = document.getElementById("hero-winners-transition");
+    if (!(root instanceof HTMLElement)) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    const winnersLayer = root.querySelector("[data-transition-winners]");
+    const winnerLinks = Array.from(root.querySelectorAll(".winner-name-link"));
+    let frame = 0;
+    let reducedMotion = prefersReducedMotion.matches;
+
+    const clamp = (value, min = 0, max = 1) =>
+      Math.min(max, Math.max(min, value));
+
+    const easeOut = (value) => 1 - Math.pow(1 - clamp(value), 3);
+
+    const range = (progress, start, end) =>
+      clamp((progress - start) / (end - start));
+
+    const reveal = (progress, start, end) => easeOut(range(progress, start, end));
+
+    const setHiddenLinks = (hidden) => {
+      if (winnersLayer instanceof HTMLElement) {
+        winnersLayer.toggleAttribute("inert", hidden);
+        winnersLayer.setAttribute("aria-hidden", hidden ? "true" : "false");
+      }
+
+      winnerLinks.forEach((link) => {
+        if (!(link instanceof HTMLElement)) return;
+        if (hidden) {
+          if ("transitionPreviousTabindex" in link.dataset) return;
+          link.dataset.transitionPreviousTabindex =
+            link.getAttribute("tabindex") ?? "";
+          link.setAttribute("tabindex", "-1");
+        } else if ("transitionPreviousTabindex" in link.dataset) {
+          const previous = link.dataset.transitionPreviousTabindex;
+          if (previous) {
+            link.setAttribute("tabindex", previous);
+          } else {
+            link.removeAttribute("tabindex");
+          }
+          delete link.dataset.transitionPreviousTabindex;
+        }
+      });
+    };
+
+    const setVar = (name, value) => {
+      root.style.setProperty(name, value);
+    };
+
+    
+    const updateWinnersLayout = () => {
+      if (window.innerWidth <= 900) {
+        setVar("--winners-scale", "1");
+        setVar("--winners-section-offset", "0px");
+        return;
+      }
+      const vh = window.innerHeight;
+      const header = document.getElementById("site-header");
+      const headerH = header ? header.getBoundingClientRect().height : 90;
+      
+      // Total vertical span of the winners content from top of title (25px) to bottom of card 2 (1060px) is 1060px.
+      const targetH = 1060;
+      const topPadding = Math.max(headerH + 8, 92);
+      const bottomPadding = 20;
+      const availableH = Math.max(280, vh - topPadding - bottomPadding);
+      const scale = Math.min(1, Math.max(0.40, availableH / targetH));
+      const offset = topPadding - (25.6 * scale);
+      
+      setVar("--winners-scale", scale.toFixed(4));
+      setVar("--winners-section-offset", offset.toFixed(1) + "px");
+      setVar("--winners-visual-height", (targetH * scale + offset).toFixed(1) + "px");
+    };
+
+    const applyProgress = () => {
+      frame = 0;
+      updateWinnersLayout();
+
+      if (reducedMotion) {
+        setHiddenLinks(false);
+        return;
+      }
+
+      const rect = root.getBoundingClientRect();
+      const distance = Math.max(1, root.offsetHeight - window.innerHeight);
+      const progress = clamp(-rect.top / distance);
+      const heroOpacity = 1 - reveal(progress, 0, 0.24);
+      const titleProgress = reveal(progress, 0.25, 0.38);
+      const firstProgress = reveal(progress, 0.4, 0.58);
+      const secondProgress = reveal(progress, 0.56, 0.74);
+      const thirdProgress = reveal(progress, 0.72, 0.9);
+      const winnersOpacity = Math.max(
+        titleProgress,
+        firstProgress,
+        secondProgress,
+        thirdProgress,
+      );
+
+      setVar("--hero-opacity", heroOpacity.toFixed(4));
+      setVar("--winners-opacity", winnersOpacity.toFixed(4));
+      setVar("--winners-title-opacity", titleProgress.toFixed(4));
+      setVar(
+        "--winners-title-y",
+        `${((1 - titleProgress) * 1.15).toFixed(3)}rem`,
+      );
+      setVar("--winner-first-opacity", firstProgress.toFixed(4));
+      setVar("--winner-first-y", `${((1 - firstProgress) * 5.5).toFixed(3)}rem`);
+      setVar("--winner-second-opacity", secondProgress.toFixed(4));
+      setVar(
+        "--winner-second-y",
+        `${((1 - secondProgress) * 5.5).toFixed(3)}rem`,
+      );
+      setVar("--winner-third-opacity", thirdProgress.toFixed(4));
+      setVar("--winner-third-y", `${((1 - thirdProgress) * 5.5).toFixed(3)}rem`);
+      setHiddenLinks(winnersOpacity < 0.98);
+    };
+
+    const requestSync = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(applyProgress);
+    };
+
+    const scrollToFinalWinners = () => {
+      const distance = Math.max(1, root.offsetHeight - window.innerHeight);
+      const top = root.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo(0, top + distance);
+    };
+
+    const handleReducedMotion = () => {
+      reducedMotion = prefersReducedMotion.matches;
+      if (reducedMotion) {
+        root.removeAttribute("data-transition-active");
+        root.style.cssText = "";
+      } else {
+        root.setAttribute("data-transition-active", "true");
+      }
+      requestSync();
+    };
+
+    const syncInitialHash = () => {
+      if (window.location.hash !== "#winners" || reducedMotion) return;
+      window.requestAnimationFrame(() => {
+        scrollToFinalWinners();
+        requestSync();
+      });
+    };
+
+    handleReducedMotion();
+    syncInitialHash();
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", () => { updateWinnersLayout(); requestSync(); });
+    prefersReducedMotion.addEventListener?.("change", handleReducedMotion);
+    window.addEventListener("pageshow", () => {
+      updateWinnersLayout();
+      syncInitialHash();
+      requestSync();
+    });
+    window.addEventListener("load", () => {
+      updateWinnersLayout();
+      syncInitialHash();
+      window.setTimeout(() => {
+        updateWinnersLayout();
+        syncInitialHash();
+      }, 120);
+      window.setTimeout(() => {
+        updateWinnersLayout();
+        syncInitialHash();
+      }, 500);
+    });
+  })();
+</script> <div class="flex flex-col items-center justify-start gap-2 md:gap-3 pt-24 md:pt-[126px] pb-6 md:pb-10 overflow-hidden" id="bracket" data-astro-cid-rsd2vusr> <h2 class="block-title text-white text-center" data-astro-cid-rsd2vusr> TOURNAMENT BRACKET </h2>  <div class="w-full px-2 md:px-4"> <div id="bracket-shell" class="w-full flex flex-col items-center gap-4" data-stub-mode="auto" data-empty-text="Bracket is not available yet." data-total-rounds="4" data-total-participants="16"> <p id="bracket-status" class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/45 text-center hidden" aria-live="polite"></p> <div id="bracket-content" class="w-full">
+<div class="bracket-mobile-controls">
+  <div class="bracket-swipe-hint">
+    <span>⟷</span> <span>Swipe horizontally to view bracket</span>
+  </div>
+  <div class="bracket-round-chips" role="tablist" aria-label="Tournament Rounds">
+    <button type="button" class="bracket-round-chip is-active" data-round="1">Round of 16</button>
+    <button type="button" class="bracket-round-chip" data-round="2">Quarterfinals</button>
+    <button type="button" class="bracket-round-chip" data-round="3">Semifinals</button>
+    <button type="button" class="bracket-round-chip" data-round="4">Final</button>
+  </div>
+</div>
+<div id="bracket-viewport" class="bracket-viewport"> <div id="bracket-stage" class="bracket-stage">
+
+          <div class="bracket-side is-left"><div class="bracket-side-track is-left">
+          <div class="bracket-branch is-left" data-depth="3">
+            <div class="bracket-children">
+              <div class="bracket-child">
+          <div class="bracket-branch is-left" data-depth="2">
+            <div class="bracket-children">
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-1" role="button" tabindex="0" aria-label="Open match Player #1 versus Player #2">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="1">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #1</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="2">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #2</span>
+              </span>
+            </div>
+          </article>
+        </div>
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-2" role="button" tabindex="0" aria-label="Open match Player #3 versus Player #4">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="3">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #3</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="4">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #4</span>
+              </span>
+            </div>
+          </article>
+        </div>
+            </div>
+            <div class="bracket-link"></div>
+            
+          <article class="bracket-match  is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+          </div>
+        </div>
+              <div class="bracket-child">
+          <div class="bracket-branch is-left" data-depth="2">
+            <div class="bracket-children">
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-3" role="button" tabindex="0" aria-label="Open match Player #5 versus Player #6">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="5">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #5</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="6">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #6</span>
+              </span>
+            </div>
+          </article>
+        </div>
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-4" role="button" tabindex="0" aria-label="Open match Player #7 versus Player #8">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="7">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #7</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="8">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #8</span>
+              </span>
+            </div>
+          </article>
+        </div>
+            </div>
+            <div class="bracket-link"></div>
+            
+          <article class="bracket-match  is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+          </div>
+        </div>
+            </div>
+            <div class="bracket-link"></div>
+            
+          <article class="bracket-match  is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+          </div>
+        </div></div>
+          <div class="bracket-center">
+            <div class="bracket-center-finals">
+              <div class="bracket-center-side-link"></div>
+              
+          <article class="bracket-match is-final is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+              <div class="bracket-center-side-link"></div>
+            </div>
+          </div>
+          <div class="bracket-side is-right"><div class="bracket-side-track is-right">
+          <div class="bracket-branch is-right" data-depth="3">
+            <div class="bracket-children">
+              <div class="bracket-child">
+          <div class="bracket-branch is-right" data-depth="2">
+            <div class="bracket-children">
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-5" role="button" tabindex="0" aria-label="Open match Player #9 versus Player #10">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="9">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #9</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="10">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #10</span>
+              </span>
+            </div>
+          </article>
+        </div>
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-6" role="button" tabindex="0" aria-label="Open match Player #11 versus Player #12">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="11">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #11</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="12">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #12</span>
+              </span>
+            </div>
+          </article>
+        </div>
+            </div>
+            <div class="bracket-link"></div>
+            
+          <article class="bracket-match  is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+          </div>
+        </div>
+              <div class="bracket-child">
+          <div class="bracket-branch is-right" data-depth="2">
+            <div class="bracket-children">
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-7" role="button" tabindex="0" aria-label="Open match Player #13 versus Player #14">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="13">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #13</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="14">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #14</span>
+              </span>
+            </div>
+          </article>
+        </div>
+              <div class="bracket-child">
+          <article class="bracket-match   is-interactive" data-vs-trigger="true" data-match-id="m-r1-8" role="button" tabindex="0" aria-label="Open match Player #15 versus Player #16">
+            <div class="bracket-slot is-top shift-left  " data-slot-number="15">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #15</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right  " data-slot-number="16">
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">Player #16</span>
+              </span>
+            </div>
+          </article>
+        </div>
+            </div>
+            <div class="bracket-link"></div>
+            
+          <article class="bracket-match  is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+          </div>
+        </div>
+            </div>
+            <div class="bracket-link"></div>
+            
+          <article class="bracket-match  is-placeholder " >
+            <div class="bracket-slot is-top shift-left is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+            <div class="bracket-slot shift-right is-empty " >
+              
+              <span class="bracket-slot-main">
+                <span class="bracket-slot-name">TBD</span>
+              </span>
+            </div>
+          </article>
+        
+          </div>
+        </div></div>
+        
+        </div> </div> </div> <div id="bracket-stub" class="w-full hidden"> <p class="text-[clamp(1rem,2.1vw,1.5rem)] text-white text-center max-w-275 mx-auto uppercase leading-tight">
+The bracket will be revealed once all 16 players are registered. Register to secure your spot.
+</p> </div> </div> </div>  <script src="/_astro/bracket-data.js"></script>
+<script>
+  (() => {
+    const viewport = document.getElementById("bracket-viewport");
+    const stage = document.getElementById("bracket-stage");
+    const chips = document.querySelectorAll(".bracket-round-chip");
+    if (!viewport || !stage || chips.length === 0) return;
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((c) => c.classList.remove("is-active"));
+        chip.classList.add("is-active");
+        const r = chip.dataset.round;
+        const maxScroll = Math.max(0, stage.scrollWidth - viewport.clientWidth);
+        if (r === "1") {
+          viewport.scrollTo({ left: 0, behavior: "smooth" });
+        } else if (r === "2") {
+          viewport.scrollTo({ left: maxScroll * 0.28, behavior: "smooth" });
+        } else if (r === "3") {
+          viewport.scrollTo({ left: maxScroll * 0.40, behavior: "smooth" });
+        } else if (r === "4") {
+          viewport.scrollTo({ left: maxScroll * 0.50, behavior: "smooth" });
+        }
+      });
+    });
+
+    const hint = document.querySelector(".bracket-swipe-hint");
+    if (hint) {
+      viewport.addEventListener("scroll", () => {
+        hint.style.transition = "opacity 0.6s ease";
+        hint.style.opacity = "0";
+        setTimeout(() => { hint.style.display = "none"; }, 600);
+      }, { once: true, passive: true });
+    }
+  })();
+</script>   </div>    <div class="flex flex-col gap-12.5 pt-12 md:pt-16" id="about" data-astro-cid-rsd2vusr> <h2 class="block-title text-white text-center" data-astro-cid-rsd2vusr> About </h2>  <div id="about-reveal"> <p id="about-heading" class="px-4 text-[clamp(2rem,8.6vw,8rem)] font-bold text-white text-center max-w-345 mx-auto uppercase leading-[0.96]"> <span class="word-clip" style="--word-index:0;"> <span class="word-inner">DARE</span> </span><span class="word-clip" style="--word-index:1;"> <span class="word-inner">TO</span> </span><span class="word-clip" style="--word-index:2;"> <span class="word-inner">SURVIVE.</span> </span> </p> <p id="about-body" class="px-4 text-[clamp(0.95rem,1.8vw,1.5rem)] text-white text-center max-w-275 mx-auto mt-4 md:mt-7.5 leading-tight font-medium"> <span class="word-clip" style="--word-index:3;"> <span class="word-inner">DAREDOWN</span> </span><span class="word-clip" style="--word-index:4;"> <span class="word-inner">is</span> </span><span class="word-clip" style="--word-index:5;"> <span class="word-inner">a</span> </span><span class="word-clip" style="--word-index:6;"> <span class="word-inner">live</span> </span><span class="word-clip" style="--word-index:7;"> <span class="word-inner">Truth</span> </span><span class="word-clip" style="--word-index:8;"> <span class="word-inner">or</span> </span><span class="word-clip" style="--word-index:9;"> <span class="word-inner">Dare</span> </span><span class="word-clip" style="--word-index:10;"> <span class="word-inner">elimination</span> </span><span class="word-clip" style="--word-index:11;"> <span class="word-inner">tournament.</span> </span><span class="word-clip" style="--word-index:12;"> <span class="word-inner">16</span> </span><span class="word-clip" style="--word-index:13;"> <span class="word-inner">players.</span> </span><span class="word-clip" style="--word-index:14;"> <span class="word-inner">Random</span> </span><span class="word-clip" style="--word-index:15;"> <span class="word-inner">matchups.</span> </span><span class="word-clip" style="--word-index:16;"> <span class="word-inner">Challenges</span> </span><span class="word-clip" style="--word-index:17;"> <span class="word-inner">assigned</span> </span><span class="word-clip" style="--word-index:18;"> <span class="word-inner">live.</span> </span><span class="word-clip" style="--word-index:19;"> <span class="word-inner">Fail</span> </span><span class="word-clip" style="--word-index:20;"> <span class="word-inner">the</span> </span><span class="word-clip" style="--word-index:21;"> <span class="word-inner">dare</span> </span><span class="word-clip" style="--word-index:22;"> <span class="word-inner">and</span> </span><span class="word-clip" style="--word-index:23;"> <span class="word-inner">you're</span> </span><span class="word-clip" style="--word-index:24;"> <span class="word-inner">out.</span> </span><span class="word-clip" style="--word-index:25;"> <span class="word-inner">Last</span> </span><span class="word-clip" style="--word-index:26;"> <span class="word-inner">one</span> </span><span class="word-clip" style="--word-index:27;"> <span class="word-inner">standing</span> </span><span class="word-clip" style="--word-index:28;"> <span class="word-inner">takes</span> </span><span class="word-clip" style="--word-index:29;"> <span class="word-inner">£50.</span> </span> </p> </div>    </div>> </div>    </div> <div class="flex flex-col gap-12.5 pt-[126px]" id="rounds" data-astro-cid-rsd2vusr> <h2 class="block-title text-white text-left" data-astro-cid-rsd2vusr> EVENT ROUNDS </h2>  <div id="rounds-reveal" class="grid gap-8 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))] 2xl:[grid-template-columns:repeat(4,minmax(280px,1fr))]"> <div class="round-card flex flex-col gap-[40px] items-start justify-center w-full max-w-[280px]" style="--round-index:0;"> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[75px] text-white">1</p> <p class="text-[24px] text-white uppercase"> ROUND OF 16
+</p> </div> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[24px] text-white uppercase">16 PLAYERS</p> <p class="text-[24px] text-white uppercase"> Random matchups: Truth or Dare assigned live
+</p> </div> </div><div class="round-card flex flex-col gap-[40px] items-start justify-center w-full max-w-[280px]" style="--round-index:1;"> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[75px] text-white">2</p> <p class="text-[24px] text-white uppercase"> QUARTERFINALS
+</p> </div> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[24px] text-white uppercase">8 SURVIVORS</p> <p class="text-[24px] text-white uppercase"> Harder challenges: double or nothing
+</p> </div> </div><div class="round-card flex flex-col gap-[40px] items-start justify-center w-full max-w-[280px]" style="--round-index:2;"> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[75px] text-white">3</p> <p class="text-[24px] text-white uppercase"> SEMIFINALS
+</p> </div> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[24px] text-white uppercase">4 REMAIN</p> <p class="text-[24px] text-white uppercase"> One slip and you're out
+</p> </div> </div><div class="round-card flex flex-col gap-[40px] items-start justify-center w-full max-w-[280px]" style="--round-index:3;"> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[75px] text-white">4</p> <p class="text-[24px] text-white uppercase"> THE FINAL
+</p> </div> <div class="flex flex-col gap-[5px] items-start justify-center"> <p class="text-[24px] text-white uppercase">2 PLAYERS</p> <p class="text-[24px] text-white uppercase"> One dare. Winner takes £50
+</p> </div> </div> </div>    </div> <section id="special-thanks" class="w-full min-h-[82dvh] px-5 pb-12 pt-28 text-white flex flex-col items-center justify-start gap-12 md:gap-14"> <div id="special-thanks-reveal" class="w-full flex flex-col items-center"> <h2 class="text-center uppercase font-medium leading-none tracking-[-0.05em] text-[clamp(2.4rem,5.2vw,75px)]"> <span class="word-clip" style="--word-index:0;"> <span class="word-inner">WANT</span> </span><span class="word-clip" style="--word-index:1;"> <span class="word-inner">IN?</span> </span> </h2> <p class="mt-2 text-center uppercase font-light leading-tight tracking-[-0.01em] text-[clamp(0.8rem,1vw,1.45rem)]"> <span class="word-clip" style="--word-index:2;"> <span class="word-inner">Entry</span> </span><span class="word-clip" style="--word-index:3;"> <span class="word-inner">fee:</span> </span><span class="word-clip" style="--word-index:4;"> <span class="word-inner">£0.50.</span> </span><span class="word-clip" style="--word-index:5;"> <span class="word-inner">Prize:</span> </span><span class="word-clip" style="--word-index:6;"> <span class="word-inner">£50.</span> </span><span class="word-clip" style="--word-index:7;"> <span class="word-inner">16</span> </span><span class="word-clip" style="--word-index:8;"> <span class="word-inner">spots.</span> </span><span class="word-clip" style="--word-index:9;"> <span class="word-inner">First</span> </span><span class="word-clip" style="--word-index:10;"> <span class="word-inner">come,</span> </span><span class="word-clip" style="--word-index:11;"> <span class="word-inner">first</span> </span><span class="word-clip" style="--word-index:12;"> <span class="word-inner">served.</span> </span> </p> <ul class="w-full max-w-[720px] mx-auto mt-3 mb-3 text-center leading-[1.22] tracking-[-0.01em] text-[clamp(1.35rem,2.2vw,2.7rem)]"> <li> <a href="register/index.html" class="word-clip" style="--word-index:13;"> <span class="word-inner hover:text-white/70 transition-colors duration-300"> REGISTER NOW </span> </a> </li> </ul> <p class="w-full max-w-[1380px] text-center uppercase font-light tracking-[-0.01em] leading-tight text-[clamp(0.82rem,1.02vw,1.5rem)]"> <span class="word-clip" style="--word-index:14;"> <span class="word-inner">Questions?</span> </span><span class="word-clip" style="--word-index:15;"> <span class="word-inner">Contact</span> </span><span class="word-clip" style="--word-index:16;"> <span class="word-inner">the</span> </span><span class="word-clip" style="--word-index:17;"> <span class="word-inner">host</span> </span><span class="word-clip" style="--word-index:18;"> <span class="word-inner">to</span> </span><span class="word-clip" style="--word-index:19;"> <span class="word-inner">find</span> </span><span class="word-clip" style="--word-index:20;"> <span class="word-inner">out</span> </span><span class="word-clip" style="--word-index:21;"> <span class="word-inner">more.</span> </span> </p> </div> </section>   </div> <div id="application-modal" data-modal="application" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/75 backdrop-blur-sm" role="dialog" aria-modal="true" aria-hidden="true"> <div data-modal-panel class="mx-4 w-full max-w-[750px] border border-white/20 bg-black/95 p-[64px] md:p-10"> <button type="button" data-modal-close="application" class="ml-auto block border border-white/40 px-4 py-1 text-xs uppercase tracking-[0.2em] text-white/85 transition-colors hover:bg-white hover:text-black" aria-label="Close modal">
+Close
+</button> <div class="mt-4">  <div class="mx-auto max-w-3xl text-white"> <h2 class="text-center text-[36px] uppercase tracking-[-0.05em] md:text-[48px]">
+Join DAREDOWN
+</h2> <p class="text-center text-white/70 mt-4 text-[18px]">16 spots available, £0.50 entry, £50 prize</p> <div class="mt-8 flex justify-center"><a href="register/index.html" class="border border-white/40 px-8 py-3 text-sm uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-black">Register Now</a></div> </div>  </div> </div> </div> <script>(function(){const id = "application";
+const closeOnBackdrop = true;
+
+  (() => {
+    const TOKEN_KEY = "ngt_token";
+    const modal = document.querySelector(`[data-modal="${id}"]`);
+    if (!(modal instanceof HTMLElement)) return;
+
+    let lastFocused = null;
+    let closeTimeout = null;
+    const closeAnimationMs = 320;
+
+    const setQueryParam = (isOpen) => {
+      const url = new URL(window.location.href);
+      if (isOpen) {
+        url.searchParams.set("modal", id);
+      } else if (url.searchParams.get("modal") === id) {
+        url.searchParams.delete("modal");
+      }
+
+      window.history.replaceState(
+        {},
+        "",
+        `${url.pathname}${url.search}${url.hash}`,
+      );
+    };
+
+    const redirectToLogin = () => {
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.set("modal", id);
+      const next = `${nextUrl.pathname}${nextUrl.search}`;
+      window.location.href = `/login?next=${encodeURIComponent(next)}`;
+    };
+
+    const shouldRedirectToLogin = () => {
+      if (id !== "application") {
+        return false;
+      }
+
+      const token = localStorage.getItem(TOKEN_KEY);
+      if (token) {
+        return false;
+      }
+
+      redirectToLogin();
+      return true;
+    };
+
+    const openModal = () => {
+      if (shouldRedirectToLogin()) {
+        return;
+      }
+
+      if (closeTimeout) {
+        window.clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+
+      if (!modal.classList.contains("hidden")) {
+        return;
+      }
+
+      lastFocused = document.activeElement;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.classList.add("overflow-hidden");
+      setQueryParam(true);
+
+      requestAnimationFrame(() => {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+      });
+    };
+
+    const closeModal = () => {
+      if (modal.classList.contains("hidden")) {
+        return;
+      }
+
+      if (closeTimeout) {
+        window.clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+
+      modal.setAttribute("aria-hidden", "true");
+      modal.classList.remove("is-open");
+      document.body.classList.remove("overflow-hidden");
+      setQueryParam(false);
+
+      closeTimeout = window.setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        closeTimeout = null;
+
+        if (lastFocused instanceof HTMLElement) {
+          lastFocused.focus();
+        }
+      }, closeAnimationMs);
+    };
+
+    const openers = document.querySelectorAll(`[data-modal-open="${id}"]`);
+    openers.forEach((opener) => {
+      opener.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal();
+      });
+    });
+
+    const closers = document.querySelectorAll(`[data-modal-close="${id}"]`);
+    closers.forEach((closer) => {
+      closer.addEventListener("click", (event) => {
+        event.preventDefault();
+        closeModal();
+      });
+    });
+
+    if (closeOnBackdrop) {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+        closeModal();
+      }
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("modal") === id) {
+      if (shouldRedirectToLogin()) {
+        return;
+      }
+
+      openModal();
+    }
+  })();
+})();
+</script> <div id="vs-screen" data-vs-modal class="hidden" role="dialog" aria-modal="true" aria-hidden="true"> <div class="vs-screen__panel" data-vs-panel> <div class="vs-screen__topbar"> <button type="button" class="vs-screen__close" data-vs-close aria-label="Close VS screen">
+×
+</button> </div> <p class="vs-screen__global-status is-hidden" data-vs-global-status aria-live="polite"></p> <div class="vs-screen__body"> <section class="vs-screen__side" data-vs-side="A"> <header class="vs-screen__participant"> <div class="vs-screen__participant-main"> <div class="vs-screen__avatar" data-field="avatar"> <img data-field="avatar-image" class="vs-screen__avatar-image hidden" src="#" alt=""> <span data-field="avatar-fallback" class="vs-screen__avatar-fallback">?</span> </div> <div class="vs-screen__participant-meta"> <h3 class="vs-screen__participant-name" data-field="name">TBD</h3> <div class="vs-screen__socials" data-field="socials"></div> </div> </div> <p class="vs-screen__result-badge is-hidden" data-field="result-badge" aria-live="polite"></p> </header> <div class="vs-screen__media-row"> <div class="vs-screen__video-shell" style="display:flex;align-items:center;justify-content:center;min-height:120px;"> <div class="vs-screen__video-placeholder" data-field="video-placeholder" style="text-align:center;padding:20px;"> <span class="vs-screen__video-placeholder-text" style="font-size:0.85rem;opacity:0.6;">Match details shown below</span> </div> </div> <div class="vs-screen__averages" tabindex="0" aria-label="VS screen votes"> <p class="vs-screen__averages-label">votes</p> <div class="vs-screen__average-line is-jury"> <span data-field="jury-average" class="vs-screen__average-value">--</span> <span class="vs-screen__average-caption">host</span> </div> <div class="vs-screen__average-line"> <span data-field="audience-average" class="vs-screen__average-value">--</span> <span class="vs-screen__average-caption">audience</span> </div> <div class="vs-screen__averages-tooltip" data-field="averages-tooltip" role="tooltip"></div> </div> </div> <div class="vs-screen__meta-row"> <div class="vs-screen__description-block"> <p class="vs-screen__description-label">CHALLENGE ASSIGNED</p> <p class="vs-screen__description-text" data-field="description">
+Challenge will be revealed live by the host.
+</p> </div> <div class="vs-screen__your-rating"> <span class="vs-screen__your-rating-value" data-field="your-rating">0</span> <span class="vs-screen__your-rating-label">your vote</span> </div> </div> <form class="vs-screen__form" data-field="form" novalidate> <div class="vs-screen__criteria-columns"> <div class="vs-screen__criteria-column"> <label class="vs-screen__criterion" data-criterion="completed"> <span class="vs-screen__criterion-topline"> <span class="vs-screen__criterion-label">completed</span> <span class="vs-screen__criterion-value" data-field="criterion-value">0</span> </span> <input data-field="criterion-input" type="range" min="0" max="1" step="1" value="0" aria-label="completed challenge"> </label> </div><div class="vs-screen__criteria-column"> <label class="vs-screen__criterion is-overall" data-criterion="overall"> <span class="vs-screen__criterion-topline"> <span class="vs-screen__criterion-label">overall</span> <span class="vs-screen__criterion-value" data-field="criterion-value">0</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" aria-label="overall score"> </label> <div class="vs-screen__form-actions"> <button type="submit" class="vs-screen__publish" data-field="publish">
+VOTE
+</button> <p class="vs-screen__side-status is-hidden" data-field="side-status" aria-live="polite"></p> </div> </div> </div> <div class="vs-screen__criteria-help"> <div class="vs-screen__criteria-help-wrap"> <button type="button" class="vs-screen__criteria-help-trigger" aria-label="How does voting work?">
+How does voting work?
+</button> <div class="vs-screen__criteria-help-tooltip"> <ul class="vs-screen__criteria-help-list"> <li class="vs-screen__criteria-help-item"> <p class="vs-screen__criteria-help-title">completed</p> <p class="vs-screen__criteria-help-text"> Did the player successfully complete their Truth or Dare challenge? (0 = No, 1 = Yes) </p> </li><li class="vs-screen__criteria-help-item"> <p class="vs-screen__criteria-help-title">overall</p> <p class="vs-screen__criteria-help-text"> How entertaining or impressive was their performance? Rate from 0 to 10. </p> </li> </ul> </div> </div> </div> </form> </section><section class="vs-screen__side" data-vs-side="B"> <header class="vs-screen__participant"> <div class="vs-screen__participant-main"> <div class="vs-screen__avatar" data-field="avatar"> <img data-field="avatar-image" class="vs-screen__avatar-image hidden" src="#" alt=""> <span data-field="avatar-fallback" class="vs-screen__avatar-fallback">?</span> </div> <div class="vs-screen__participant-meta"> <h3 class="vs-screen__participant-name" data-field="name">TBD</h3> <div class="vs-screen__socials" data-field="socials"></div> </div> </div> <p class="vs-screen__result-badge is-hidden" data-field="result-badge" aria-live="polite"></p> </header> <div class="vs-screen__media-row"> <div class="vs-screen__video-shell" style="display:flex;align-items:center;justify-content:center;min-height:120px;"> <div class="vs-screen__video-placeholder" data-field="video-placeholder" style="text-align:center;padding:20px;"> <span class="vs-screen__video-placeholder-text" style="font-size:0.85rem;opacity:0.6;">Match details shown below</span> </div> </div> <div class="vs-screen__averages" tabindex="0" aria-label="VS screen votes"> <p class="vs-screen__averages-label">votes</p> <div class="vs-screen__average-line is-jury"> <span data-field="jury-average" class="vs-screen__average-value">--</span> <span class="vs-screen__average-caption">host</span> </div> <div class="vs-screen__average-line"> <span data-field="audience-average" class="vs-screen__average-value">--</span> <span class="vs-screen__average-caption">audience</span> </div> <div class="vs-screen__averages-tooltip" data-field="averages-tooltip" role="tooltip"></div> </div> </div> <div class="vs-screen__meta-row"> <div class="vs-screen__description-block"> <p class="vs-screen__description-label">CHALLENGE ASSIGNED</p> <p class="vs-screen__description-text" data-field="description">
+Challenge will be revealed live by the host.
+</p> </div> <div class="vs-screen__your-rating"> <span class="vs-screen__your-rating-value" data-field="your-rating">0</span> <span class="vs-screen__your-rating-label">your vote</span> </div> </div> <form class="vs-screen__form" data-field="form" novalidate> <div class="vs-screen__criteria-columns"> <div class="vs-screen__criteria-column"> <label class="vs-screen__criterion" data-criterion="completed"> <span class="vs-screen__criterion-topline"> <span class="vs-screen__criterion-label">completed</span> <span class="vs-screen__criterion-value" data-field="criterion-value">0</span> </span> <input data-field="criterion-input" type="range" min="0" max="1" step="1" value="0" aria-label="completed challenge"> </label> </div><div class="vs-screen__criteria-column"> <label class="vs-screen__criterion is-overall" data-criterion="overall"> <span class="vs-screen__criterion-topline"> <span class="vs-screen__criterion-label">overall</span> <span class="vs-screen__criterion-value" data-field="criterion-value">0</span> </span> <input data-field="criterion-input" type="range" min="0" max="10" step="1" value="0" aria-label="overall score"> </label> <div class="vs-screen__form-actions"> <button type="submit" class="vs-screen__publish" data-field="publish">
+VOTE
+</button> <p class="vs-screen__side-status is-hidden" data-field="side-status" aria-live="polite"></p> </div> </div> </div> <div class="vs-screen__criteria-help"> <div class="vs-screen__criteria-help-wrap"> <button type="button" class="vs-screen__criteria-help-trigger" aria-label="How does voting work?">
+How does voting work?
+</button> <div class="vs-screen__criteria-help-tooltip"> <ul class="vs-screen__criteria-help-list"> <li class="vs-screen__criteria-help-item"> <p class="vs-screen__criteria-help-title">completed</p> <p class="vs-screen__criteria-help-text"> Did the player successfully complete their Truth or Dare challenge? (0 = No, 1 = Yes) </p> </li><li class="vs-screen__criteria-help-item"> <p class="vs-screen__criteria-help-title">overall</p> <p class="vs-screen__criteria-help-text"> How entertaining or impressive was their performance? Rate from 0 to 10. </p> </li> </ul> </div> </div> </div> </form> </section> <div class="vs-screen__divider" aria-hidden="true"> <span>VS</span> </div> </div> </div> </div>    <script src="/_astro/bundle.index.js"></script></main> <div> <img class="relative bottom-[-8px] px-3 w-full max-w-450 mx-auto" src="/footer_newgen.svg" alt="DAREDOWN"> <footer class="w-full px-3 md:px-18 py-5 bg-white"> <div class="max-w-450 w-full mx-auto grid grid-cols-1 gap-8 items-start sm:grid-cols-2 lg:grid-cols-4 lg:items-stretch lg:gap-10"> <div class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <span>DAREDOWN</span> <span>TRUTH OR DARE</span> <span>TOURNAMENT</span> </div> <ol class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="rules/index.html">Rules</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="index.html#bracket">Bracket</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="ngc/index.html">Challenges</a> </li> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="index.html#about">About</a> </li> </ol> <ol class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <li> <a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="register/index.html">
+Register
+</a> </li> </ol> <div class="w-full flex flex-col gap-3 text-black text-[18px] leading-tight tracking-tight sm:text-[20px] lg:text-[24px] lg:gap-7.5"> <span>
+Hosted by the crew
+</span> </div> </div> </footer> </div>  <script>
+      (() => {
+        const header = document.getElementById("site-header");
+        if (!header) return;
+
+        const toggleHeaderBg = () => {
+          header.classList.toggle("header-bg", window.scrollY > 0);
+        };
+
+        toggleHeaderBg();
+        window.addEventListener("scroll", toggleHeaderBg, { passive: true });
+      })();
+    </script> <script>
+      (() => {
+        const header = document.getElementById("site-header");
+        if (!(header instanceof HTMLElement)) return;
+
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        const anchorLinks = header.querySelectorAll('a[href^="/#"]');
+        anchorLinks.forEach((link) => {
+          if (!(link instanceof HTMLAnchorElement)) return;
+
+          link.addEventListener("click", (event) => {
+            const url = new URL(link.href, window.location.origin);
+            if (url.pathname !== window.location.pathname) {
+              return;
+            }
+
+            const targetId = url.hash.replace(/^#/, "");
+            if (!targetId) return;
+
+            const target = document.getElementById(targetId);
+            if (!(target instanceof HTMLElement)) return;
+
+            event.preventDefault();
+
+            const headerOffset = header.getBoundingClientRect().height;
+            const top =
+              window.scrollY +
+              target.getBoundingClientRect().top -
+              headerOffset -
+              12;
+
+            window.scrollTo({
+              top: Math.max(0, top),
+              behavior: prefersReducedMotion ? "auto" : "smooth",
+            });
+
+            window.history.pushState(
+              {},
+              "",
+              `${window.location.pathname}${window.location.search}#${targetId}`,
+            );
+          });
+        });
+      })();
+    </script>
+    <script src="/auth-client.js"></script>
+</body> 
+</html>

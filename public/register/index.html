@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Register | DAREDOWN</title>
+  <meta name="description" content="Register for DAREDOWN: the live Truth or Dare elimination tournament. 16 spots, £0.50 entry, £50 prize.">
+  <meta name="robots" content="index,follow">
+  <link rel="stylesheet" href="/_astro/Layout.BHgu_56x.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/theme.css">
+  <script>
+    (function () {
+      try {
+        function readTheme() {
+          try { var l = localStorage.getItem("ngt_gender_theme"); if (l === "boy" || l === "girl") return l; } catch(e) {}
+          try { var s = sessionStorage.getItem("ngt_gender_theme"); if (s === "boy" || s === "girl") return s; } catch(e) {}
+          try { var m = document.cookie.match(/(?:^|; )ngt_gender_theme=([^;]*)/); if (m && (m[1] === "boy" || m[1] === "girl")) return m[1]; } catch(e) {}
+          try { if (window.name && (window.name === "ngt_theme:boy" || window.name === "ngt_theme:girl")) return window.name.replace("ngt_theme:", ""); } catch(e) {}
+          return null;
+        }
+        var savedTheme = readTheme();
+        if (savedTheme === "boy" || savedTheme === "girl") {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          document.documentElement.classList.add("has-theme");
+        }
+      } catch(e) {}
+    })();
+  </script>
+  <style>
+    /* ── Page Layout ── */
+    .register-page {
+      min-height: 100vh;
+      background: #050505;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Header ── */
+    .reg-header {
+      position: fixed;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 100%;
+      z-index: 50;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+    }
+    .reg-header-inner {
+      width: 100%;
+      max-width: 1720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .reg-logo {
+      font-size: clamp(0.95rem, 3.7vw, 1.875rem);
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.13s;
+    }
+    .reg-logo:hover { color: rgba(255,255,255,0.7); }
+    .reg-nav {
+      display: flex;
+      gap: clamp(16px, 3.2vw, 50px);
+      list-style: none;
+      padding: 0; margin: 0;
+      font-size: clamp(0.95rem, 3.2vw, 1.5rem);
+      letter-spacing: -0.02em;
+    }
+    .reg-nav a {
+      color: #fff; text-decoration: none;
+      transition: color 0.13s, text-decoration 0.13s;
+    }
+    .reg-nav a:hover { color: rgba(255,255,255,0.7); text-decoration: underline; }
+
+    /* ── Main Content ── */
+    .reg-main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: clamp(130px, 17vh, 180px) 20px clamp(60px, 8vh, 100px);
+    }
+
+    /* ── Event Badge ── */
+    .reg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+    }
+    .reg-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff4b82;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ── Title ── */
+    .reg-title {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 16px;
+    }
+    .reg-subtitle {
+      font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      margin: 0 0 48px;
+    }
+
+    /* ── Form ── */
+    .reg-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .reg-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .reg-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .reg-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 16px; /* Prevents auto-zoom on mobile */
+      min-height: 48px;
+      padding: 12px 16px;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.18s, background 0.18s;
+      font-family: inherit;
+      letter-spacing: -0.01em;
+      touch-action: manipulation;
+    }
+    .reg-input::placeholder { color: rgba(255,255,255,0.25); }
+    .reg-input:focus {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* ── Entry fee notice ── */
+    .reg-entry-notice {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255,255,255,0.02);
+    }
+    .reg-entry-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .reg-entry-amounts {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .reg-entry-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .reg-entry-value {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #fff;
+    }
+    .reg-entry-desc {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .reg-entry-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+
+    /* ── Consent ── */
+    .reg-consent {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      gap: 12px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .reg-consent-check {
+      width: 22px; height: 22px;
+      min-width: 22px; min-height: 22px;
+      border: 1px solid rgba(255,255,255,0.25);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      position: relative;
+      background: transparent;
+      transition: background 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+    }
+    .reg-consent-check:checked {
+      background: #fff;
+      border-color: #fff;
+    }
+    .reg-consent-check:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 7px;
+      width: 6px; height: 11px;
+      border: 2px solid #000;
+      border-top: none; border-left: none;
+      transform: rotate(45deg);
+    }
+    .reg-consent-text {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    .reg-consent-text a { color: rgba(255,255,255,0.75); }
+
+    /* ── Submit ── */
+    .reg-submit {
+      border: 1px solid rgba(255,255,255,0.4);
+      background: transparent;
+      color: #fff;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      min-height: 50px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      font-family: inherit;
+      width: 100%;
+      margin-top: 8px;
+      touch-action: manipulation;
+    }
+    .reg-submit:hover {
+      background: #fff;
+      color: #000;
+    }
+    .reg-submit:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* ── Success state ── */
+    .reg-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 20px;
+      padding: 64px 0;
+    }
+    .reg-success-icon {
+      font-size: 3rem;
+    }
+    .reg-success-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+    .reg-success-text {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 400px;
+      line-height: 1.5;
+    }
+
+    /* ── Error ── */
+    .reg-error {
+      font-size: 0.78rem;
+      color: #ff6b6b;
+      letter-spacing: 0.05em;
+      display: none;
+    }
+    .reg-error.visible { display: block; }
+
+    /* ── Footer ── */
+    .reg-footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .reg-footer a { color: rgba(255,255,255,0.4); text-decoration: underline; }
+
+    /* ── Girl theme overrides ── */
+    html[data-theme="girl"] .register-page { background: #fff5f8; color: #1a0a10; }
+    html[data-theme="girl"] .reg-logo,
+    html[data-theme="girl"] .reg-nav a,
+    html[data-theme="girl"] .reg-title { color: #1a0a10; }
+    html[data-theme="girl"] .reg-nav a:hover { color: rgba(26,10,16,0.6); }
+    html[data-theme="girl"] .reg-subtitle { color: rgba(26,10,16,0.55); }
+    html[data-theme="girl"] .reg-input {
+      background: rgba(26,10,16,0.04);
+      border-color: rgba(26,10,16,0.12);
+      color: #1a0a10;
+    }
+    html[data-theme="girl"] .reg-input:focus { border-color: #ff4b82; background: rgba(255,75,130,0.04); }
+    html[data-theme="girl"] .reg-entry-notice { border-color: rgba(26,10,16,0.1); background: rgba(255,75,130,0.03); }
+    html[data-theme="girl"] .reg-entry-label,
+    html[data-theme="girl"] .reg-entry-desc,
+    html[data-theme="girl"] .reg-entry-note { color: rgba(26,10,16,0.45); }
+    html[data-theme="girl"] .reg-entry-value { color: #1a0a10; }
+    html[data-theme="girl"] .reg-badge { border-color: rgba(26,10,16,0.2); color: rgba(26,10,16,0.5); }
+    html[data-theme="girl"] .reg-consent-text { color: rgba(26,10,16,0.5); }
+    html[data-theme="girl"] .reg-consent-text a { color: rgba(26,10,16,0.7); }
+    html[data-theme="girl"] .reg-consent-check { border-color: rgba(26,10,16,0.3); }
+    html[data-theme="girl"] .reg-consent-check:checked { background: #ff4b82; border-color: #ff4b82; }
+    html[data-theme="girl"] .reg-consent-check:checked::after { border-color: #fff; }
+    html[data-theme="girl"] .reg-submit {
+      border-color: #ff4b82; color: #ff4b82;
+    }
+    html[data-theme="girl"] .reg-submit:hover { background: #ff4b82; color: #fff; }
+    html[data-theme="girl"] .reg-label { color: rgba(26,10,16,0.5); }
+    html[data-theme="girl"] .reg-footer,
+    html[data-theme="girl"] .reg-footer a { color: rgba(26,10,16,0.3); }
+
+    /* ── Auth Tabs & OAuth ── */
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 24px;
+    }
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      touch-action: manipulation;
+    }
+    .auth-tab.active {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+    .oauth-container {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .oauth-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      min-height: 48px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: background 0.2s;
+      touch-action: manipulation;
+    }
+    .oauth-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .auth-divider {
+      text-align: center;
+      margin: 24px 0;
+      position: relative;
+    }
+    .auth-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      z-index: 1;
+    }
+    .auth-divider span {
+      position: relative;
+      z-index: 2;
+      background: #050505;
+      padding: 0 16px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    html[data-theme="girl"] .auth-tabs { border-color: rgba(26,10,16,0.2); }
+    html[data-theme="girl"] .auth-tab { color: rgba(26,10,16,0.5); }
+    html[data-theme="girl"] .auth-tab.active { color: #1a0a10; border-bottom-color: #ff4b82; }
+    html[data-theme="girl"] .oauth-btn { background: rgba(26,10,16,0.03); border-color: rgba(26,10,16,0.15); color: #1a0a10; }
+    html[data-theme="girl"] .oauth-btn:hover { background: rgba(26,10,16,0.08); }
+    html[data-theme="girl"] .auth-divider::before { background: rgba(26,10,16,0.15); }
+    html[data-theme="girl"] .auth-divider span { background: #fff5f8; color: rgba(26,10,16,0.4); }
+
+    @media (max-width: 768px) {
+      .reg-header {
+        min-height: 60px !important;
+        padding: 8px 12px !important;
+        background: rgba(5, 5, 5, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      html[data-theme="girl"] .reg-header {
+        background: rgba(250, 245, 240, 0.95) !important;
+        border-bottom-color: #F5CAD8 !important;
+      }
+      .reg-header-inner {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+      }
+      .reg-nav {
+        display: none !important;
+      }
+      .reg-main {
+        padding: clamp(88px, 14vh, 120px) 16px 40px !important;
+      }
+      .oauth-container {
+        flex-direction: column !important;
+      }
+    }
+  </style>
+</head>
+<body class="register-page">
+
+  <!-- Header -->
+  <header id="site-header" class="reg-header">
+    <div class="reg-header-inner">
+      <a href="../index.html" class="reg-logo">DAREDOWN</a>
+      <nav>
+        <ul class="reg-nav">
+          <li><a href="../ngc/index.html">Challenges</a></li>
+          <li><a href="../index.html#bracket">Bracket</a></li>
+          <li><a href="../rules/index.html">Rules</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li>
+            <button id="theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+              <span class="theme-toggle-indicator"></span>
+              <span class="theme-toggle-text">BOY</span>
+            </button>
+          </li>
+          <li>
+            <a id="login-link" class="transition-colors duration-130 hover:text-white/70 hover:underline" href="index.html">Register / Log In</a>
+            <div id="auth-menu" class="relative hidden">
+              <button id="auth-avatar-button" type="button" class="auth-user-pill" aria-haspopup="menu" aria-expanded="false">
+                <div class="w-6 h-6 rounded-full bg-white/20 overflow-hidden flex items-center justify-center flex-shrink-0">
+                  <img id="auth-avatar-image" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+                  <span id="auth-avatar-fallback" class="text-xs uppercase font-bold text-white">U</span>
+                </div>
+                <span id="auth-username-display" class="text-sm font-medium">User</span>
+              </button>
+              <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 min-w-45 bg-black/95 backdrop-blur-xl border border-white/20 rounded-md p-1.5 shadow-2xl z-50" role="menu">
+                <a href="/profile" class="block px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Profile</a>
+                <a id="judge-link" href="../judge/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Host Panel</a>
+                <a id="admin-link" href="/admin/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Admin Dashboard</a>
+                <button id="theme-switch-menu-btn" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Switch Style (Boy/Girl)</button>
+                <button id="logout-button" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Log out</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- Mobile Header Bar Controls -->
+<div class="mobile-header-actions">
+  <button id="mobile-theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+    <span class="theme-toggle-indicator"></span>
+    <span class="theme-toggle-text">BOY</span>
+  </button>
+  <div id="mobile-auth-wrapper" class="relative">
+    <a id="mobile-login-link" class="mobile-login-btn" href="index.html">Log In</a>
+    <div id="mobile-auth-menu" class="relative hidden">
+      <button id="mobile-auth-trigger" type="button" class="mobile-profile-pill" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu">
+        <div class="mobile-profile-avatar">
+          <img id="mobile-auth-avatar-img" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+          <span id="mobile-auth-avatar-fallback" class="mobile-avatar-initial">U</span>
+        </div>
+        <span id="mobile-auth-username" class="mobile-profile-name">User</span>
+        <svg class="mobile-profile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M2.5 4.5L6 8L9.5 4.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div id="mobile-auth-dropdown" class="mobile-profile-dropdown hidden" role="menu">
+        <div class="mobile-dropdown-header">
+          <span id="mobile-dropdown-display-name" class="mobile-dropdown-user">User</span>
+          <span id="mobile-dropdown-user-role" class="mobile-dropdown-badge">Contestant</span>
+        </div>
+        <div class="mobile-dropdown-divider"></div>
+        <a id="mobile-dropdown-profile-link" href="/profile" class="mobile-dropdown-item" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span>Profile</span>
+        </a>
+        <a id="mobile-dropdown-judge-link" href="../judge/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" />
+          </svg>
+          <span>Host Panel</span>
+        </a>
+        <a id="mobile-dropdown-admin-link" href="/admin/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Admin Dashboard</span>
+        </a>
+        <div class="mobile-dropdown-divider"></div>
+        <button id="mobile-dropdown-logout-btn" type="button" class="mobile-dropdown-item is-logout" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button id="mobile-menu-toggle" type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+  </button>
+</div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-brand">DAREDOWN</span>
+        <button id="mobile-nav-close-btn" type="button" class="mobile-nav-close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="../ngc/index.html" class="mobile-nav-link is-highlight"><span>Challenges (Truth/Dare)</span><span>&rarr;</span></a></li>
+        <li><a href="../index.html#bracket" class="mobile-nav-link"><span>Tournament Bracket</span><span>&rarr;</span></a></li>
+        <li><a href="../rules/index.html" class="mobile-nav-link"><span>Official Rules</span><span>&rarr;</span></a></li>
+        <li><a href="../index.html#about" class="mobile-nav-link"><span>About DAREDOWN</span><span>&rarr;</span></a></li>
+        <li><a href="/profile" class="mobile-nav-link" id="mobile-drawer-auth-link"><span>Register / Profile</span><span>&rarr;</span></a></li>
+        <li id="mobile-drawer-judge-item" class="hidden"><a href="../judge/index.html" class="mobile-nav-link"><span>Host Panel</span><span>&rarr;</span></a></li>
+        <li id="mobile-drawer-admin-item" class="hidden"><a href="/admin/index.html" class="mobile-nav-link"><span>Admin Dashboard</span><span>&rarr;</span></a></li>
+      </ul>
+      <div class="mobile-nav-footer">
+        <button id="mobile-drawer-theme-btn" type="button" class="mobile-nav-link" style="width:100%;text-align:left;cursor:pointer;">
+          <span>Switch Theme (Boy / Girl)</span>
+          <span id="mobile-drawer-theme-name" style="font-size:0.8rem;opacity:0.7;">BOY</span>
+        </button>
+        <button id="mobile-drawer-logout-btn" type="button" class="mobile-nav-link hidden" style="width:100%;text-align:left;cursor:pointer;color:#ff4b82;">
+          <span>Log Out</span>
+          <span>&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main class="reg-main" id="register-main">
+
+    <div class="reg-badge">
+      <span class="reg-badge-dot"></span>
+      <span>Registrations open</span>
+    </div>
+
+    <h1 class="reg-title">Join<br>DAREDOWN.</h1>
+    <p class="reg-subtitle">
+      16 spots. One winner. Truth or Dare decides everything.<br>
+      Create your profile to enter the tournament.
+    </p>
+
+    <!-- Entry Fee Info -->
+    <div class="reg-entry-notice">
+      <span class="reg-entry-label">Event Details</span>
+      <div class="reg-entry-amounts">
+        <div class="reg-entry-item">
+          <span class="reg-entry-value">£0.50</span>
+          <span class="reg-entry-desc">Entry Fee</span>
+        </div>
+        <div class="reg-entry-item">
+          <span class="reg-entry-value">£50</span>
+          <span class="reg-entry-desc">Prize Pool</span>
+        </div>
+        <div class="reg-entry-item">
+          <span class="reg-entry-value">16</span>
+          <span class="reg-entry-desc">Max Players</span>
+        </div>
+      </div>
+      <p class="reg-entry-note">
+        Entry fee collected by the host at event check-in. First come, first served.
+        Payment processed in-person at check-in. No card details required here.
+      </p>
+    </div>
+
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="tab-register">Register</div>
+      <div class="auth-tab" id="tab-login">Login</div>
+    </div>
+
+    <!-- Registration Form -->
+    <form class="reg-form" id="register-form" novalidate>
+      <div class="reg-field">
+        <label class="reg-label" for="reg-username">Display Name</label>
+        <input class="reg-input" type="text" id="reg-username" name="username" placeholder="Enter your name or alias" maxlength="30" autocomplete="nickname" required>
+        <span class="reg-error" id="err-reg-username">Please enter a display name (max 30 characters).</span>
+      </div>
+
+      <div class="reg-field">
+        <label class="reg-label" for="reg-email">Email (optional)</label>
+        <input class="reg-input" type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="email">
+        <span class="reg-error" id="err-reg-email">Please enter a valid email address.</span>
+      </div>
+
+      <div class="reg-field">
+        <label class="reg-label" for="reg-password">Password</label>
+        <input class="reg-input" type="password" id="reg-password" name="password" placeholder="Create a password" required>
+        <span class="reg-error" id="err-reg-password">Password is required.</span>
+      </div>
+
+      <label class="reg-consent" for="reg-consent">
+        <input type="checkbox" class="reg-consent-check" id="reg-consent" required>
+        <span class="reg-consent-text">
+          I agree to participate in good faith, accept the <a href="../rules/index.html">event rules</a>.
+        </span>
+      </label>
+      <span class="reg-error" id="err-consent">You must agree to the event rules.</span>
+      <span class="reg-error" id="err-reg-general"></span>
+
+      <button type="submit" class="reg-submit" id="reg-submit-btn">Register Now</button>
+    </form>
+
+    <!-- Login Form -->
+    <form class="reg-form" id="login-form" novalidate style="display: none;">
+      <div class="reg-field">
+        <label class="reg-label" for="login-username">Display Name</label>
+        <input class="reg-input" type="text" id="login-username" name="username" placeholder="Enter your display name" required>
+      </div>
+
+      <div class="reg-field">
+        <label class="reg-label" for="login-password">Password</label>
+        <input class="reg-input" type="password" id="login-password" name="password" placeholder="Enter your password" required>
+      </div>
+      
+      <span class="reg-error" id="err-login-general"></span>
+
+      <button type="submit" class="reg-submit" id="login-submit-btn">Login</button>
+    </form>
+
+    <div class="auth-divider"><span>OR</span></div>
+    
+    <div class="oauth-container">
+      <a href="/api/auth/google" class="oauth-btn">Google</a>
+      <a href="/api/auth/discord" class="oauth-btn">Discord</a>
+    </div>
+
+    <!-- Success message -->
+    <div class="reg-success" id="reg-success">
+      <div class="reg-success-icon">🎭</div>
+      <h2 class="reg-success-title">You're Registered!</h2>
+      <p class="reg-success-text">
+        Your entry has been noted. The host will confirm your spot before the event.
+        Check back on the <a href="../index.html#bracket" style="color:inherit;text-decoration:underline;">bracket</a> to see when you're up.
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="reg-footer">
+    <a href="../index.html">← Back to DAREDOWN</a>
+  </footer>
+
+  <script>
+    (() => {
+      // Apply header background on scroll
+      const header = document.getElementById('site-header');
+      if (header) {
+        const toggleBg = () => header.classList.toggle('header-bg', window.scrollY > 0);
+        toggleBg();
+        window.addEventListener('scroll', toggleBg, { passive: true });
+      }
+
+      // Tabs Logic
+      const tabReg = document.getElementById('tab-register');
+      const tabLog = document.getElementById('tab-login');
+      const formReg = document.getElementById('register-form');
+      const formLog = document.getElementById('login-form');
+      const successEl = document.getElementById('reg-success');
+      const mainEl = document.getElementById('register-main');
+
+      tabReg.addEventListener('click', () => {
+        tabReg.classList.add('active'); tabLog.classList.remove('active');
+        formReg.style.display = 'flex'; formLog.style.display = 'none';
+      });
+
+      tabLog.addEventListener('click', () => {
+        tabLog.classList.add('active'); tabReg.classList.remove('active');
+        formLog.style.display = 'flex'; formReg.style.display = 'none';
+      });
+
+      const showErr = (id, show, msg) => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (msg) el.textContent = msg;
+          el.classList.toggle('visible', show);
+        }
+      };
+
+      // REGISTRATION
+      formReg.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('reg-username').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const password = document.getElementById('reg-password').value;
+        const consent = document.getElementById('reg-consent').checked;
+        
+        let valid = true;
+        if (!username || username.length > 30) { showErr('err-reg-username', true); valid = false; } else { showErr('err-reg-username', false); }
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-reg-email', true); valid = false; } else { showErr('err-reg-email', false); }
+        if (!password) { showErr('err-reg-password', true); valid = false; } else { showErr('err-reg-password', false); }
+        if (!consent) { showErr('err-consent', true); valid = false; } else { showErr('err-consent', false); }
+        if (!valid) return;
+
+        const btn = document.getElementById('reg-submit-btn');
+        btn.disabled = true; btn.textContent = 'Registering...';
+        showErr('err-reg-general', false);
+
+        try {
+          const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Registration failed');
+
+          // Immediately update global auth state
+          if (window.Auth && data.user) {
+            window.Auth.setUser(data.user);
+          }
+
+          // Success
+          formReg.style.display = 'none';
+          document.querySelector('.auth-tabs').style.display = 'none';
+          document.querySelector('.oauth-container').style.display = 'none';
+          document.querySelector('.auth-divider').style.display = 'none';
+          mainEl.querySelectorAll('.reg-badge, .reg-title, .reg-subtitle, .reg-entry-notice').forEach(el => el.style.display = 'none');
+          successEl.style.display = 'flex';
+          successEl.querySelector('.reg-success-title').textContent = "You're Registered!";
+          
+          setTimeout(() => { window.location.href = '/'; }, 1000);
+        } catch (err) {
+          showErr('err-reg-general', true, err.message);
+          btn.disabled = false; btn.textContent = 'Register Now';
+        }
+      });
+
+      // LOGIN
+      formLog.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('login-username').value.trim();
+        const password = document.getElementById('login-password').value;
+        
+        const btn = document.getElementById('login-submit-btn');
+        btn.disabled = true; btn.textContent = 'Logging in...';
+        showErr('err-login-general', false);
+
+        try {
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Login failed');
+
+          // Immediately update global auth state
+          if (window.Auth && data.user) {
+            window.Auth.setUser(data.user);
+          }
+
+          // Success
+          formLog.style.display = 'none';
+          document.querySelector('.auth-tabs').style.display = 'none';
+          document.querySelector('.oauth-container').style.display = 'none';
+          document.querySelector('.auth-divider').style.display = 'none';
+          mainEl.querySelectorAll('.reg-badge, .reg-title, .reg-subtitle, .reg-entry-notice').forEach(el => el.style.display = 'none');
+          successEl.style.display = 'flex';
+          successEl.querySelector('.reg-success-title').textContent = "Welcome Back!";
+          successEl.querySelector('.reg-success-text').innerHTML = `Redirecting...`;
+
+          const params = new URLSearchParams(window.location.search);
+          const nextParam = params.get('next');
+          const safeNext = (nextParam && nextParam.startsWith('/') && !nextParam.startsWith('//')) ? nextParam : null;
+          const isAdminUser = (data.user?.role || '').toLowerCase() === 'admin';
+          const dest = safeNext || (isAdminUser ? '/admin/index.html' : '/');
+
+          setTimeout(() => { window.location.href = dest; }, 800);
+        } catch (err) {
+          showErr('err-login-general', true, err.message);
+          btn.disabled = false; btn.textContent = 'Login';
+        }
+      });
+
+      // Check URL for OAuth errors
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('error') === 'oauth_failed') {
+        showErr('err-reg-general', true, 'OAuth authentication failed. Please try again.');
+      }
+    })();
+  </script>
+  <script src="/auth-client.js"></script>
+</body>
+</html>

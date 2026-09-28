@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>User Profile | DAREDOWN</title>
+  <meta name="description" content="Manage your DAREDOWN tournament profile, avatar, display name, and security settings.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/_astro/Layout.BHgu_56x.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/theme.css">
+  <script>
+    (function () {
+      try {
+        function readTheme() {
+          try { var l = localStorage.getItem("ngt_gender_theme"); if (l === "boy" || l === "girl") return l; } catch(e) {}
+          try { var s = sessionStorage.getItem("ngt_gender_theme"); if (s === "boy" || s === "girl") return s; } catch(e) {}
+          try { var m = document.cookie.match(/(?:^|; )ngt_gender_theme=([^;]*)/); if (m && (m[1] === "boy" || m[1] === "girl")) return m[1]; } catch(e) {}
+          try { if (window.name && (window.name === "ngt_theme:boy" || window.name === "ngt_theme:girl")) return window.name.replace("ngt_theme:", ""); } catch(e) {}
+          return null;
+        }
+        var savedTheme = readTheme();
+        if (savedTheme === "boy" || savedTheme === "girl") {
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          document.documentElement.classList.add("has-theme");
+        }
+      } catch(e) {}
+    })();
+  </script>
+  <style>
+    body {
+      background: #050505;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .profile-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: clamp(120px, 15vh, 160px) 20px 80px;
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: clamp(20px, 4vw, 36px);
+      margin-bottom: 28px;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .profile-card:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-desc {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Avatar styling */
+    .avatar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .avatar-preview-box {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .avatar-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-preview-fallback {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .avatar-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Common Buttons */
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 10px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+
+    .btn-primary:hover {
+      background: rgba(255, 255, 255, 0.85);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      padding: 9px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-danger {
+      background: transparent;
+      color: #ff5277;
+      border: 1px solid rgba(255, 82, 119, 0.35);
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 9px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+
+    .btn-danger:hover {
+      background: rgba(255, 82, 119, 0.1);
+      border-color: #ff5277;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-size: 16px; /* Prevents iOS auto-zoom */
+      min-height: 46px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+      box-sizing: border-box;
+      touch-action: manipulation;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+    }
+
+    .form-hint {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 6px;
+    }
+
+    /* Badges & Meta */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .badge-tournament {
+      border-color: rgba(255, 193, 7, 0.4);
+      color: #ffc107;
+      background: rgba(255, 193, 7, 0.08);
+    }
+
+    .badge-local {
+      border-color: rgba(76, 175, 80, 0.4);
+      color: #81c784;
+    }
+
+    .badge-oauth {
+      border-color: rgba(33, 150, 243, 0.4);
+      color: #64b5f6;
+    }
+
+    /* Grid for details */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .info-item-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 4px;
+    }
+
+    .info-item-val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      word-break: break-word;
+    }
+
+    /* Alert / Feedback banners */
+    .alert-box {
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert-success {
+      background: rgba(46, 125, 50, 0.2);
+      border: 1px solid rgba(76, 175, 80, 0.5);
+      color: #a5d6a7;
+    }
+
+    .alert-error {
+      background: rgba(198, 40, 40, 0.2);
+      border: 1px solid rgba(239, 83, 80, 0.5);
+      color: #ef9a9a;
+    }
+
+    /* Tournament slot card */
+    .slot-display-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .slot-number-pill {
+      font-size: 1.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .slot-subtext {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 4px;
+    }
+
+    /* Inline name field row — responsive */
+    .name-field-row {
+      display: flex;
+      gap: 10px;
+      max-width: 500px;
+    }
+
+    /* --- Responsive Overrides --- */
+    @media (max-width: 640px) {
+      .name-field-row {
+        flex-direction: column !important;
+        max-width: 100% !important;
+        gap: 8px !important;
+      }
+
+      .name-field-row .btn-primary {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      .slot-display-box {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .avatar-wrap {
+        gap: 16px !important;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* girl theme — profile page direct styles for reliability */
+    html[data-theme="girl"] body {
+      background: #FAF5F0 !important;
+      color: #2D2126 !important;
+    }
+
+    html[data-theme="girl"] .profile-card {
+      background: #FFFFFF !important;
+      border-color: #F5CAD8 !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 20px rgba(235, 94, 134, 0.08) !important;
+    }
+
+    html[data-theme="girl"] .section-title {
+      color: #2D2126 !important;
+      font-family: 'Outfit', sans-serif !important;
+    }
+
+    html[data-theme="girl"] .section-desc,
+    html[data-theme="girl"] .form-label,
+    html[data-theme="girl"] .form-hint {
+      color: #5A3D4A !important;
+    }
+
+    html[data-theme="girl"] .form-input {
+      background: #FFF8FA !important;
+      border-color: #F5CAD8 !important;
+      color: #2D2126 !important;
+      border-radius: 10px !important;
+    }
+
+    html[data-theme="girl"] .form-input:focus {
+      border-color: #EB5E86 !important;
+      box-shadow: 0 0 0 2px rgba(235, 94, 134, 0.18) !important;
+    }
+
+    html[data-theme="girl"] .btn-primary {
+      background: #EB5E86 !important;
+      color: #FFFFFF !important;
+      border-radius: 10px !important;
+    }
+
+    html[data-theme="girl"] .btn-secondary {
+      background: #FFEBF1 !important;
+      border-color: #F5B3C8 !important;
+      color: #9A274E !important;
+      border-radius: 10px !important;
+    }
+
+    html[data-theme="girl"] .btn-danger {
+      border-color: rgba(235, 94, 134, 0.4) !important;
+      color: #EB5E86 !important;
+      border-radius: 10px !important;
+    }
+
+    html[data-theme="girl"] .info-item-label {
+      color: #7E5265 !important;
+    }
+
+    html[data-theme="girl"] .info-item-val {
+      color: #2D2126 !important;
+    }
+
+    html[data-theme="girl"] .slot-display-box {
+      background: #FFF5F7 !important;
+      border-color: #F5CAD8 !important;
+      border-radius: 12px !important;
+    }
+
+    html[data-theme="girl"] .slot-number-pill { color: #EB5E86 !important; }
+    html[data-theme="girl"] .slot-subtext { color: #7E5265 !important; }
+
+    html[data-theme="girl"] .info-grid {
+      border-top-color: #F5CAD8 !important;
+    }
+
+    html[data-theme="girl"] .badge {
+      background: #FFEBF1 !important;
+      border-color: #F5CAD8 !important;
+      color: #9A274E !important;
+    }
+
+    html[data-theme="girl"] .badge-tournament {
+      background: rgba(255, 193, 7, 0.1) !important;
+      border-color: rgba(255, 193, 7, 0.4) !important;
+      color: #b8860b !important;
+    }
+
+    html[data-theme="girl"] .alert-success {
+      background: rgba(196, 230, 196, 0.3) !important;
+      border-color: rgba(100, 180, 100, 0.5) !important;
+      color: #2a6e2a !important;
+    }
+
+    html[data-theme="girl"] .alert-error {
+      background: rgba(255, 200, 210, 0.3) !important;
+      border-color: rgba(235, 94, 134, 0.4) !important;
+      color: #9A274E !important;
+    }
+  </style>
+</head>
+<body class="bg-black overflow-x-hidden" data-api-base-url="">
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 left-[50%] transform -translate-x-1/2 z-50 w-full min-h-24 py-3 md:py-0 flex justify-center items-center">
+    <div class="max-w-450 w-full mx-auto px-3 flex flex-col md:flex-row justify-center md:justify-between items-center gap-2 md:gap-0">
+      <a href="../index.html" class="text-[clamp(0.95rem,3.7vw,1.875rem)] tracking-tight text-white text-center md:text-left transition-colors duration-130 hover:text-white/70">
+        DAREDOWN
+      </a>
+      <ol class="desktop-nav decoration-transparent decoration-0 text-white text-[clamp(0.95rem,3.2vw,1.5rem)] tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-1 md:gap-8">
+        <li><a class="header-ngc-link" href="../ngc/index.html" aria-label="Challenges">Challenges</a></li>
+        <li><a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../index.html#bracket">Bracket</a></li>
+        <li><a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../rules/index.html">Rules</a></li>
+        <li><a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../index.html#about">About</a></li>
+        <li>
+          <button id="theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+            <span class="theme-toggle-indicator"></span>
+            <span class="theme-toggle-text">BOY</span>
+          </button>
+        </li>
+        <li>
+          <a id="login-link" class="transition-colors duration-130 hover:text-white/70 hover:underline hidden" href="../register/index.html">Register / Log In</a>
+          <div id="auth-menu" class="relative">
+            <button id="auth-avatar-button" type="button" class="auth-user-pill" aria-haspopup="menu" aria-expanded="false">
+              <div class="w-6 h-6 rounded-full bg-white/20 overflow-hidden flex items-center justify-center flex-shrink-0">
+                <img id="auth-avatar-image" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+                <span id="auth-avatar-fallback" class="text-xs uppercase font-bold text-white">U</span>
+              </div>
+              <span id="auth-username-display" class="text-sm font-medium">Loading...</span>
+            </button>
+            <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 min-w-45 bg-black/95 backdrop-blur-xl border border-white/20 rounded-md p-1.5 shadow-2xl z-50" role="menu">
+              <a href="/profile" class="block px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Profile</a>
+              <a id="judge-link" href="../judge/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Host Panel</a>
+              <a id="admin-link" href="/admin/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Admin Dashboard</a>
+              <button id="theme-switch-menu-btn" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Switch Style (Boy/Girl)</button>
+              <button id="logout-button" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Log out</button>
+            </div>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Mobile Header Bar Controls -->
+<div class="mobile-header-actions">
+  <button id="mobile-theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+    <span class="theme-toggle-indicator"></span>
+    <span class="theme-toggle-text">BOY</span>
+  </button>
+  <div id="mobile-auth-wrapper" class="relative">
+    <a id="mobile-login-link" class="mobile-login-btn" href="../register/index.html">Log In</a>
+    <div id="mobile-auth-menu" class="relative hidden">
+      <button id="mobile-auth-trigger" type="button" class="mobile-profile-pill" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu">
+        <div class="mobile-profile-avatar">
+          <img id="mobile-auth-avatar-img" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+          <span id="mobile-auth-avatar-fallback" class="mobile-avatar-initial">U</span>
+        </div>
+        <span id="mobile-auth-username" class="mobile-profile-name">User</span>
+        <svg class="mobile-profile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M2.5 4.5L6 8L9.5 4.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div id="mobile-auth-dropdown" class="mobile-profile-dropdown hidden" role="menu">
+        <div class="mobile-dropdown-header">
+          <span id="mobile-dropdown-display-name" class="mobile-dropdown-user">User</span>
+          <span id="mobile-dropdown-user-role" class="mobile-dropdown-badge">Contestant</span>
+        </div>
+        <div class="mobile-dropdown-divider"></div>
+        <a id="mobile-dropdown-profile-link" href="/profile" class="mobile-dropdown-item" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span>Profile</span>
+        </a>
+        <a id="mobile-dropdown-judge-link" href="../judge/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" />
+          </svg>
+          <span>Host Panel</span>
+        </a>
+        <a id="mobile-dropdown-admin-link" href="/admin/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Admin Dashboard</span>
+        </a>
+        <div class="mobile-dropdown-divider"></div>
+        <button id="mobile-dropdown-logout-btn" type="button" class="mobile-dropdown-item is-logout" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button id="mobile-menu-toggle" type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+  </button>
+</div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-brand">DAREDOWN</span>
+        <button id="mobile-nav-close-btn" type="button" class="mobile-nav-close">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="../ngc/index.html" class="mobile-nav-link"><span>Challenges</span><span>&rarr;</span></a></li>
+        <li><a href="../index.html#bracket" class="mobile-nav-link"><span>Tournament Bracket</span><span>&rarr;</span></a></li>
+        <li><a href="../rules/index.html" class="mobile-nav-link"><span>Official Rules</span><span>&rarr;</span></a></li>
+        <li><a href="../index.html#about" class="mobile-nav-link"><span>About DAREDOWN</span><span>&rarr;</span></a></li>
+        <li><a href="/profile" class="mobile-nav-link" id="mobile-drawer-auth-link"><span>Profile</span><span>&rarr;</span></a></li>
+        <li id="mobile-drawer-judge-item" class="hidden"><a href="../judge/index.html" class="mobile-nav-link"><span>Host Panel</span><span>&rarr;</span></a></li>
+        <li id="mobile-drawer-admin-item" class="hidden"><a href="/admin/index.html" class="mobile-nav-link"><span>Admin Dashboard</span><span>&rarr;</span></a></li>
+      </ul>
+      <div class="mobile-nav-footer">
+        <button id="mobile-drawer-theme-btn" type="button" class="mobile-nav-link" style="width:100%;text-align:left;">
+          <span>Switch Theme (Boy / Girl)</span>
+          <span id="mobile-drawer-theme-name" style="font-size:0.8rem;opacity:0.7;">BOY</span>
+        </button>
+        <button id="mobile-drawer-logout-btn" type="button" class="mobile-nav-link" style="width:100%;text-align:left;color:#ff4b82;">
+          <span>Log Out</span>
+          <span>&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Profile Page Container -->
+  <main class="profile-container">
+    
+    <!-- Top Banners -->
+    <div id="global-alert-success" class="alert-box alert-success" role="alert"></div>
+    <div id="global-alert-error" class="alert-box alert-error" role="alert"></div>
+
+    <div style="margin-bottom: 32px;">
+      <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold tracking-tight uppercase leading-none font-['Outfit']">
+        Account Profile
+      </h1>
+      <p style="color: rgba(255,255,255,0.6); margin-top: 8px; font-size: 1rem;">
+        Manage your tournament display identity, profile picture, bracket placement, and account credentials.
+      </p>
+    </div>
+
+    <!-- 1. PROFILE INFORMATION CARD -->
+    <section class="profile-card" aria-labelledby="section-profile-info">
+      <h2 id="section-profile-info" class="section-title">
+        <span>👤</span> Profile Information
+      </h2>
+      <p class="section-desc">
+        Your display name and profile picture appear on the tournament bracket, challenge entries, and public standings.
+      </p>
+
+      <!-- Avatar Section -->
+      <div class="avatar-wrap">
+        <div class="avatar-preview-box">
+          <img id="profile-avatar-img" src="#" alt="User avatar" class="hidden">
+          <span id="profile-avatar-fallback" class="avatar-preview-fallback">U</span>
+        </div>
+        <div class="avatar-actions">
+          <input type="file" id="avatar-file-input" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden">
+          <div class="btn-action-row">
+            <button type="button" id="btn-choose-avatar" class="btn-secondary">
+              Change Photo
+            </button>
+            <button type="button" id="btn-save-avatar" class="btn-primary hidden">
+              Save Photo
+            </button>
+            <button type="button" id="btn-cancel-avatar" class="btn-secondary hidden">
+              Cancel
+            </button>
+            <button type="button" id="btn-remove-avatar" class="btn-danger hidden">
+              Remove Photo
+            </button>
+          </div>
+          <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">
+            Max image size: 2MB. Supports JPG, PNG, WEBP, GIF.
+          </span>
+        </div>
+      </div>
+
+      <!-- Display Name Form -->
+      <form id="form-display-name" onsubmit="return false;">
+        <div class="form-group">
+          <label for="input-display-name" class="form-label">
+            Tournament Display Name
+          </label>
+          <div class="name-field-row">
+            <input type="text" id="input-display-name" class="form-input" maxlength="30" placeholder="e.g. ShadowCtrl" required>
+            <button type="submit" id="btn-save-name" class="btn-primary" style="flex-shrink: 0;">
+              Save
+            </button>
+          </div>
+          <p class="form-hint">
+            2 to 30 characters. Replaces the placeholder on your tournament bracket slot immediately.
+          </p>
+        </div>
+      </form>
+
+      <!-- Read-Only Identity Metadata Grid -->
+      <div class="info-grid">
+        <div>
+          <div class="info-item-label">Account Username</div>
+          <div id="meta-username" class="info-item-val">-</div>
+        </div>
+        <div>
+          <div class="info-item-label">Account Email</div>
+          <div id="meta-email" class="info-item-val">-</div>
+        </div>
+        <div>
+          <div class="info-item-label">Auth Provider</div>
+          <div id="meta-provider" class="info-item-val">
+            <span class="badge badge-local">Local</span>
+          </div>
+        </div>
+        <div>
+          <div class="info-item-label">Member Since</div>
+          <div id="meta-joined" class="info-item-val">-</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TOURNAMENT PROFILE & BRACKET SLOT CARD -->
+    <section class="profile-card" aria-labelledby="section-tournament-info">
+      <h2 id="section-tournament-info" class="section-title">
+        <span>🏆</span> Tournament Participation
+      </h2>
+      <p class="section-desc">
+        Your current participation standing in the DAREDOWN Truth or Dare Elimination Tournament.
+      </p>
+
+      <div class="slot-display-box">
+        <div>
+          <span class="badge badge-tournament">DAREDOWN 2026</span>
+          <div id="tournament-slot-title" class="slot-number-pill" style="margin-top: 8px;">
+            Slot #1
+          </div>
+          <div id="tournament-slot-desc" class="slot-subtext">
+            Active Participant: Round 1 (Round of 16)
+          </div>
+        </div>
+        <div>
+          <a href="../index.html#bracket" class="btn-primary">
+            View Live Bracket &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ACCOUNT SECURITY & CREDENTIALS CARD -->
+    <section class="profile-card" aria-labelledby="section-security-info">
+      <h2 id="section-security-info" class="section-title">
+        <span>🔒</span> Account Security
+      </h2>
+      <p class="section-desc">
+        Update your login email address or change your account password.
+      </p>
+
+      <!-- If OAuth Managed (Google / Discord) -->
+      <div id="oauth-security-notice" class="hidden" style="background: rgba(33, 150, 243, 0.08); border: 1px solid rgba(33, 150, 243, 0.3); border-radius: 8px; padding: 20px;">
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="font-size: 1.5rem;">ℹ️</span>
+          <div>
+            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px;">
+              OAuth Managed Identity
+            </h3>
+            <p id="oauth-notice-text" style="font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.5;">
+              Your account identity is securely managed by Google / Discord. Password changes and primary email alterations are handled directly through your identity provider.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- If Local Account (Email & Password Forms) -->
+      <div id="local-security-forms">
+        <!-- Change Email Sub-section -->
+        <form id="form-change-email" style="margin-bottom: 32px;" onsubmit="return false;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.04em;">
+            Update Login Email
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 650px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="input-new-email" class="form-label">New Email Address</label>
+              <input type="email" id="input-new-email" class="form-input" placeholder="newemail@example.com" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="input-email-current-pw" class="form-label">Current Password</label>
+              <input type="password" id="input-email-current-pw" class="form-input" placeholder="Verify password" required>
+            </div>
+          </div>
+          <div style="margin-top: 14px;">
+            <button type="submit" id="btn-save-email" class="btn-secondary">
+              Update Email
+            </button>
+          </div>
+        </form>
+
+        <div style="height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 28px;"></div>
+
+        <!-- Change Password Sub-section -->
+        <form id="form-change-password" onsubmit="return false;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.04em;">
+            Change Password
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 800px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="input-pw-current" class="form-label">Current Password</label>
+              <input type="password" id="input-pw-current" class="form-input" placeholder="Current password" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="input-pw-new" class="form-label">New Password</label>
+              <input type="password" id="input-pw-new" class="form-input" placeholder="Min 6 characters" minlength="6" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="input-pw-confirm" class="form-label">Confirm New Password</label>
+              <input type="password" id="input-pw-confirm" class="form-input" placeholder="Repeat new password" minlength="6" required>
+            </div>
+          </div>
+          <div style="margin-top: 14px;">
+            <button type="submit" id="btn-save-password" class="btn-secondary">
+              Change Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/auth-client.js"></script>
+  <script>
+    (function() {
+      'use strict';
+
+      let currentUser = null;
+      let pendingAvatarBase64 = null;
+
+      // DOM Elements
+      const successAlert = document.getElementById('global-alert-success');
+      const errorAlert = document.getElementById('global-alert-error');
+
+      const avatarImg = document.getElementById('profile-avatar-img');
+      const avatarFallback = document.getElementById('profile-avatar-fallback');
+      const fileInput = document.getElementById('avatar-file-input');
+      const btnChooseAvatar = document.getElementById('btn-choose-avatar');
+      const btnSaveAvatar = document.getElementById('btn-save-avatar');
+      const btnCancelAvatar = document.getElementById('btn-cancel-avatar');
+      const btnRemoveAvatar = document.getElementById('btn-remove-avatar');
+
+      const inputDisplayName = document.getElementById('input-display-name');
+      const formDisplayName = document.getElementById('form-display-name');
+      const btnSaveName = document.getElementById('btn-save-name');
+
+      const metaUsername = document.getElementById('meta-username');
+      const metaEmail = document.getElementById('meta-email');
+      const metaProvider = document.getElementById('meta-provider');
+      const metaJoined = document.getElementById('meta-joined');
+
+      const slotTitle = document.getElementById('tournament-slot-title');
+      const slotDesc = document.getElementById('tournament-slot-desc');
+
+      const oauthNotice = document.getElementById('oauth-security-notice');
+      const oauthNoticeText = document.getElementById('oauth-notice-text');
+      const localSecurityForms = document.getElementById('local-security-forms');
+
+      const formEmail = document.getElementById('form-change-email');
+      const inputNewEmail = document.getElementById('input-new-email');
+      const inputEmailCurrentPw = document.getElementById('input-email-current-pw');
+
+      const formPassword = document.getElementById('form-change-password');
+      const inputPwCurrent = document.getElementById('input-pw-current');
+      const inputPwNew = document.getElementById('input-pw-new');
+      const inputPwConfirm = document.getElementById('input-pw-confirm');
+
+      function showSuccess(msg) {
+        errorAlert.style.display = 'none';
+        successAlert.textContent = msg;
+        successAlert.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => { successAlert.style.display = 'none'; }, 6000);
+      }
+
+      function showError(msg) {
+        successAlert.style.display = 'none';
+        errorAlert.textContent = msg;
+        errorAlert.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function hideAlerts() {
+        successAlert.style.display = 'none';
+        errorAlert.style.display = 'none';
+      }
+
+      function renderUserData(user) {
+        currentUser = user;
+        const name = user.displayName || user.username;
+        inputDisplayName.value = user.displayName || user.username;
+
+        metaUsername.textContent = '@' + user.username;
+        metaEmail.textContent = user.email || 'No email attached';
+        
+        // Provider Badge
+        if (user.authProvider === 'google') {
+          metaProvider.innerHTML = '<span class="badge badge-oauth">Google OAuth</span>';
+          oauthNotice.classList.remove('hidden');
+          oauthNoticeText.textContent = 'Your account is authenticated via Google. Password and primary email identity are managed by Google Account Security.';
+          localSecurityForms.classList.add('hidden');
+        } else if (user.authProvider === 'discord') {
+          metaProvider.innerHTML = '<span class="badge badge-oauth">Discord OAuth</span>';
+          oauthNotice.classList.remove('hidden');
+          oauthNoticeText.textContent = 'Your account is authenticated via Discord. Password and primary email identity are managed by Discord Account Security.';
+          localSecurityForms.classList.add('hidden');
+        } else {
+          metaProvider.innerHTML = '<span class="badge badge-local">Local Account</span>';
+          oauthNotice.classList.add('hidden');
+          localSecurityForms.classList.remove('hidden');
+        }
+
+        // Member Since
+        if (user.createdAt) {
+          const date = new Date(user.createdAt);
+          metaJoined.textContent = date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+        } else {
+          metaJoined.textContent = 'Active participant';
+        }
+
+        // Avatar Rendering
+        renderAvatar(user.avatar);
+
+        // Tournament Slot
+        if (user.bracketSlot) {
+          slotTitle.textContent = `Slot #${user.bracketSlot}`;
+          slotDesc.textContent = `Assigned Tournament Slot: ${user.tournamentStatus ? user.tournamentStatus.toUpperCase() : 'REGISTERED'}`;
+        } else {
+          slotTitle.textContent = 'Awaiting Slot';
+          slotDesc.textContent = 'Your tournament participant slot is being assigned by the host.';
+        }
+      }
+
+      function renderAvatar(src) {
+        if (src && typeof src === 'string' && src.length > 0) {
+          avatarImg.src = src;
+          avatarImg.classList.remove('hidden');
+          avatarFallback.classList.add('hidden');
+          btnRemoveAvatar.classList.remove('hidden');
+        } else {
+          avatarImg.src = '';
+          avatarImg.classList.add('hidden');
+          avatarFallback.classList.remove('hidden');
+          const initial = (currentUser?.displayName || currentUser?.username || 'U').charAt(0).toUpperCase();
+          avatarFallback.textContent = initial;
+          btnRemoveAvatar.classList.add('hidden');
+        }
+      }
+
+      // Initial Fetch
+      async function loadProfile() {
+        try {
+          const res = await fetch('/api/profile', {
+            headers: { Accept: 'application/json' },
+            credentials: 'include'
+          });
+
+          if (res.status === 401 || res.status === 403) {
+            window.location.href = `/register/index.html?next=${encodeURIComponent('/profile')}`;
+            return;
+          }
+
+          if (!res.ok) {
+            showError('Failed to load profile. Please refresh.');
+            return;
+          }
+
+          const data = await res.json();
+          renderUserData(data.user);
+        } catch (err) {
+          showError('Network error loading profile.');
+        }
+      }
+
+      // 1. Avatar Upload / File Pick Handlers
+      btnChooseAvatar.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        // Type check
+        if (!['image/jpeg', 'image/png', 'image/webp', 'image/gif'].includes(file.type)) {
+          showError('Invalid image type. Please select a JPG, PNG, WEBP, or GIF file.');
+          fileInput.value = '';
+          return;
+        }
+
+        // Size check (max 2MB)
+        if (file.size > 2 * 1024 * 1024) {
+          showError('Image file is too large. Maximum allowed size is 2MB.');
+          fileInput.value = '';
+          return;
+        }
+
+        hideAlerts();
+        const reader = new FileReader();
+        reader.onload = (readEvent) => {
+          pendingAvatarBase64 = readEvent.target.result;
+          renderAvatar(pendingAvatarBase64);
+          btnSaveAvatar.classList.remove('hidden');
+          btnCancelAvatar.classList.remove('hidden');
+          btnChooseAvatar.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+      });
+
+      btnCancelAvatar.addEventListener('click', () => {
+        pendingAvatarBase64 = null;
+        fileInput.value = '';
+        renderAvatar(currentUser?.avatar);
+        btnSaveAvatar.classList.add('hidden');
+        btnCancelAvatar.classList.add('hidden');
+        btnChooseAvatar.classList.remove('hidden');
+      });
+
+      btnSaveAvatar.addEventListener('click', async () => {
+        if (!pendingAvatarBase64) return;
+        btnSaveAvatar.disabled = true;
+        btnSaveAvatar.textContent = 'Saving...';
+        hideAlerts();
+
+        try {
+          const res = await fetch('/api/profile/avatar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ avatar: pendingAvatarBase64 })
+          });
+
+          const data = await res.json();
+          if (!res.ok) {
+            showError(data.error || 'Failed to save avatar.');
+            return;
+          }
+
+          currentUser.avatar = data.avatar;
+          pendingAvatarBase64 = null;
+          fileInput.value = '';
+
+          btnSaveAvatar.classList.add('hidden');
+          btnCancelAvatar.classList.add('hidden');
+          btnChooseAvatar.classList.remove('hidden');
+
+          showSuccess('Profile picture updated successfully!');
+
+          // Refresh Auth Client state and live bracket
+          if (window.Auth) {
+            window.Auth.setUser(Object.assign({}, window.Auth.getUser(), { avatar: data.avatar }));
+          }
+        } catch (err) {
+          showError('Failed to save profile picture.');
+        } finally {
+          btnSaveAvatar.disabled = false;
+          btnSaveAvatar.textContent = 'Save Photo';
+        }
+      });
+
+      btnRemoveAvatar.addEventListener('click', async () => {
+        if (!confirm('Are you sure you want to remove your profile picture?')) return;
+        btnRemoveAvatar.disabled = true;
+        hideAlerts();
+
+        try {
+          const res = await fetch('/api/profile/avatar', {
+            method: 'DELETE',
+            headers: { Accept: 'application/json' },
+            credentials: 'include'
+          });
+
+          if (!res.ok) {
+            showError('Failed to remove avatar.');
+            return;
+          }
+
+          currentUser.avatar = null;
+          renderAvatar(null);
+          showSuccess('Profile picture removed.');
+
+          if (window.Auth) {
+            window.Auth.setUser(Object.assign({}, window.Auth.getUser(), { avatar: null }));
+          }
+        } catch (err) {
+          showError('Failed to remove avatar.');
+        } finally {
+          btnRemoveAvatar.disabled = false;
+        }
+      });
+
+      // 2. Display Name Form Handler
+      formDisplayName.addEventListener('submit', async () => {
+        const val = inputDisplayName.value.trim();
+        if (val.length < 2 || val.length > 30) {
+          showError('Display name must be between 2 and 30 characters.');
+          return;
+        }
+
+        btnSaveName.disabled = true;
+        btnSaveName.textContent = 'Saving...';
+        hideAlerts();
+
+        try {
+          const res = await fetch('/api/profile/display-name', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ displayName: val })
+          });
+
+          const data = await res.json();
+          if (!res.ok) {
+            showError(data.error || 'Failed to update display name.');
+            return;
+          }
+
+          currentUser.displayName = data.displayName;
+          showSuccess('Tournament display name updated successfully!');
+
+          // Sync navbar and live bracket
+          if (window.Auth) {
+            window.Auth.setUser(Object.assign({}, window.Auth.getUser(), { displayName: data.displayName }));
+          }
+        } catch (err) {
+          showError('Network error updating display name.');
+        } finally {
+          btnSaveName.disabled = false;
+          btnSaveName.textContent = 'Save';
+        }
+      });
+
+      // 3. Email Change Form Handler
+      formEmail.addEventListener('submit', async () => {
+        const newEmail = inputNewEmail.value.trim();
+        const currentPassword = inputEmailCurrentPw.value;
+
+        if (!newEmail || !currentPassword) {
+          showError('Please enter both the new email and your current password.');
+          return;
+        }
+
+        const btn = document.getElementById('btn-save-email');
+        btn.disabled = true;
+        btn.textContent = 'Updating...';
+        hideAlerts();
+
+        try {
+          const res = await fetch('/api/profile/email', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ newEmail, currentPassword })
+          });
+
+          const data = await res.json();
+          if (!res.ok) {
+            showError(data.error || 'Failed to update email.');
+            return;
+          }
+
+          currentUser.email = data.email;
+          metaEmail.textContent = data.email;
+          inputNewEmail.value = '';
+          inputEmailCurrentPw.value = '';
+          showSuccess('Login email address updated successfully.');
+        } catch (err) {
+          showError('Failed to update email address.');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Update Email';
+        }
+      });
+
+      // 4. Password Change Form Handler
+      formPassword.addEventListener('submit', async () => {
+        const currentPassword = inputPwCurrent.value;
+        const newPassword = inputPwNew.value;
+        const confirmPassword = inputPwConfirm.value;
+
+        if (!currentPassword || !newPassword || !confirmPassword) {
+          showError('All password fields are required.');
+          return;
+        }
+
+        if (newPassword !== confirmPassword) {
+          showError('New password and confirmation do not match.');
+          return;
+        }
+
+        if (newPassword.length < 6) {
+          showError('New password must be at least 6 characters.');
+          return;
+        }
+
+        const btn = document.getElementById('btn-save-password');
+        btn.disabled = true;
+        btn.textContent = 'Updating...';
+        hideAlerts();
+
+        try {
+          const res = await fetch('/api/profile/password', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ currentPassword, newPassword, confirmPassword })
+          });
+
+          const data = await res.json();
+          if (!res.ok) {
+            showError(data.error || 'Failed to change password.');
+            return;
+          }
+
+          inputPwCurrent.value = '';
+          inputPwNew.value = '';
+          inputPwConfirm.value = '';
+          showSuccess('Password updated successfully!');
+        } catch (err) {
+          showError('Failed to change password.');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Change Password';
+        }
+      });
+
+      // Kickoff
+      loadProfile();
+    })();
+  </script>
+</body>
+</html>

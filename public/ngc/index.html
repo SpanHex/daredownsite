@@ -1,0 +1,600 @@
+<!DOCTYPE html><html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><title>CHALLENGES | DAREDOWN</title><meta name="description" content="Browse the DAREDOWN Truth or Dare challenge pool. See what awaits you in the tournament."><meta name="robots" content="index,follow"><link rel="canonical" href="index.html"><meta name="keywords" content="truth or dare, challenges, daredown, dare pool, truth questions"><meta property="og:type" content="website"><meta property="og:title" content="CHALLENGES | DAREDOWN"><meta property="og:description" content="Browse the DAREDOWN Truth or Dare challenge pool."><meta property="og:url" content="index.html"><meta property="og:image" content="/meta_img.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="CHALLENGES | DAREDOWN"><meta name="twitter:description" content="Browse the DAREDOWN Truth or Dare challenge pool."><meta name="twitter:image" content="/meta_img.jpg">
+<script>
+  (function () {
+    try {
+      function readTheme() {
+        try { var l = localStorage.getItem("ngt_gender_theme"); if (l === "boy" || l === "girl") return l; } catch(e) {}
+        try { var s = sessionStorage.getItem("ngt_gender_theme"); if (s === "boy" || s === "girl") return s; } catch(e) {}
+        try { var m = document.cookie.match(/(?:^|; )ngt_gender_theme=([^;]*)/); if (m && (m[1] === "boy" || m[1] === "girl")) return m[1]; } catch(e) {}
+        try { if (window.name && (window.name === "ngt_theme:boy" || window.name === "ngt_theme:girl")) return window.name.replace("ngt_theme:", ""); } catch(e) {}
+        return null;
+      }
+      var savedTheme = readTheme();
+      if (savedTheme === "boy" || savedTheme === "girl") {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.documentElement.classList.add("has-theme");
+      }
+    } catch(e) {}
+  })();
+</script>
+<link rel="stylesheet" href="/_astro/Layout.BHgu_56x.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/theme.css">
+<style>
+  /* ── Page ── */
+  .challenges-page {
+    min-height: 100vh;
+    background: #050505;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── Main ── */
+  .challenges-main {
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: clamp(130px,16vh,180px) 20px clamp(72px,10vh,120px);
+  }
+
+  /* ── Header row ── */
+  .challenges-header-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: clamp(48px, 7vh, 80px);
+  }
+
+  .challenges-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .challenges-title {
+    font-size: clamp(3rem, 6vw, 7rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: #e10606;
+    margin: 0;
+  }
+
+  .challenges-sub {
+    font-size: clamp(0.82rem, 0.9vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    max-width: 900px;
+    margin-top: 12px;
+  }
+
+  /* ── Filter tabs ── */
+  .challenges-filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .challenges-filter-btn {
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    min-height: 44px;
+    min-width: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+    font-family: inherit;
+  }
+  .challenges-filter-btn:hover,
+  .challenges-filter-btn.is-active {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+  }
+  .challenges-filter-btn.is-truth.is-active {
+    background: #4f8ef7;
+    border-color: #4f8ef7;
+    color: #fff;
+  }
+  .challenges-filter-btn.is-dare.is-active {
+    background: #ff4b82;
+    border-color: #ff4b82;
+    color: #fff;
+  }
+
+  /* ── Grid ── */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 20px;
+  }
+
+  /* ── Card ── */
+  .challenge-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.02);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .challenge-card:hover {
+    border-color: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.05);
+  }
+  .challenge-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .challenge-card:hover::before { opacity: 1; }
+  .challenge-card[data-type="truth"]::before { background: #4f8ef7; }
+  .challenge-card[data-type="dare"]::before { background: #ff4b82; }
+
+  .challenge-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    width: fit-content;
+  }
+  [data-type="truth"] .challenge-type-badge {
+    background: rgba(79,142,247,0.15);
+    color: #4f8ef7;
+    border: 1px solid rgba(79,142,247,0.3);
+  }
+  [data-type="dare"] .challenge-type-badge {
+    background: rgba(255,75,130,0.12);
+    color: #ff4b82;
+    border: 1px solid rgba(255,75,130,0.25);
+  }
+
+  .challenge-difficulty {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .challenge-difficulty-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+  .challenge-difficulty-dot.is-filled { background: rgba(255,255,255,0.7); }
+  [data-type="truth"] .challenge-difficulty-dot.is-filled { background: #4f8ef7; }
+  [data-type="dare"] .challenge-difficulty-dot.is-filled { background: #ff4b82; }
+
+  .challenge-text {
+    font-size: clamp(0.92rem, 1.1vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: rgba(255,255,255,0.85);
+    flex: 1;
+  }
+
+  /* ── CTA ── */
+  .challenges-cta {
+    margin-top: clamp(56px, 8vh, 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .challenges-cta-title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+  }
+  .challenges-cta-sub {
+    font-size: clamp(0.85rem, 1vw, 1.1rem);
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .challenges-cta-btn {
+    display: inline-flex;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: transparent;
+    color: #fff;
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s;
+    font-family: inherit;
+  }
+  .challenges-cta-btn:hover { background: #fff; color: #000; }
+
+  /* ── Girl theme overrides ── */
+  html[data-theme="girl"] .challenges-page { background: #fff5f8; color: #1a0a10; }
+  html[data-theme="girl"] .challenges-title { color: #ff4b82; }
+  html[data-theme="girl"] .challenges-sub { color: rgba(26,10,16,0.55); }
+  html[data-theme="girl"] .challenges-eyebrow { color: rgba(26,10,16,0.4); }
+  html[data-theme="girl"] .challenge-card {
+    border-color: rgba(26,10,16,0.1);
+    background: rgba(26,10,16,0.02);
+  }
+  html[data-theme="girl"] .challenge-card:hover {
+    border-color: rgba(26,10,16,0.2);
+    background: rgba(26,10,16,0.04);
+  }
+  html[data-theme="girl"] .challenge-text { color: rgba(26,10,16,0.85); }
+  html[data-theme="girl"] .challenges-filter-btn { border-color: rgba(26,10,16,0.2); color: rgba(26,10,16,0.5); }
+  html[data-theme="girl"] .challenges-filter-btn:hover { background: #1a0a10; color: #fff; border-color: #1a0a10; }
+  html[data-theme="girl"] .challenges-cta-title { color: #1a0a10; }
+  html[data-theme="girl"] .challenges-cta-sub { color: rgba(26,10,16,0.5); }
+  html[data-theme="girl"] .challenges-cta-btn { border-color: #ff4b82; color: #ff4b82; }
+  html[data-theme="girl"] .challenges-cta-btn:hover { background: #ff4b82; color: #fff; }
+  html[data-theme="girl"] .challenge-difficulty-dot { background: rgba(26,10,16,0.15); }
+
+  @media (max-width: 700px) {
+    .challenges-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .challenges-main {
+      padding-top: clamp(88px, 14vh, 120px);
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .challenges-title {
+      font-size: clamp(2.4rem, 10vw, 5rem);
+    }
+
+    .challenges-header-row {
+      gap: 10px;
+      margin-bottom: clamp(28px, 6vh, 48px);
+    }
+
+    .challenges-filter-btn {
+      font-size: 0.7rem;
+      padding: 8px 14px;
+      min-height: 42px;
+    }
+
+    .challenges-filters {
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .challenge-card {
+      padding: 20px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .challenges-cta-title {
+      font-size: clamp(1.2rem, 7vw, 2rem);
+    }
+
+    .challenges-cta-btn {
+      padding: 12px 24px;
+      font-size: 0.76rem;
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      touch-action: manipulation;
+    }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .challenge-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .challenge-card:hover::before {
+      opacity: 0;
+    }
+
+    .challenge-card:active {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    html[data-theme="girl"] .challenge-card:hover {
+      border-color: rgba(26, 10, 16, 0.1);
+      background: rgba(26, 10, 16, 0.02);
+    }
+
+    html[data-theme="girl"] .challenge-card:active {
+      border-color: rgba(26, 10, 16, 0.2);
+      background: rgba(26, 10, 16, 0.04);
+    }
+  }
+</style>
+<script src="/_astro/bracket-data.js"></script></head>
+<body class="challenges-page" data-api-base-url="">
+
+  <!-- Header (same pattern as main site) -->
+  <header id="site-header" class="fixed top-0 left-[50%] transform -translate-x-1/2 z-50 w-full min-h-24 py-3 md:py-0 flex justify-center items-center">
+    <div class="max-w-450 w-full mx-auto px-3 flex flex-col md:flex-row justify-center md:justify-between items-center gap-2 md:gap-0">
+      <a href="../index.html" class="text-[clamp(0.95rem,3.7vw,1.875rem)] tracking-tight text-white text-center md:text-left transition-colors duration-130 hover:text-white/70">
+        DAREDOWN
+      </a>
+      <ol class="desktop-nav decoration-transparent decoration-0 text-white text-[clamp(0.95rem,3.2vw,1.5rem)] tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-1 md:gap-12.5">
+        <li><a class="header-ngc-link transition-colors duration-130 hover:text-white/70 hover:underline" href="index.html" aria-label="Challenges">Challenges</a></li>
+        <li><a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../index.html#bracket">Bracket</a></li>
+        <li><a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../rules/index.html">Rules</a></li>
+        <li><a class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../index.html#about">About</a></li>
+        <li>
+          <button id="theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+            <span class="theme-toggle-indicator"></span>
+            <span class="theme-toggle-text">BOY</span>
+          </button>
+        </li>
+        <li>
+          <a id="login-link" class="transition-colors duration-130 hover:text-white/70 hover:underline" href="../register/index.html">Register / Log In</a>
+          <div id="auth-menu" class="relative hidden">
+            <button id="auth-avatar-button" type="button" class="auth-user-pill" aria-haspopup="menu" aria-expanded="false">
+              <div class="w-6 h-6 rounded-full bg-white/20 overflow-hidden flex items-center justify-center flex-shrink-0">
+                <img id="auth-avatar-image" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+                <span id="auth-avatar-fallback" class="text-xs uppercase font-bold text-white">U</span>
+              </div>
+              <span id="auth-username-display" class="text-sm font-medium">User</span>
+            </button>
+            <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 min-w-45 bg-black/95 backdrop-blur-xl border border-white/20 rounded-md p-1.5 shadow-2xl z-50" role="menu">
+              <a href="/profile" class="block px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Profile</a>
+              <a id="judge-link" href="../judge/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Host Panel</a>
+              <a id="admin-link" href="/admin/index.html" class="hidden px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Admin Dashboard</a>
+              <button id="theme-switch-menu-btn" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Switch Style (Boy/Girl)</button>
+              <button id="logout-button" type="button" class="w-full text-left px-3 py-2 text-[15px] text-white transition-colors duration-130 hover:bg-white/10 rounded-sm" role="menuitem">Log out</button>
+            </div>
+          </div>
+        </li>
+      </ol>
+      <!-- Mobile Header Bar Controls -->
+<div class="mobile-header-actions">
+  <button id="mobile-theme-toggle-btn" type="button" class="theme-toggle-pill" aria-label="Toggle visual theme">
+    <span class="theme-toggle-indicator"></span>
+    <span class="theme-toggle-text">BOY</span>
+  </button>
+  <div id="mobile-auth-wrapper" class="relative">
+    <a id="mobile-login-link" class="mobile-login-btn" href="../register/index.html">Log In</a>
+    <div id="mobile-auth-menu" class="relative hidden">
+      <button id="mobile-auth-trigger" type="button" class="mobile-profile-pill" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu">
+        <div class="mobile-profile-avatar">
+          <img id="mobile-auth-avatar-img" src="#" alt="Avatar" class="w-full h-full object-cover hidden">
+          <span id="mobile-auth-avatar-fallback" class="mobile-avatar-initial">U</span>
+        </div>
+        <span id="mobile-auth-username" class="mobile-profile-name">User</span>
+        <svg class="mobile-profile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M2.5 4.5L6 8L9.5 4.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div id="mobile-auth-dropdown" class="mobile-profile-dropdown hidden" role="menu">
+        <div class="mobile-dropdown-header">
+          <span id="mobile-dropdown-display-name" class="mobile-dropdown-user">User</span>
+          <span id="mobile-dropdown-user-role" class="mobile-dropdown-badge">Contestant</span>
+        </div>
+        <div class="mobile-dropdown-divider"></div>
+        <a id="mobile-dropdown-profile-link" href="/profile" class="mobile-dropdown-item" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span>Profile</span>
+        </a>
+        <a id="mobile-dropdown-judge-link" href="../judge/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" />
+          </svg>
+          <span>Host Panel</span>
+        </a>
+        <a id="mobile-dropdown-admin-link" href="/admin/index.html" class="mobile-dropdown-item hidden" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Admin Dashboard</span>
+        </a>
+        <div class="mobile-dropdown-divider"></div>
+        <button id="mobile-dropdown-logout-btn" type="button" class="mobile-dropdown-item is-logout" role="menuitem">
+          <svg class="mobile-dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button id="mobile-menu-toggle" type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+  </button>
+</div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-brand">DAREDOWN</span>
+        <button id="mobile-nav-close-btn" type="button" class="mobile-nav-close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="mobile-nav-link is-highlight"><span>Challenges (Truth/Dare)</span><span>&rarr;</span></a></li>
+        <li><a href="../index.html#bracket" class="mobile-nav-link"><span>Tournament Bracket</span><span>&rarr;</span></a></li>
+        <li><a href="../rules/index.html" class="mobile-nav-link"><span>Official Rules</span><span>&rarr;</span></a></li>
+        <li><a href="../index.html#about" class="mobile-nav-link"><span>About DAREDOWN</span><span>&rarr;</span></a></li>
+        <li><a href="/profile" class="mobile-nav-link" id="mobile-drawer-auth-link"><span>Profile</span><span>&rarr;</span></a></li>
+        <li id="mobile-drawer-judge-item" class="hidden"><a href="../judge/index.html" class="mobile-nav-link"><span>Host Panel</span><span>&rarr;</span></a></li>
+        <li id="mobile-drawer-admin-item" class="hidden"><a href="/admin/index.html" class="mobile-nav-link"><span>Admin Dashboard</span><span>&rarr;</span></a></li>
+      </ul>
+      <div class="mobile-nav-footer">
+        <button id="mobile-drawer-theme-btn" type="button" class="mobile-nav-link" style="width:100%;text-align:left;cursor:pointer;">
+          <span>Switch Theme (Boy / Girl)</span>
+          <span id="mobile-drawer-theme-name" style="font-size:0.8rem;opacity:0.7;">BOY</span>
+        </button>
+        <button id="mobile-drawer-logout-btn" type="button" class="mobile-nav-link hidden" style="width:100%;text-align:left;cursor:pointer;color:#ff4b82;">
+          <span>Log Out</span>
+          <span>&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="challenges-main">
+
+    <!-- Title -->
+    <div class="challenges-header-row">
+      <span class="challenges-eyebrow">DAREDOWN ~ Challenge Pool</span>
+      <h1 class="challenges-title">Truth &amp; Dare</h1>
+      <p class="challenges-sub">
+        These are the challenges you'll face in the tournament.
+        All challenges are assigned live by the host, randomly selected from this pool.
+        Come prepared for anything.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="challenges-filters" role="group" aria-label="Filter challenges">
+      <button class="challenges-filter-btn is-active" id="filter-all" data-filter="all" type="button">All</button>
+      <button class="challenges-filter-btn is-truth" id="filter-truth" data-filter="truth" type="button">Truth</button>
+      <button class="challenges-filter-btn is-dare" id="filter-dare" data-filter="dare" type="button">Dare</button>
+    </div>
+
+    <!-- Challenge Cards -->
+    <div class="challenges-grid" id="challenges-grid">
+      <!-- Populated by JS from challenges.json -->
+    </div>
+
+    <!-- CTA -->
+    <div class="challenges-cta">
+      <h2 class="challenges-cta-title">Think you can handle it?</h2>
+      <p class="challenges-cta-sub">£0.50 entry. £50 prize. 16 spots. First come, first served.</p>
+      <a href="../register/index.html" class="challenges-cta-btn" id="cta-register-btn">Register Now</a>
+    </div>
+
+  <script src="/_astro/bundle.ngc.js"></script></main>
+
+  <!-- Footer -->
+  <div>
+    <img class="relative bottom-[-8px] px-3 w-full max-w-450 mx-auto" src="/footer_newgen.svg" alt="DAREDOWN">
+    <footer class="w-full px-3 md:px-18 py-5 bg-white">
+      <div class="max-w-450 w-full mx-auto grid grid-cols-1 gap-8 items-start sm:grid-cols-2 lg:grid-cols-4 lg:items-stretch lg:gap-10">
+        <div class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5">
+          <span>DAREDOWN</span>
+          <span>TRUTH OR DARE</span>
+          <span>TOURNAMENT</span>
+        </div>
+        <ol class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5">
+          <li><a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../rules/index.html">Rules</a></li>
+          <li><a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../index.html#bracket">Bracket</a></li>
+          <li><a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="index.html">Challenges</a></li>
+          <li><a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../index.html#about">About</a></li>
+        </ol>
+        <ol class="decoration-transparent decoration-0 text-black text-[18px] leading-tight tracking-tight flex flex-col gap-3 sm:text-[20px] lg:text-[24px] lg:gap-7.5">
+          <li><a class="transition-colors duration-130 hover:text-black/70 hover:underline" href="../register/index.html">Register</a></li>
+        </ol>
+        <div class="w-full flex flex-col gap-3 text-black text-[18px] leading-tight tracking-tight sm:text-[20px] lg:text-[24px] lg:gap-7.5">
+          <span>Hosted by the crew</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      // Header bg on scroll
+      const header = document.getElementById('site-header');
+      if (header) {
+        const toggleBg = () => header.classList.toggle('header-bg', window.scrollY > 0);
+        toggleBg();
+        window.addEventListener('scroll', toggleBg, { passive: true });
+      }
+
+      // Load challenges from challenges.json
+      const grid = document.getElementById('challenges-grid');
+      if (!grid) return;
+
+      const renderCard = (challenge) => {
+        const difficulty = challenge.difficulty || 1;
+        const dots = [1,2,3].map(i =>
+          `<span class="challenge-difficulty-dot ${i <= difficulty ? 'is-filled' : ''}"></span>`
+        ).join('');
+
+        return `
+          <div class="challenge-card" data-type="${challenge.type}" data-challenge-id="${challenge.id}">
+            <div class="challenge-type-badge">${challenge.type.toUpperCase()}</div>
+            <p class="challenge-text">${challenge.text}</p>
+            <div class="challenge-difficulty" aria-label="Difficulty: ${difficulty} of 3">${dots}</div>
+          </div>
+        `;
+      };
+
+      let allChallenges = [];
+      let activeFilter = 'all';
+
+      const applyFilter = (filter) => {
+        activeFilter = filter;
+        const cards = grid.querySelectorAll('.challenge-card');
+        cards.forEach(card => {
+          const type = card.dataset.type;
+          card.style.display = (filter === 'all' || filter === type) ? '' : 'none';
+        });
+
+        document.querySelectorAll('.challenges-filter-btn').forEach(btn => {
+          btn.classList.toggle('is-active', btn.dataset.filter === filter);
+        });
+      };
+
+      // Wire filter buttons
+      document.querySelectorAll('.challenges-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+      });
+
+      // Fetch challenge pool
+      fetch('../challenges.json')
+        .then(r => r.json())
+        .then(data => {
+          allChallenges = (data.challenges || []).filter(c => c.active !== false);
+          // Shuffle for a fresh look each visit
+          allChallenges.sort(() => Math.random() - 0.5);
+          grid.innerHTML = allChallenges.map(renderCard).join('');
+          applyFilter(activeFilter);
+        })
+        .catch(() => {
+          // Fallback if fetch fails
+          grid.innerHTML = `
+            <div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(255,255,255,0.4);">
+              <p style="font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;">
+                Challenge pool will be revealed closer to the event date.
+              </p>
+            </div>
+          `;
+        });
+    })();
+  </script>
+  <script src="/auth-client.js"></script>
+</body>
+</html>

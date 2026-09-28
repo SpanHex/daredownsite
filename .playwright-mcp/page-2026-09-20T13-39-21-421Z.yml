@@ -1,0 +1,318 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - generic: NEWGEN TOURNAMENT 1
+      - generic:
+        - generic: PRELOADING BRACKET (16/16)
+        - generic: 100%
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "NEWGEN TOURNAMENT 1" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Newgen Community Contest, 200 dollars" [ref=e7] [cursor=pointer]:
+            - /url: ngc/index.html
+            - text: NGC $200
+        - listitem [ref=e8]:
+          - link "Bracket" [ref=e9] [cursor=pointer]:
+            - /url: index.html#bracket
+        - listitem [ref=e10]:
+          - link "About" [ref=e11] [cursor=pointer]:
+            - /url: index.html#about
+        - listitem [ref=e12]:
+          - link "Log In" [ref=e13] [cursor=pointer]:
+            - /url: https://nwgn.art/login
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - region "Hero to winners transition" [ref=e16]:
+        - generic [ref=e17]:
+          - generic:
+            - generic:
+              - paragraph:
+                - generic: NEWGEN1400$EDITINGTOURNAMENT
+          - region [ref=e20]:
+            - heading [level=2] [ref=e22]: NGT1 WINNERS
+            - generic [ref=e23]:
+              - article [ref=e24]:
+                - img [aria-hidden] [ref=e25]:
+                  - generic [ref=e26]: "2"
+                - generic [ref=e27]:
+                  - paragraph [ref=e28]: 2ND PLACE
+                  - heading [level=3] [ref=e30]:
+                    - link [ref=e31] [cursor=pointer]:
+                      - /url: https://www.instagram.com/goofyatwood/
+                      - text: goof
+                  - img [ref=e32]:
+                    - generic [ref=e33]: $300
+                  - paragraph [ref=e34]: THE FINALIST
+              - article [ref=e35]:
+                - img [aria-hidden] [ref=e36]:
+                  - generic [ref=e37]: "1"
+                - generic [ref=e38]:
+                  - paragraph [ref=e39]: 1ST PLACE
+                  - heading [level=3] [ref=e41]:
+                    - link [ref=e42] [cursor=pointer]:
+                      - /url: https://www.instagram.com/w6lxy/
+                      - text: walsii
+                  - img [ref=e43]:
+                    - generic [ref=e44]: $700
+                  - paragraph [ref=e45]: THE CHAMPION
+              - article [ref=e46]:
+                - img [aria-hidden] [ref=e47]:
+                  - generic [ref=e48]: "3"
+                - generic [ref=e49]:
+                  - paragraph [ref=e50]: 3RD PLACE
+                  - heading [level=3] [ref=e52]:
+                    - link [ref=e53] [cursor=pointer]:
+                      - /url: https://www.instagram.com/shxrtfuze/
+                      - text: fuze
+                  - img [ref=e54]:
+                    - generic [ref=e55]: $200
+                  - paragraph [ref=e56]: THE BRONZE
+      - generic [ref=e57]:
+        - heading "TOURNAMENT BRACKET" [level=2] [ref=e58]
+        - generic [ref=e60]:
+          - paragraph
+          - generic [ref=e63]:
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - generic [ref=e69]:
+                  - generic [ref=e70]:
+                    - button "Open match goof21 versus khalidv2." [ref=e72] [cursor=pointer]:
+                      - generic [ref=e73]: goof21
+                      - generic [ref=e76]: khalidv2.
+                    - button "Open match seb versus pola" [ref=e80] [cursor=pointer]:
+                      - generic [ref=e81]: seb
+                      - generic [ref=e84]: pola
+                  - button "Open match goof versus pola" [ref=e88] [cursor=pointer]:
+                    - generic [ref=e89]: goof
+                    - generic [ref=e92]: pola
+                - generic [ref=e96]:
+                  - generic [ref=e97]:
+                    - button "Open match troubled_duck versus plugdi" [ref=e99] [cursor=pointer]:
+                      - generic [ref=e100]: troubled_duck
+                      - generic [ref=e103]: plugdi
+                    - button "Open match djzelemhan versus goon" [ref=e107] [cursor=pointer]:
+                      - generic [ref=e108]: djzelemhan
+                      - generic [ref=e111]: goon
+                  - button "Open match troubled_duck versus goon" [ref=e115] [cursor=pointer]:
+                    - generic [ref=e116]: troubled_duck
+                    - generic [ref=e119]: goon
+              - button "Open match goof versus troubled_duck" [ref=e123] [cursor=pointer]:
+                - generic [ref=e124]: goof
+                - generic [ref=e127]: troubled_duck
+            - button "Open match goof versus walsiii" [ref=e133] [cursor=pointer]:
+              - generic [ref=e134]: goof
+              - generic [ref=e137]: walsiii
+            - generic [ref=e143]:
+              - generic [ref=e144]:
+                - generic [ref=e146]:
+                  - generic [ref=e147]:
+                    - button "Open match wikentens versus fuze" [ref=e149] [cursor=pointer]:
+                      - generic [ref=e150]: wikentens
+                      - generic [ref=e153]: fuze
+                    - button "Open match koshszn versus Hante" [ref=e157] [cursor=pointer]:
+                      - generic [ref=e158]: koshszn
+                      - generic [ref=e161]: Hante
+                  - button "Open match Fuze versus Hante" [ref=e165] [cursor=pointer]:
+                    - generic [ref=e166]: Fuze
+                    - generic [ref=e169]: Hante
+                - generic [ref=e173]:
+                  - generic [ref=e174]:
+                    - button "Open match El Cranéo versus bluexamasu" [ref=e176] [cursor=pointer]:
+                      - generic [ref=e177]: El Cranéo
+                      - generic [ref=e180]: bluexamasu
+                    - button "Open match walsiii versus bynexn" [ref=e184] [cursor=pointer]:
+                      - generic [ref=e185]: walsiii
+                      - generic [ref=e188]: bynexn
+                  - button "Open match xamasu versus walsiii" [ref=e192] [cursor=pointer]:
+                    - generic [ref=e193]: xamasu
+                    - generic [ref=e196]: walsiii
+              - button "Open match fuze versus walsiii" [ref=e200] [cursor=pointer]:
+                - generic [ref=e201]: fuze
+                - generic [ref=e204]: walsiii
+      - generic [ref=e207]:
+        - heading "About" [level=2] [ref=e208]
+        - generic [ref=e209]:
+          - paragraph [ref=e210]:
+            - generic [ref=e211]: "NO"
+            - generic [ref=e213]: PROMPTS.
+            - generic [ref=e215]: "NO"
+            - generic [ref=e217]: SHORTCUTS.
+            - generic [ref=e219]: PROVE
+            - generic [ref=e221]: YOURSELF.
+          - paragraph [ref=e223]:
+            - generic [ref=e224]: We
+            - generic [ref=e226]: created
+            - generic [ref=e228]: this
+            - generic [ref=e230]: tournament
+            - generic [ref=e232]: to
+            - generic [ref=e234]: give
+            - generic [ref=e236]: talented
+            - generic [ref=e238]: creators
+            - generic [ref=e240]: a
+            - generic [ref=e242]: chance
+            - generic [ref=e244]: to
+            - generic [ref=e246]: showcase
+            - generic [ref=e248]: their
+            - generic [ref=e250]: creativity
+            - generic [ref=e252]: in
+            - generic [ref=e254]: a
+            - generic [ref=e256]: competitive
+            - generic [ref=e258]: environment.
+            - generic [ref=e260]: Through
+            - generic [ref=e262]: multiple
+            - generic [ref=e264]: rounds,
+            - generic [ref=e266]: participants
+            - generic [ref=e268]: compete,
+            - generic [ref=e270]: improve
+            - generic [ref=e272]: their
+            - generic [ref=e274]: skills,
+            - generic [ref=e276]: and
+            - generic [ref=e278]: share
+            - generic [ref=e280]: their
+            - generic [ref=e282]: work
+            - generic [ref=e284]: with
+            - generic [ref=e286]: the
+            - generic [ref=e288]: community.
+      - generic [ref=e290]:
+        - heading "rounds" [level=2] [ref=e291]
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e294]:
+              - paragraph [ref=e295]: "1"
+              - paragraph [ref=e296]: 23.03-06.04 - 15 days
+            - generic [ref=e297]:
+              - paragraph [ref=e298]: JUDGE
+              - paragraph [ref=e299]: 07.04-08.04 - 2 days
+          - generic [ref=e300]:
+            - generic [ref=e301]:
+              - paragraph [ref=e302]: "2"
+              - paragraph [ref=e303]: 09.04-22.04 - 14 days
+            - generic [ref=e304]:
+              - paragraph [ref=e305]: JUDGE
+              - paragraph [ref=e306]: 23.04-24.04 - 2 days
+          - generic [ref=e307]:
+            - generic [ref=e308]:
+              - paragraph [ref=e309]: "3"
+              - paragraph [ref=e310]: 25.04-12.05 - 18 days
+            - generic [ref=e311]:
+              - paragraph [ref=e312]: JUDGE
+              - paragraph [ref=e313]: 13.05-14.05 - 2 days
+          - generic [ref=e314]:
+            - generic [ref=e315]:
+              - paragraph [ref=e316]: "4"
+              - paragraph [ref=e317]: 15.05-05.06 - 22 days
+            - generic [ref=e318]:
+              - paragraph [ref=e319]: JUDGE
+              - paragraph [ref=e320]: 06.06-07.06 - 2 days
+          - generic [ref=e321]:
+            - generic [ref=e322]:
+              - paragraph [ref=e323]: "5"
+              - paragraph [ref=e324]: 08.06-03.07 - 26 days
+            - generic [ref=e325]:
+              - paragraph [ref=e326]: JUDGE
+              - paragraph [ref=e327]: 04.07-05.07 - 2 days
+      - generic [ref=e329]:
+        - heading "Special Thanks" [level=2] [ref=e330]:
+          - generic [ref=e331]: Special
+          - generic [ref=e333]: Thanks
+        - paragraph [ref=e335]:
+          - generic [ref=e336]: To
+          - generic [ref=e338]: everyone
+          - generic [ref=e340]: who
+          - generic [ref=e342]: helped
+          - generic [ref=e344]: support
+          - generic [ref=e346]: the
+          - generic [ref=e348]: prize
+          - generic [ref=e350]: pool
+        - list [ref=e352]:
+          - listitem [ref=e353]:
+            - link "ckie" [ref=e354] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCLCAnzlMv6T06yV_ZBNxPCA
+          - listitem [ref=e356]:
+            - link "sardov" [ref=e357] [cursor=pointer]:
+              - /url: https://www.instagram.com/saradov.hj/
+          - listitem [ref=e359]:
+            - link "n1" [ref=e360] [cursor=pointer]:
+              - /url: https://www.instagram.com/n1krus_aep/
+          - listitem [ref=e362]:
+            - link "so.wild" [ref=e363] [cursor=pointer]:
+              - /url: https://www.instagram.com/so.w1ld/
+          - listitem [ref=e365]:
+            - link "hydroxyde" [ref=e366] [cursor=pointer]:
+              - /url: https://www.instagram.com/hydrroxide/
+          - listitem [ref=e368]:
+            - link "torro" [ref=e369] [cursor=pointer]:
+              - /url: https://www.instagram.com/torro.ixq/
+          - listitem [ref=e371]:
+            - link "zelyo" [ref=e372] [cursor=pointer]:
+              - /url: https://www.instagram.com/zelyobtw/
+          - listitem [ref=e374]:
+            - link "hexterna" [ref=e375] [cursor=pointer]:
+              - /url: https://www.instagram.com/hexterna.ng/
+        - paragraph [ref=e377]:
+          - generic [ref=e378]: If
+          - generic [ref=e380]: you
+          - generic [ref=e382]: are
+          - generic [ref=e384]: interested
+          - generic [ref=e386]: in
+          - generic [ref=e388]: contributing
+          - generic [ref=e390]: to
+          - generic [ref=e392]: the
+          - generic [ref=e394]: prize
+          - generic [ref=e396]: pool
+          - generic [ref=e398]: or
+          - generic [ref=e400]: partnering
+          - generic [ref=e402]: with
+          - generic [ref=e404]: us
+          - generic [ref=e406]: as
+          - generic [ref=e408]: a
+          - generic [ref=e410]: sponsor,
+          - generic [ref=e412]: reach
+          - generic [ref=e414]: out
+          - generic [ref=e416]: via
+          - generic [ref=e418]: "Discord:"
+          - generic [ref=e420]: "@flizodt"
+          - generic [ref=e422]: or
+          - generic [ref=e424]: by
+          - generic [ref=e426]: "email:"
+          - generic [ref=e428]: newgenunit.official@gmail.com.
+  - generic [ref=e430]:
+    - img "NEWGEN" [ref=e431]
+    - contentinfo [ref=e432]:
+      - generic [ref=e433]:
+        - generic [ref=e434]:
+          - generic [ref=e435]: NEWGEN
+          - generic [ref=e436]: TOURNAMENT
+          - generic [ref=e437]: "2026"
+        - list [ref=e438]:
+          - listitem [ref=e439]:
+            - link "Rules" [ref=e440] [cursor=pointer]:
+              - /url: rules/index.html
+          - listitem [ref=e441]:
+            - link "Bracket" [ref=e442] [cursor=pointer]:
+              - /url: index.html#bracket
+          - listitem [ref=e443]:
+            - link "About" [ref=e444] [cursor=pointer]:
+              - /url: index.html#about
+        - list [ref=e445]:
+          - listitem [ref=e446]:
+            - link "Discord" [ref=e447] [cursor=pointer]:
+              - /url: https://discord.gg/n3wg3n
+          - listitem [ref=e448]:
+            - link "Instagram" [ref=e449] [cursor=pointer]:
+              - /url: https://www.instagram.com/newgen.unit/
+          - listitem [ref=e450]:
+            - link "Telegram" [ref=e451] [cursor=pointer]:
+              - /url: https://t.me/newgen_editing
+        - generic [ref=e452]:
+          - generic [ref=e453]:
+            - text: Dev by
+            - link "aepstore" [ref=e454] [cursor=pointer]:
+              - /url: https://t.me/aepstore_official
+          - generic [ref=e455]:
+            - text: Design by
+            - link "14" [ref=e456] [cursor=pointer]:
+              - /url: https://www.instagram.com/gplaya__/

@@ -1,0 +1,2479 @@
+{
+  "98d85c72-0202-47b0-8a07-f66cdd711c14": {
+    "match": {
+      "id": "98d85c72-0202-47b0-8a07-f66cdd711c14",
+      "order": 1,
+      "status": "FINISHED",
+      "winnerId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "scoreA": 68.16,
+      "scoreB": 47.97
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "username": "goof21",
+      "nickname": null,
+      "instagram": "https://www.instagram.com/goofyatwood/",
+      "youtube": "https://www.youtube.com/@goofyatwood",
+      "avatar": "avatars/goof21.png",
+      "submission": {
+        "id": "4c3f9117-5b8e-43c8-9319-bd56176717e0",
+        "userId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+        "videoUrl": "https://www.youtube.com/watch?v=PbIDcQsAB9g",
+        "embedUrl": "https://www.youtube.com/embed/PbIDcQsAB9g",
+        "description": "play in 4k thx",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T19:17:17.783Z",
+        "updatedAt": "2026-04-06T19:17:17.783Z"
+      },
+      "scores": {
+        "users": {
+          "count": 87,
+          "average100": 67.33
+        },
+        "jury": {
+          "count": 4,
+          "average100": 69
+        }
+      },
+      "avatarUrl": "avatars/goof21.png"
+    },
+    "participantB": {
+      "id": "ecb026c0-e335-4d17-9798-fa41707a3cbd",
+      "username": "xtwizted",
+      "nickname": "twizted",
+      "instagram": "https://www.instagram.com/twzzted/",
+      "youtube": "https://www.youtube.com/@sigmakillertwizted",
+      "avatar": "https://cdn.discordapp.com/avatars/547095103953436693/c28da16257ae6ce9119b2b0fb2740b38.png",
+      "submission": {
+        "id": "e9bafe58-4fb1-41d4-8eff-13f0b976bfa0",
+        "userId": "ecb026c0-e335-4d17-9798-fa41707a3cbd",
+        "videoUrl": "https://www.youtube.com/watch?v=6pe52W5uucw",
+        "embedUrl": "https://www.youtube.com/embed/6pe52W5uucw",
+        "description": "started working pretty late on this and was sleep deprived towards the end sadly but had a lot of fun ty for opportunity.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T16:43:16.338Z",
+        "updatedAt": "2026-04-06T16:43:16.338Z"
+      },
+      "scores": {
+        "users": {
+          "count": 77,
+          "average100": 48.31
+        },
+        "jury": {
+          "count": 4,
+          "average100": 47.63
+        }
+      }
+    }
+  },
+  "88e33d6c-1ebb-4156-a757-a24bd69b74ef": {
+    "match": {
+      "id": "88e33d6c-1ebb-4156-a757-a24bd69b74ef",
+      "order": 2,
+      "status": "FINISHED",
+      "winnerId": "d5365036-d2df-42fa-bb8f-33e46bdc053d",
+      "scoreA": 68.16,
+      "scoreB": 56.97
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "d5365036-d2df-42fa-bb8f-33e46bdc053d",
+      "username": "khalidv2.",
+      "nickname": null,
+      "instagram": null,
+      "youtube": null,
+      "avatar": "avatars/khalidv2_.png",
+      "submission": {
+        "id": "5d3c7043-ce79-45c2-981e-babd6a0f25f9",
+        "userId": "d5365036-d2df-42fa-bb8f-33e46bdc053d",
+        "videoUrl": "https://www.youtube.com/watch?v=SB7TloOptiE",
+        "embedUrl": "https://www.youtube.com/embed/SB7TloOptiE",
+        "description": ".,.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:39:51.451Z",
+        "updatedAt": "2026-04-06T20:39:51.451Z"
+      },
+      "scores": {
+        "users": {
+          "count": 70,
+          "average100": 67.81
+        },
+        "jury": {
+          "count": 4,
+          "average100": 68.5
+        }
+      },
+      "avatarUrl": "avatars/khalidv2_.png"
+    },
+    "participantB": {
+      "id": "0a97c022-e6be-421a-9352-42a0eef051a6",
+      "username": "xdcrims0n",
+      "nickname": "vtessee",
+      "instagram": null,
+      "youtube": "https://www.youtube.com/@vtessee",
+      "avatar": "https://cdn.discordapp.com/avatars/874133569814003732/bf507cb632ccba016662cbe8c0303418.png",
+      "submission": {
+        "id": "972f5cee-e5fe-420f-acba-9c79f3fa8af5",
+        "userId": "0a97c022-e6be-421a-9352-42a0eef051a6",
+        "videoUrl": "https://www.youtube.com/watch?v=n3tRMeYbp8g",
+        "embedUrl": "https://www.youtube.com/embed/n3tRMeYbp8g",
+        "description": "An edit exploring the concepts of reverse flows and diverse aesthetics.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:24:35.153Z",
+        "updatedAt": "2026-04-07T04:39:25.659Z"
+      },
+      "scores": {
+        "users": {
+          "count": 71,
+          "average100": 56.93
+        },
+        "jury": {
+          "count": 4,
+          "average100": 57
+        }
+      }
+    }
+  },
+  "b3a0158d-60c1-4ca2-9740-bd1172b263aa": {
+    "match": {
+      "id": "b3a0158d-60c1-4ca2-9740-bd1172b263aa",
+      "order": 3,
+      "status": "FINISHED",
+      "winnerId": "5e287aac-5725-4708-82a2-6b5e6299eb07",
+      "scoreA": 66.33,
+      "scoreB": 48.41
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "5e287aac-5725-4708-82a2-6b5e6299eb07",
+      "username": "strezelia",
+      "nickname": "seb",
+      "instagram": null,
+      "youtube": null,
+      "avatar": "avatars/strezelia.png",
+      "submission": {
+        "id": "67ec0bed-c073-459e-aa79-aa91a6ef051d",
+        "userId": "5e287aac-5725-4708-82a2-6b5e6299eb07",
+        "videoUrl": "https://www.youtube.com/watch?v=y8SIfkG-MsM",
+        "embedUrl": "https://www.youtube.com/embed/y8SIfkG-MsM",
+        "description": "just the intro i had, really had to rush myself for the last 3 days :(",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T21:54:31.272Z",
+        "updatedAt": "2026-04-06T21:54:31.272Z"
+      },
+      "scores": {
+        "users": {
+          "count": 64,
+          "average100": 67.41
+        },
+        "jury": {
+          "count": 4,
+          "average100": 65.25
+        }
+      },
+      "avatarUrl": "avatars/strezelia.png"
+    },
+    "participantB": {
+      "id": "0a95122e-fa7c-45a0-ab9f-19785c58dd23",
+      "username": "a1erty",
+      "nickname": "alerty",
+      "instagram": "https://www.instagram.com/alerty.vfx",
+      "youtube": null,
+      "avatar": "https://cdn.discordapp.com/avatars/454917276794224641/377fbabaac1f46e050aef265fdecdc29.png",
+      "submission": {
+        "id": "37602a77-469b-439f-a1c6-4854f42fba16",
+        "userId": "0a95122e-fa7c-45a0-ab9f-19785c58dd23",
+        "videoUrl": "https://www.youtube.com/watch?v=HDn1MBkZxO0",
+        "embedUrl": "https://www.youtube.com/embed/HDn1MBkZxO0",
+        "description": "ヽ(•̀ᴗ•́)ノ",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T16:17:28.673Z",
+        "updatedAt": "2026-04-06T16:17:28.673Z"
+      },
+      "scores": {
+        "users": {
+          "count": 60,
+          "average100": 50.06
+        },
+        "jury": {
+          "count": 4,
+          "average100": 46.75
+        }
+      }
+    }
+  },
+  "8cebb013-e648-436a-bdec-05d43f040df5": {
+    "match": {
+      "id": "8cebb013-e648-436a-bdec-05d43f040df5",
+      "order": 4,
+      "status": "FINISHED",
+      "winnerId": "d536cd2e-fad2-469f-b660-078a2359e435",
+      "scoreA": 64.21,
+      "scoreB": 73.82
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "0ab17172-6cef-4f64-8c33-0c5fb8bec822",
+      "username": "mato.edits",
+      "nickname": "Mato",
+      "instagram": "https://www.instagram.com/mato.edits/",
+      "youtube": null,
+      "avatar": "https://cdn.discordapp.com/avatars/872564038914162729/8116f8cc41bf60990e82b28948da01c3.png",
+      "submission": {
+        "id": "00a58d19-0b79-4cfd-89f6-576460910236",
+        "userId": "0ab17172-6cef-4f64-8c33-0c5fb8bec822",
+        "videoUrl": "https://www.youtube.com/watch?v=rSx0IaQbuM0",
+        "embedUrl": "https://www.youtube.com/embed/rSx0IaQbuM0",
+        "description": "cherrys",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-03T12:24:46.051Z",
+        "updatedAt": "2026-04-03T20:19:02.019Z"
+      },
+      "scores": {
+        "users": {
+          "count": 72,
+          "average100": 68.53
+        },
+        "jury": {
+          "count": 4,
+          "average100": 59.88
+        }
+      }
+    },
+    "participantB": {
+      "id": "d536cd2e-fad2-469f-b660-078a2359e435",
+      "username": "pola",
+      "nickname": "pola",
+      "instagram": "https://www.instagram.com/pola.on/?hl=fr",
+      "youtube": "https://www.youtube.com/@thispolaa",
+      "avatar": "avatars/pola.png",
+      "submission": {
+        "id": "e31d519b-320f-4675-95e0-5bdc2034e203",
+        "userId": "d536cd2e-fad2-469f-b660-078a2359e435",
+        "videoUrl": "https://www.youtube.com/watch?v=sSPgUdbVOxM",
+        "embedUrl": "https://www.youtube.com/embed/sSPgUdbVOxM",
+        "description": "Tonight You Belong To Me",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T18:54:10.360Z",
+        "updatedAt": "2026-04-06T18:54:29.957Z"
+      },
+      "scores": {
+        "users": {
+          "count": 76,
+          "average100": 71.89
+        },
+        "jury": {
+          "count": 4,
+          "average100": 75.75
+        }
+      },
+      "avatarUrl": "avatars/pola.png"
+    }
+  },
+  "daa2deb2-1e10-4a16-b3e1-a470fdb3364d": {
+    "match": {
+      "id": "daa2deb2-1e10-4a16-b3e1-a470fdb3364d",
+      "order": 5,
+      "status": "FINISHED",
+      "winnerId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "scoreA": 82.03,
+      "scoreB": null
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "username": "troubled_duck",
+      "nickname": null,
+      "instagram": null,
+      "youtube": "https://www.youtube.com/@troubled_duck",
+      "avatar": "avatars/troubled_duck.png",
+      "submission": {
+        "id": "6aa903e0-c94d-4494-8d80-d6b3f32eb009",
+        "userId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+        "videoUrl": "https://www.youtube.com/watch?v=H9EE0aoxtPs",
+        "embedUrl": "https://www.youtube.com/embed/H9EE0aoxtPs",
+        "description": "Hi Hello hi",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:39:22.385Z",
+        "updatedAt": "2026-04-06T20:39:22.385Z"
+      },
+      "scores": {
+        "users": {
+          "count": 84,
+          "average100": 81.92
+        },
+        "jury": {
+          "count": 4,
+          "average100": 82.13
+        }
+      },
+      "avatarUrl": "avatars/troubled_duck.png"
+    },
+    "participantB": {
+      "id": "7292a16e-7ad7-403d-b2a4-e2fa2c7db688",
+      "username": "kiyodayonaa",
+      "nickname": "kyo",
+      "instagram": null,
+      "youtube": null,
+      "avatar": "https://cdn.discordapp.com/avatars/988081118307827734/827044ecb625ad9619e4aba70ccf3d50.png",
+      "submission": null,
+      "scores": {
+        "users": {
+          "count": 0,
+          "average100": null
+        },
+        "jury": {
+          "count": 0,
+          "average100": null
+        }
+      }
+    }
+  },
+  "68774815-d364-49f3-a3a4-d27d6f3460c7": {
+    "match": {
+      "id": "68774815-d364-49f3-a3a4-d27d6f3460c7",
+      "order": 6,
+      "status": "FINISHED",
+      "winnerId": "702bb18e-ba8d-41c0-973d-f1f334c313d7",
+      "scoreA": 58.15,
+      "scoreB": 52.63
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "702bb18e-ba8d-41c0-973d-f1f334c313d7",
+      "username": "vovanddroes",
+      "nickname": "plugdi",
+      "instagram": "https://www.instagram.com/thisisplugdi/",
+      "youtube": "https://www.youtube.com/@plugDi2",
+      "avatar": "avatars/vovanddroes.png",
+      "submission": {
+        "id": "a3f9dde5-32a9-4aea-a7c9-5026bc289ca9",
+        "userId": "702bb18e-ba8d-41c0-973d-f1f334c313d7",
+        "videoUrl": "https://www.youtube.com/watch?v=hGWEfEhR9fU",
+        "embedUrl": "https://www.youtube.com/embed/hGWEfEhR9fU",
+        "description": "I didn't have time to do it in 2 weeks, I did it in 2 days, sorry",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T21:07:36.080Z",
+        "updatedAt": "2026-04-06T21:07:57.538Z"
+      },
+      "scores": {
+        "users": {
+          "count": 64,
+          "average100": 51.92
+        },
+        "jury": {
+          "count": 4,
+          "average100": 64.38
+        }
+      },
+      "avatarUrl": "avatars/vovanddroes.png"
+    },
+    "participantB": {
+      "id": "7f31eda2-a27b-45be-af99-cd2d4ee373b7",
+      "username": "zusk.breadovich",
+      "nickname": "zusk",
+      "instagram": "https://www.instagram.com/zusk_fx/",
+      "youtube": "https://www.youtube.com/@zusk_fx",
+      "avatar": "https://cdn.discordapp.com/avatars/749310498570371124/37b61047d9f3d04c6c52fcbe42b5f636.png",
+      "submission": {
+        "id": "840afb98-3db2-428b-8915-ea83be1e8b6b",
+        "userId": "7f31eda2-a27b-45be-af99-cd2d4ee373b7",
+        "videoUrl": "https://www.youtube.com/watch?v=iPaFO7ElnGk",
+        "embedUrl": "https://www.youtube.com/embed/iPaFO7ElnGk",
+        "description": "-",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T21:10:26.920Z",
+        "updatedAt": "2026-04-06T21:10:26.920Z"
+      },
+      "scores": {
+        "users": {
+          "count": 66,
+          "average100": 57.26
+        },
+        "jury": {
+          "count": 4,
+          "average100": 48
+        }
+      }
+    }
+  },
+  "6f7bf2e5-5148-4a33-bca4-15c40151d61e": {
+    "match": {
+      "id": "6f7bf2e5-5148-4a33-bca4-15c40151d61e",
+      "order": 7,
+      "status": "FINISHED",
+      "winnerId": "e989953d-c020-42d5-a53d-d76f8ba6629b",
+      "scoreA": 49.67,
+      "scoreB": 44.89
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "e989953d-c020-42d5-a53d-d76f8ba6629b",
+      "username": "djzelemhan",
+      "nickname": "dj zelemhan",
+      "instagram": "https://www.instagram.com/zelyobtw?igsh=bHExeDNscXh1Mjhl&utm_source=qr",
+      "youtube": "https://www.youtube.com/@zelyobtw",
+      "avatar": "avatars/djzelemhan.png",
+      "submission": {
+        "id": "4d9e0305-74a5-4ec6-9ac5-2c3474a3ffdb",
+        "userId": "e989953d-c020-42d5-a53d-d76f8ba6629b",
+        "videoUrl": "https://www.youtube.com/watch?v=hhYhsB23gI4",
+        "embedUrl": "https://www.youtube.com/embed/hhYhsB23gI4",
+        "description": "история типо денжи поднимает голову и жестко злится а потом падает ядерная бомба ( это типо резе в форме ядерки) и потом начинается файт. момент где они целуются и все мило - это флэшбеки денжи, но",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-05T22:01:27.562Z",
+        "updatedAt": "2026-04-05T22:01:27.562Z"
+      },
+      "scores": {
+        "users": {
+          "count": 61,
+          "average100": 44.84
+        },
+        "jury": {
+          "count": 4,
+          "average100": 54.5
+        }
+      },
+      "avatarUrl": "avatars/djzelemhan.png"
+    },
+    "participantB": {
+      "id": "934e2715-db55-47cb-9168-c6adbf036e33",
+      "username": "sketchy.aep",
+      "nickname": "loser",
+      "instagram": "https://www.instagram.com/sk3tchzy4/",
+      "youtube": "https://www.youtube.com/@sketchyvfx150",
+      "avatar": "https://cdn.discordapp.com/avatars/778542612189544448/820a0976887808d79fa6c44c18443224.png",
+      "submission": {
+        "id": "2fd9a72e-8604-461e-86dd-c8f0ced9c674",
+        "userId": "934e2715-db55-47cb-9168-c6adbf036e33",
+        "videoUrl": "https://www.youtube.com/watch?v=U6Es_MvJhHQ",
+        "embedUrl": "https://www.youtube.com/embed/U6Es_MvJhHQ",
+        "description": "after scrapping 3 edits I made this in 3 days , congrats zelyo for the win GOODLUCK BEAT GOON FOR ME THANKS",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-05T20:47:26.513Z",
+        "updatedAt": "2026-04-05T20:47:26.513Z"
+      },
+      "scores": {
+        "users": {
+          "count": 66,
+          "average100": 54.03
+        },
+        "jury": {
+          "count": 4,
+          "average100": 35.75
+        }
+      }
+    }
+  },
+  "9cfc4ad6-5e2b-4741-851d-2922226b3433": {
+    "match": {
+      "id": "9cfc4ad6-5e2b-4741-851d-2922226b3433",
+      "order": 8,
+      "status": "FINISHED",
+      "winnerId": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+      "scoreA": 76.35,
+      "scoreB": 48.51
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+      "username": "lucas19471",
+      "nickname": "goon",
+      "instagram": "https://www.instagram.com/goon._900/",
+      "youtube": "https://www.youtube.com/@Goon_900",
+      "avatar": "avatars/lucas19471.png",
+      "submission": {
+        "id": "7ca960e8-6147-453c-98bd-d5f2f1773f9f",
+        "userId": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+        "videoUrl": "https://www.youtube.com/watch?v=sqpXcknf-0A",
+        "embedUrl": "https://www.youtube.com/embed/sqpXcknf-0A",
+        "description": "happy happy happy hahaha so funny im so schizo",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-04T06:56:58.544Z",
+        "updatedAt": "2026-04-05T00:35:36.443Z"
+      },
+      "scores": {
+        "users": {
+          "count": 78,
+          "average100": 73.94
+        },
+        "jury": {
+          "count": 4,
+          "average100": 78.75
+        }
+      },
+      "avatarUrl": "avatars/lucas19471.png"
+    },
+    "participantB": {
+      "id": "8509d446-1b91-4e0f-b012-7862a1cd4c47",
+      "username": "ilyrolliet",
+      "nickname": "hfantyx",
+      "instagram": "https://www.instagram.com/hfantyx/",
+      "youtube": "https://youtube.com/@hfantyx?si=FEd-Fd83GoX-a_gt",
+      "avatar": "https://cdn.discordapp.com/avatars/925953863259938837/07e7fca6d2102ac6e66f818b4575524c.png",
+      "submission": {
+        "id": "efc28ba3-6bde-4b9f-8412-2398de007369",
+        "userId": "8509d446-1b91-4e0f-b012-7862a1cd4c47",
+        "videoUrl": "https://www.youtube.com/watch?v=Ofdgvoue5mw",
+        "embedUrl": "https://www.youtube.com/embed/Ofdgvoue5mw",
+        "description": "im sorry...",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:58:45.676Z",
+        "updatedAt": "2026-04-06T20:58:45.676Z"
+      },
+      "scores": {
+        "users": {
+          "count": 65,
+          "average100": 46.26
+        },
+        "jury": {
+          "count": 4,
+          "average100": 50.75
+        }
+      }
+    }
+  },
+  "79f74d89-e09c-48c2-9bc0-a1ef11504f49": {
+    "match": {
+      "id": "79f74d89-e09c-48c2-9bc0-a1ef11504f49",
+      "order": 9,
+      "status": "FINISHED",
+      "winnerId": "7977cd54-ac67-4bfe-810b-5d35348a56b5",
+      "scoreA": 57.5,
+      "scoreB": 61
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "da3e960f-0e1e-41d9-9f69-0b6aff026159",
+      "username": "hwrack",
+      "nickname": "hwroin",
+      "instagram": "https://www.instagram.com/hwroin",
+      "youtube": null,
+      "avatar": "https://cdn.discordapp.com/avatars/1038173306584571955/a_a8a2687d2bb4172ef14043aae2743c4d.png",
+      "submission": {
+        "id": "c775ca48-b09a-4d94-b9da-73d97cad7169",
+        "userId": "da3e960f-0e1e-41d9-9f69-0b6aff026159",
+        "videoUrl": "https://www.youtube.com/watch?v=RPfcqcVg4jg",
+        "embedUrl": "https://www.youtube.com/embed/RPfcqcVg4jg",
+        "description": "this is all I could do for now will finish later",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:47:04.287Z",
+        "updatedAt": "2026-04-06T22:47:21.197Z"
+      },
+      "scores": {
+        "users": {
+          "count": 73,
+          "average100": 58.25
+        },
+        "jury": {
+          "count": 4,
+          "average100": 56.75
+        }
+      }
+    },
+    "participantB": {
+      "id": "7977cd54-ac67-4bfe-810b-5d35348a56b5",
+      "username": "wikentens",
+      "nickname": "wikentens",
+      "instagram": "https://www.instagram.com/wikentens/",
+      "youtube": null,
+      "avatar": "avatars/wikentens.png",
+      "submission": {
+        "id": "91afc35a-af3a-4300-b5ef-91cbb3933974",
+        "userId": "7977cd54-ac67-4bfe-810b-5d35348a56b5",
+        "videoUrl": "https://www.youtube.com/watch?v=cWqmP43PUsA",
+        "embedUrl": "https://www.youtube.com/embed/cWqmP43PUsA",
+        "description": "There were problems, the video turned out to be incomplete ",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T21:14:25.324Z",
+        "updatedAt": "2026-04-07T12:38:37.243Z"
+      },
+      "scores": {
+        "users": {
+          "count": 74,
+          "average100": 60.99
+        },
+        "jury": {
+          "count": 4,
+          "average100": 61
+        }
+      },
+      "avatarUrl": "avatars/wikentens.png"
+    }
+  },
+  "2c6cc08b-976e-42c4-9676-e56491b1b115": {
+    "match": {
+      "id": "2c6cc08b-976e-42c4-9676-e56491b1b115",
+      "order": 10,
+      "status": "FINISHED",
+      "winnerId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "scoreA": 46.25,
+      "scoreB": 80.26
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "f99ef40b-496c-4458-aba2-d66300c094f6",
+      "username": "snake.imu",
+      "nickname": "snake",
+      "instagram": "https://www.instagram.com/snxkeee/",
+      "youtube": "https://www.youtube.com/@snakeimu",
+      "avatar": "https://cdn.discordapp.com/avatars/730224280159125555/51acf6349a45cf97ce55392d7dadcc2c.png",
+      "submission": {
+        "id": "62772cbf-01a8-464f-a9d5-d7d381a8f49c",
+        "userId": "f99ef40b-496c-4458-aba2-d66300c094f6",
+        "videoUrl": "https://www.youtube.com/watch?v=BzzN-ZOU5Ok",
+        "embedUrl": "https://www.youtube.com/embed/BzzN-ZOU5Ok",
+        "description": "rushed, enjoy still?",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T22:41:12.024Z",
+        "updatedAt": "2026-04-06T22:41:12.024Z"
+      },
+      "scores": {
+        "users": {
+          "count": 50,
+          "average100": 46
+        },
+        "jury": {
+          "count": 4,
+          "average100": 46.5
+        }
+      }
+    },
+    "participantB": {
+      "id": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "username": "shxrtfuze",
+      "nickname": "fuze",
+      "instagram": "https://www.instagram.com/shxrtfuze/",
+      "youtube": "https://www.youtube.com/@ShxrtFuze",
+      "avatar": "avatars/shxrtfuze.png",
+      "submission": {
+        "id": "6bc94f9c-5bb3-425d-b671-fe534f7b7507",
+        "userId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+        "videoUrl": "https://www.youtube.com/watch?v=LpsY_v7IrVY",
+        "embedUrl": "https://www.youtube.com/embed/LpsY_v7IrVY",
+        "description": "edit made in 4 days for round one of the NEWGEN tournament.\n\nsoftware used: \n\nafter effects\nblender\nhandbreak\nbgbye.io\ndepth anything\n\nif you want to support https://payhip.com/b/bcwr9\ngrps:\n\n4LT\nNEWG",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-08T09:45:06.417Z",
+        "updatedAt": "2026-04-08T09:45:06.417Z"
+      },
+      "scores": {
+        "users": {
+          "count": 38,
+          "average100": 82.64
+        },
+        "jury": {
+          "count": 4,
+          "average100": 77.88
+        }
+      },
+      "avatarUrl": "avatars/shxrtfuze.png"
+    }
+  },
+  "9fe09cca-5a69-4685-af80-7a3980aeb161": {
+    "match": {
+      "id": "9fe09cca-5a69-4685-af80-7a3980aeb161",
+      "order": 11,
+      "status": "FINISHED",
+      "winnerId": "8043409d-c2b9-4759-ab36-10c3828de75d",
+      "scoreA": 63.66,
+      "scoreB": 67.79
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "88b05edf-e42d-49b3-aabb-87977fb7f7aa",
+      "username": "gymshorts.",
+      "nickname": "pack",
+      "instagram": "https://www.instagram.com/packpilled/",
+      "youtube": "https://www.youtube.com/@packeditman",
+      "avatar": "https://cdn.discordapp.com/avatars/368623776293715969/055937e395e8d994d3db2c7ffbbbf8d7.png",
+      "submission": {
+        "id": "21b8f976-50ed-4b5e-9481-12f28881c8cc",
+        "userId": "88b05edf-e42d-49b3-aabb-87977fb7f7aa",
+        "videoUrl": "https://www.youtube.com/watch?v=7YkSCKlMDQY",
+        "embedUrl": "https://www.youtube.com/embed/7YkSCKlMDQY",
+        "description": null,
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-08T15:19:39.026Z",
+        "updatedAt": "2026-04-08T15:19:39.026Z"
+      },
+      "scores": {
+        "users": {
+          "count": 25,
+          "average100": 62.82
+        },
+        "jury": {
+          "count": 4,
+          "average100": 64.5
+        }
+      }
+    },
+    "participantB": {
+      "id": "8043409d-c2b9-4759-ab36-10c3828de75d",
+      "username": "koshszn",
+      "nickname": "koshszn",
+      "instagram": null,
+      "youtube": null,
+      "avatar": "avatars/koshszn.png",
+      "submission": {
+        "id": "c4b022ab-3adf-4ca4-9fec-3b809d198d9b",
+        "userId": "8043409d-c2b9-4759-ab36-10c3828de75d",
+        "videoUrl": "https://www.youtube.com/watch?v=Oo8IgqU-6eo",
+        "embedUrl": "https://www.youtube.com/embed/Oo8IgqU-6eo",
+        "description": "the render  messed up the cc, gg (so rushed,,,,sigh)",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T22:26:25.438Z",
+        "updatedAt": "2026-04-06T22:47:00.828Z"
+      },
+      "scores": {
+        "users": {
+          "count": 57,
+          "average100": 65.94
+        },
+        "jury": {
+          "count": 4,
+          "average100": 69.63
+        }
+      },
+      "avatarUrl": "avatars/koshszn.png"
+    }
+  },
+  "9113d005-fbe2-4eb5-b741-415de01529bf": {
+    "match": {
+      "id": "9113d005-fbe2-4eb5-b741-415de01529bf",
+      "order": 12,
+      "status": "FINISHED",
+      "winnerId": "df675360-8892-4940-901a-6bbf783d6ff6",
+      "scoreA": 62.27,
+      "scoreB": 71.72
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "91da8133-6a4a-4234-beb8-e129f48c35b1",
+      "username": "1sundx",
+      "nickname": "Sundx",
+      "instagram": "https://www.instagram.com/sundxedit",
+      "youtube": "https://www.youtube.com/@SundxEdits",
+      "avatar": "https://cdn.discordapp.com/avatars/1099205690721054791/b2e009ced2edf117ed752952aba08d7d.png",
+      "submission": {
+        "id": "431fb886-9032-49f1-a4b6-7beb9b038f5a",
+        "userId": "91da8133-6a4a-4234-beb8-e129f48c35b1",
+        "videoUrl": "https://www.youtube.com/watch?v=Dy1lT4RRo3M",
+        "embedUrl": "https://www.youtube.com/embed/Dy1lT4RRo3M",
+        "description": "Made in 50-60 hours\nAll 3D and Simulations made by me",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T17:30:07.507Z",
+        "updatedAt": "2026-04-06T17:30:07.507Z"
+      },
+      "scores": {
+        "users": {
+          "count": 75,
+          "average100": 59.29
+        },
+        "jury": {
+          "count": 4,
+          "average100": 65.25
+        }
+      }
+    },
+    "participantB": {
+      "id": "df675360-8892-4940-901a-6bbf783d6ff6",
+      "username": "hantezone",
+      "nickname": "hante",
+      "instagram": "https://www.instagram.com/hantezone/",
+      "youtube": "https://www.youtube.com/@hantezone",
+      "avatar": "avatars/hantezone.png",
+      "submission": {
+        "id": "1b9fa08d-5a72-4523-a1b6-0f15c3a421c9",
+        "userId": "df675360-8892-4940-901a-6bbf783d6ff6",
+        "videoUrl": "https://www.youtube.com/watch?v=PE48gp2XJrg",
+        "embedUrl": "https://www.youtube.com/embed/PE48gp2XJrg",
+        "description": "Enjoy!",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-02T14:49:19.667Z",
+        "updatedAt": "2026-04-02T16:34:17.156Z"
+      },
+      "scores": {
+        "users": {
+          "count": 76,
+          "average100": 75.93
+        },
+        "jury": {
+          "count": 4,
+          "average100": 67.5
+        }
+      },
+      "avatarUrl": "avatars/hantezone.png"
+    }
+  },
+  "a7793f06-2542-4a2f-930a-b00b36e4130b": {
+    "match": {
+      "id": "a7793f06-2542-4a2f-930a-b00b36e4130b",
+      "order": 13,
+      "status": "FINISHED",
+      "winnerId": "f1676313-574f-47a1-8fc1-d39726f70b55",
+      "scoreA": 61.44,
+      "scoreB": 47.86
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "f1676313-574f-47a1-8fc1-d39726f70b55",
+      "username": "sku1l8",
+      "nickname": "El Cranéo",
+      "instagram": "https://www.instagram.com/sku1l8/",
+      "youtube": "https://www.youtube.com/@sku1l8ong",
+      "avatar": "avatars/sku1l8.png",
+      "submission": {
+        "id": "6d66abd9-fcec-4d49-8d52-f857a4ae9594",
+        "userId": "f1676313-574f-47a1-8fc1-d39726f70b55",
+        "videoUrl": "https://www.youtube.com/watch?v=GwpEolFbfT4",
+        "embedUrl": "https://www.youtube.com/embed/GwpEolFbfT4",
+        "description": "violet evergarden // song - solei by pomme. Started edit on last day cause I was travelling so it’s much shorter than planned",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:37:26.933Z",
+        "updatedAt": "2026-04-06T22:21:01.223Z"
+      },
+      "scores": {
+        "users": {
+          "count": 70,
+          "average100": 64.99
+        },
+        "jury": {
+          "count": 4,
+          "average100": 57.88
+        }
+      },
+      "avatarUrl": "avatars/sku1l8.png"
+    },
+    "participantB": {
+      "id": "ef892979-53f9-44eb-be73-d69536541df0",
+      "username": "dekhalid",
+      "nickname": "Khalid",
+      "instagram": null,
+      "youtube": "https://www.youtube.com/@Khalid0",
+      "avatar": "https://cdn.discordapp.com/avatars/254533231594962944/5cce3c18d02445cc4b9faadba5d70f51.png",
+      "submission": {
+        "id": "52c3bb83-57bb-4a25-8d34-9886482be53c",
+        "userId": "ef892979-53f9-44eb-be73-d69536541df0",
+        "videoUrl": "https://www.youtube.com/watch?v=44ELur1p_KA",
+        "embedUrl": "https://www.youtube.com/embed/44ELur1p_KA",
+        "description": "Submission",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T18:25:54.566Z",
+        "updatedAt": "2026-04-06T18:25:54.566Z"
+      },
+      "scores": {
+        "users": {
+          "count": 66,
+          "average100": 50.46
+        },
+        "jury": {
+          "count": 4,
+          "average100": 45.25
+        }
+      }
+    }
+  },
+  "5c6c8498-7b7a-4d18-9285-c0924fec5316": {
+    "match": {
+      "id": "5c6c8498-7b7a-4d18-9285-c0924fec5316",
+      "order": 14,
+      "status": "FINISHED",
+      "winnerId": "306ed306-ff88-4010-9ff1-943c39776b11",
+      "scoreA": 63.9,
+      "scoreB": null
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "306ed306-ff88-4010-9ff1-943c39776b11",
+      "username": "bluexamasu",
+      "nickname": "Xamasu",
+      "instagram": "https://www.instagram.com/xamasu.am",
+      "youtube": "https://youtube.com/@bluexamasu",
+      "avatar": "avatars/bluexamasu.png",
+      "submission": {
+        "id": "542cafbd-a00e-4fd3-afd2-db2d2bc8344c",
+        "userId": "306ed306-ff88-4010-9ff1-943c39776b11",
+        "videoUrl": "https://www.youtube.com/watch?v=uRMi_yu9BJw",
+        "embedUrl": "https://www.youtube.com/embed/uRMi_yu9BJw",
+        "description": "Most of the edit is made from scratch..like 3d models or stuff ...only like 3 or 4 anime scenes like jumping or them daps...locked in days n nights bru",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T13:51:51.159Z",
+        "updatedAt": "2026-04-06T13:51:51.159Z"
+      },
+      "scores": {
+        "users": {
+          "count": 56,
+          "average100": 64.54
+        },
+        "jury": {
+          "count": 4,
+          "average100": 63.25
+        }
+      },
+      "avatarUrl": "avatars/bluexamasu.png"
+    },
+    "participantB": {
+      "id": "fc8530a7-f151-4a8d-9b5b-6f24d063daff",
+      "username": "reflectludakriz",
+      "nickname": null,
+      "instagram": null,
+      "youtube": null,
+      "avatar": "https://cdn.discordapp.com/avatars/581207978989060189/a_041ab172fe3ddc8229bc7ec99c70725b.png",
+      "submission": null,
+      "scores": {
+        "users": {
+          "count": 0,
+          "average100": null
+        },
+        "jury": {
+          "count": 0,
+          "average100": null
+        }
+      }
+    }
+  },
+  "fac8c509-0242-4847-9c06-0d3d883e3755": {
+    "match": {
+      "id": "fac8c509-0242-4847-9c06-0d3d883e3755",
+      "order": 15,
+      "status": "FINISHED",
+      "winnerId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "scoreA": 67.57,
+      "scoreB": 64.91
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "username": "walsiii",
+      "nickname": "Walsii",
+      "instagram": "https://instagram.com/w6lxy",
+      "youtube": "https://youtube.com/@walsiiiii",
+      "avatar": "avatars/walsiii.png",
+      "submission": {
+        "id": "187ab1cd-b2c7-47df-8528-2d157dcd533d",
+        "userId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+        "videoUrl": "https://www.youtube.com/watch?v=8xVcaTqVy4Y",
+        "embedUrl": "https://www.youtube.com/embed/8xVcaTqVy4Y",
+        "description": "mister mister kaboooom",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-05T15:24:10.064Z",
+        "updatedAt": "2026-04-05T15:24:12.165Z"
+      },
+      "scores": {
+        "users": {
+          "count": 65,
+          "average100": 73.39
+        },
+        "jury": {
+          "count": 4,
+          "average100": 61.75
+        }
+      },
+      "avatarUrl": "avatars/walsiii.png"
+    },
+    "participantB": {
+      "id": "7432cca3-c54b-4c70-901e-9eb32764307c",
+      "username": "wherevinny",
+      "nickname": null,
+      "instagram": "https://www.instagram.com/vq.aep?igsh=MXUyaTdoNm5uNDgwaw%3D%3D&utm_source=qr",
+      "youtube": "https://youtube.com/@vqdoesedits?si=1Zqp4RarDE2oCMDU",
+      "avatar": "https://cdn.discordapp.com/avatars/507678907739144193/5ffc08f199c3431940e55eb26df36854.png",
+      "submission": {
+        "id": "2c907c62-2316-4de3-ad3d-5e9e6809e182",
+        "userId": "7432cca3-c54b-4c70-901e-9eb32764307c",
+        "videoUrl": "https://www.youtube.com/watch?v=L3XHQgUvPKU",
+        "embedUrl": "https://www.youtube.com/embed/L3XHQgUvPKU",
+        "description": "barely got to work on this sadly",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T04:08:21.128Z",
+        "updatedAt": "2026-04-06T04:08:21.128Z"
+      },
+      "scores": {
+        "users": {
+          "count": 52,
+          "average100": 72.07
+        },
+        "jury": {
+          "count": 4,
+          "average100": 57.75
+        }
+      }
+    }
+  },
+  "20e238bc-842b-4707-b0c7-afb7d753c99f": {
+    "match": {
+      "id": "20e238bc-842b-4707-b0c7-afb7d753c99f",
+      "order": 16,
+      "status": "FINISHED",
+      "winnerId": "3a1a229e-3dc3-4e8f-bce7-b5fbae3f8ac9",
+      "scoreA": 17.43,
+      "scoreB": 61.74
+    },
+    "round": {
+      "id": "0902b37b-6031-4bc1-8570-d913356228b5",
+      "title": "Round 1",
+      "name": "Round 1",
+      "roundNumber": 1,
+      "startsAt": "2026-03-22T21:00:00.000Z",
+      "submissionDeadline": "2026-04-06T23:00:00.000Z",
+      "votingDeadline": "2026-04-08T21:00:00.000Z",
+      "endsAt": "2026-04-08T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "6ceec431-23d3-4e80-b041-c44c41276abb",
+      "username": "yuun_.",
+      "nickname": null,
+      "instagram": null,
+      "youtube": null,
+      "avatar": "https://cdn.discordapp.com/avatars/502938351284781078/68857004732d53cfa5ccdd1e42fb132d.png",
+      "submission": {
+        "id": "83f4c7a6-e290-499d-9648-91bbaf2037ad",
+        "userId": "6ceec431-23d3-4e80-b041-c44c41276abb",
+        "videoUrl": "https://www.youtube.com/watch?v=ZItyrnScEaE",
+        "embedUrl": "https://www.youtube.com/embed/ZItyrnScEaE",
+        "description": "At least i aint blacklisted right ?",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:54:19.897Z",
+        "updatedAt": "2026-04-06T23:33:57.922Z"
+      },
+      "scores": {
+        "users": {
+          "count": 60,
+          "average100": 21.86
+        },
+        "jury": {
+          "count": 4,
+          "average100": 13
+        }
+      }
+    },
+    "participantB": {
+      "id": "3a1a229e-3dc3-4e8f-bce7-b5fbae3f8ac9",
+      "username": "bynexn",
+      "nickname": "nexn",
+      "instagram": "https://www.instagram.com/bynexn/",
+      "youtube": "https://www.youtube.com/@bynexn",
+      "avatar": "avatars/bynexn.png",
+      "submission": {
+        "id": "6308b9b5-9211-49cb-aa1c-73ce979fd22c",
+        "userId": "3a1a229e-3dc3-4e8f-bce7-b5fbae3f8ac9",
+        "videoUrl": "https://www.youtube.com/watch?v=frDWB0pNvgA",
+        "embedUrl": "https://www.youtube.com/embed/frDWB0pNvgA",
+        "description": "\"Toast to the End\"\n\nThe man destined to save the world",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-06T20:52:23.623Z",
+        "updatedAt": "2026-04-06T20:52:23.623Z"
+      },
+      "scores": {
+        "users": {
+          "count": 61,
+          "average100": 64.23
+        },
+        "jury": {
+          "count": 4,
+          "average100": 59.25
+        }
+      },
+      "avatarUrl": "avatars/bynexn.png"
+    }
+  },
+  "a67f4f7d-fa0a-4e9c-871d-8152afc7758a": {
+    "match": {
+      "id": "a67f4f7d-fa0a-4e9c-871d-8152afc7758a",
+      "order": 1,
+      "status": "FINISHED",
+      "winnerId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "scoreA": 64.18,
+      "scoreB": 63.89
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "username": "goof21",
+      "nickname": "goof21",
+      "instagram": "https://www.instagram.com/goofyatwood/",
+      "youtube": "https://www.youtube.com/@goofyatwood",
+      "avatar": "avatars/goof21.png",
+      "submission": {
+        "id": "e92ecb4c-ee6f-4555-b085-e8e4c39adb3b",
+        "userId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+        "videoUrl": "https://www.youtube.com/watch?v=WB3ypRYLSYE",
+        "embedUrl": "https://www.youtube.com/embed/WB3ypRYLSYE",
+        "description": null,
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T00:19:14.222Z",
+        "updatedAt": "2026-04-23T00:19:14.222Z"
+      },
+      "scores": {
+        "users": {
+          "count": 85,
+          "average100": 66.02
+        },
+        "jury": {
+          "count": 3,
+          "average100": 62.33
+        }
+      },
+      "avatarUrl": "avatars/goof21.png"
+    },
+    "participantB": {
+      "id": "d5365036-d2df-42fa-bb8f-33e46bdc053d",
+      "username": "khalidv2.",
+      "nickname": "khalidv2.",
+      "instagram": null,
+      "youtube": null,
+      "avatar": "avatars/khalidv2_.png",
+      "submission": {
+        "id": "147e20c8-fe53-482c-97d4-ebf04667d958",
+        "userId": "d5365036-d2df-42fa-bb8f-33e46bdc053d",
+        "videoUrl": "https://www.youtube.com/watch?v=3wZsF3bLsuI",
+        "embedUrl": "https://www.youtube.com/embed/3wZsF3bLsuI",
+        "description": "[31][32][33][34][35]",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T00:26:45.035Z",
+        "updatedAt": "2026-04-23T00:26:45.035Z"
+      },
+      "scores": {
+        "users": {
+          "count": 75,
+          "average100": 67.28
+        },
+        "jury": {
+          "count": 3,
+          "average100": 60.5
+        }
+      },
+      "avatarUrl": "avatars/khalidv2_.png"
+    }
+  },
+  "4a0cfe42-e450-49fe-a269-be687ebcdd6e": {
+    "match": {
+      "id": "4a0cfe42-e450-49fe-a269-be687ebcdd6e",
+      "order": 2,
+      "status": "FINISHED",
+      "winnerId": "d536cd2e-fad2-469f-b660-078a2359e435",
+      "scoreA": 52.04,
+      "scoreB": 61.12
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "5e287aac-5725-4708-82a2-6b5e6299eb07",
+      "username": "strezelia",
+      "nickname": "seb",
+      "instagram": null,
+      "youtube": null,
+      "avatar": "avatars/strezelia.png",
+      "submission": {
+        "id": "33370a4d-d349-40f9-9658-c71bcb63e80e",
+        "userId": "5e287aac-5725-4708-82a2-6b5e6299eb07",
+        "videoUrl": "https://www.youtube.com/watch?v=ov40Fx-2EUA",
+        "embedUrl": "https://www.youtube.com/embed/ov40Fx-2EUA",
+        "description": null,
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-24T23:49:04.740Z",
+        "updatedAt": "2026-04-24T23:49:04.740Z"
+      },
+      "scores": {
+        "users": {
+          "count": 21,
+          "average100": 53.74
+        },
+        "jury": {
+          "count": 3,
+          "average100": 50.33
+        }
+      },
+      "avatarUrl": "avatars/strezelia.png"
+    },
+    "participantB": {
+      "id": "d536cd2e-fad2-469f-b660-078a2359e435",
+      "username": "pola",
+      "nickname": "pola",
+      "instagram": "https://www.instagram.com/pola.on/?hl=fr",
+      "youtube": "https://www.youtube.com/@thispolaa",
+      "avatar": "avatars/pola.png",
+      "submission": {
+        "id": "dc46c432-1c7c-4728-ae17-0c1bb608c816",
+        "userId": "d536cd2e-fad2-469f-b660-078a2359e435",
+        "videoUrl": "https://www.youtube.com/watch?v=EdekqCtssWA",
+        "embedUrl": "https://www.youtube.com/embed/EdekqCtssWA",
+        "description": "Soz for quality, it’s rushed and unfinished, and lot of render bug but enjoy",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T22:54:31.829Z",
+        "updatedAt": "2026-04-23T04:22:11.827Z"
+      },
+      "scores": {
+        "users": {
+          "count": 78,
+          "average100": 60.57
+        },
+        "jury": {
+          "count": 3,
+          "average100": 61.67
+        }
+      },
+      "avatarUrl": "avatars/pola.png"
+    }
+  },
+  "5b27226c-337e-4e4f-825e-72f290dc0be1": {
+    "match": {
+      "id": "5b27226c-337e-4e4f-825e-72f290dc0be1",
+      "order": 3,
+      "status": "FINISHED",
+      "winnerId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "scoreA": 81.88,
+      "scoreB": 64.02
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "username": "troubled_duck",
+      "nickname": "troubled_duck",
+      "instagram": null,
+      "youtube": "https://www.youtube.com/@troubled_duck",
+      "avatar": "avatars/troubled_duck.png",
+      "submission": {
+        "id": "31a845e7-2aea-4d11-8617-7df0032caede",
+        "userId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+        "videoUrl": "https://www.youtube.com/watch?v=hcF7WVphnXU",
+        "embedUrl": "https://www.youtube.com/embed/hcF7WVphnXU",
+        "description": "hi",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T09:02:27.768Z",
+        "updatedAt": "2026-04-22T09:02:27.768Z"
+      },
+      "scores": {
+        "users": {
+          "count": 94,
+          "average100": 83.26
+        },
+        "jury": {
+          "count": 3,
+          "average100": 80.5
+        }
+      },
+      "avatarUrl": "avatars/troubled_duck.png"
+    },
+    "participantB": {
+      "id": "702bb18e-ba8d-41c0-973d-f1f334c313d7",
+      "username": "vovanddroes",
+      "nickname": "plugdi",
+      "instagram": "https://www.instagram.com/thisisplugdi/",
+      "youtube": "https://www.youtube.com/@plugDi2",
+      "avatar": "avatars/vovanddroes.png",
+      "submission": {
+        "id": "95cc69d1-70bf-4beb-ad17-c6d4b29deea6",
+        "userId": "702bb18e-ba8d-41c0-973d-f1f334c313d7",
+        "videoUrl": "https://www.youtube.com/watch?v=9iphFl14YKY",
+        "embedUrl": "https://www.youtube.com/embed/9iphFl14YKY",
+        "description": "Sorry, I didn't make it in time again",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T21:18:26.257Z",
+        "updatedAt": "2026-04-22T21:18:26.257Z"
+      },
+      "scores": {
+        "users": {
+          "count": 81,
+          "average100": 63.03
+        },
+        "jury": {
+          "count": 3,
+          "average100": 65
+        }
+      },
+      "avatarUrl": "avatars/vovanddroes.png"
+    }
+  },
+  "1379a0e0-bcc6-4692-83c2-575af38492c8": {
+    "match": {
+      "id": "1379a0e0-bcc6-4692-83c2-575af38492c8",
+      "order": 4,
+      "status": "FINISHED",
+      "winnerId": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+      "scoreA": 61.46,
+      "scoreB": 83.22
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "e989953d-c020-42d5-a53d-d76f8ba6629b",
+      "username": "djzelemhan",
+      "nickname": "djzelemhan",
+      "instagram": "https://www.instagram.com/zelyobtw?igsh=bHExeDNscXh1Mjhl&utm_source=qr",
+      "youtube": "https://www.youtube.com/@zelyobtw",
+      "avatar": "avatars/djzelemhan.png",
+      "submission": {
+        "id": "108d94be-54d5-49b3-922e-69a276cb4bbd",
+        "userId": "e989953d-c020-42d5-a53d-d76f8ba6629b",
+        "videoUrl": "https://www.youtube.com/watch?v=sNaFZSloK2M",
+        "embedUrl": "https://www.youtube.com/embed/sNaFZSloK2M",
+        "description": "d>e>a>t>h>m>e>t>a>l",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T21:49:28.817Z",
+        "updatedAt": "2026-04-22T23:43:34.062Z"
+      },
+      "scores": {
+        "users": {
+          "count": 74,
+          "average100": 59.74
+        },
+        "jury": {
+          "count": 3,
+          "average100": 63.17
+        }
+      },
+      "avatarUrl": "avatars/djzelemhan.png"
+    },
+    "participantB": {
+      "id": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+      "username": "lucas19471",
+      "nickname": "goon",
+      "instagram": "https://www.instagram.com/goon._900/",
+      "youtube": "https://www.youtube.com/@Goon_900",
+      "avatar": "avatars/lucas19471.png",
+      "submission": {
+        "id": "711a911d-070f-4091-b35c-5ca2b54e382b",
+        "userId": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+        "videoUrl": "https://www.youtube.com/watch?v=dK-aTYMlLp0",
+        "embedUrl": "https://www.youtube.com/embed/dK-aTYMlLp0",
+        "description": "This is more of a showreel of what ive made in the past few days because i was unfortunately gone for about a week an a half during this round. Modeling and setting up some scenes just took too long.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T04:51:33.842Z",
+        "updatedAt": "2026-04-23T04:51:33.842Z"
+      },
+      "scores": {
+        "users": {
+          "count": 77,
+          "average100": 83.77
+        },
+        "jury": {
+          "count": 3,
+          "average100": 82.67
+        }
+      },
+      "avatarUrl": "avatars/lucas19471.png"
+    }
+  },
+  "afe155b5-0974-4f02-829c-8a6456ef2bdc": {
+    "match": {
+      "id": "afe155b5-0974-4f02-829c-8a6456ef2bdc",
+      "order": 5,
+      "status": "FINISHED",
+      "winnerId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "scoreA": 55.4,
+      "scoreB": 63.95
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "7977cd54-ac67-4bfe-810b-5d35348a56b5",
+      "username": "wikentens",
+      "nickname": "wikentens",
+      "instagram": "https://www.instagram.com/wikentens/",
+      "youtube": null,
+      "avatar": "avatars/wikentens.png",
+      "submission": {
+        "id": "821e23c2-7bde-41b8-a8dc-9c52851c207d",
+        "userId": "7977cd54-ac67-4bfe-810b-5d35348a56b5",
+        "videoUrl": "https://www.youtube.com/watch?v=iqaSWaPHPKs",
+        "embedUrl": "https://www.youtube.com/embed/iqaSWaPHPKs",
+        "description": "Unfortunately, I didn’t have enough time, so more than half of the edit (after the car scene) was made in one day. Enjoy watching ",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T08:04:40.882Z",
+        "updatedAt": "2026-04-23T16:47:09.719Z"
+      },
+      "scores": {
+        "users": {
+          "count": 63,
+          "average100": 56.97
+        },
+        "jury": {
+          "count": 3,
+          "average100": 53.83
+        }
+      },
+      "avatarUrl": "avatars/wikentens.png"
+    },
+    "participantB": {
+      "id": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "username": "shxrtfuze",
+      "nickname": "fuze",
+      "instagram": "https://www.instagram.com/shxrtfuze/",
+      "youtube": "https://www.youtube.com/@ShxrtFuze",
+      "avatar": "avatars/shxrtfuze.png",
+      "submission": {
+        "id": "635caace-d7b1-4ef8-856e-ead65f8cd93b",
+        "userId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+        "videoUrl": "https://www.youtube.com/watch?v=wdKfyb6iVEA",
+        "embedUrl": "https://www.youtube.com/embed/wdKfyb6iVEA",
+        "description": "Get there. \n\nvery rushed project but like its okay ig.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T00:27:14.754Z",
+        "updatedAt": "2026-04-23T15:54:34.345Z"
+      },
+      "scores": {
+        "users": {
+          "count": 80,
+          "average100": 65.22
+        },
+        "jury": {
+          "count": 3,
+          "average100": 62.67
+        }
+      },
+      "avatarUrl": "avatars/shxrtfuze.png"
+    }
+  },
+  "c997c374-6ba7-4c81-9955-4e3bf3612501": {
+    "match": {
+      "id": "c997c374-6ba7-4c81-9955-4e3bf3612501",
+      "order": 6,
+      "status": "FINISHED",
+      "winnerId": "df675360-8892-4940-901a-6bbf783d6ff6",
+      "scoreA": 54.97,
+      "scoreB": 70.86
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "8043409d-c2b9-4759-ab36-10c3828de75d",
+      "username": "koshszn",
+      "nickname": "koshszn",
+      "instagram": null,
+      "youtube": null,
+      "avatar": "avatars/koshszn.png",
+      "submission": {
+        "id": "182a5e22-cd12-4a41-82a5-bc378f8b65e9",
+        "userId": "8043409d-c2b9-4759-ab36-10c3828de75d",
+        "videoUrl": "https://www.youtube.com/watch?v=ol0wC7lWdP0",
+        "embedUrl": "https://www.youtube.com/embed/ol0wC7lWdP0",
+        "description": "unfinished and rushed but enjoy",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T01:38:16.914Z",
+        "updatedAt": "2026-04-23T01:38:16.914Z"
+      },
+      "scores": {
+        "users": {
+          "count": 69,
+          "average100": 60.26
+        },
+        "jury": {
+          "count": 3,
+          "average100": 49.67
+        }
+      },
+      "avatarUrl": "avatars/koshszn.png"
+    },
+    "participantB": {
+      "id": "df675360-8892-4940-901a-6bbf783d6ff6",
+      "username": "hantezone",
+      "nickname": "Hante",
+      "instagram": "https://www.instagram.com/hantezone/",
+      "youtube": "https://www.youtube.com/@hantezone",
+      "avatar": "avatars/hantezone.png",
+      "submission": {
+        "id": "bd4d5ee1-f43c-4bd6-92d8-1fe2aa50875f",
+        "userId": "df675360-8892-4940-901a-6bbf783d6ff6",
+        "videoUrl": "https://www.youtube.com/watch?v=sNluR8QIj7k",
+        "embedUrl": "https://www.youtube.com/embed/sNluR8QIj7k",
+        "description": "Enjoy!",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T12:23:04.959Z",
+        "updatedAt": "2026-04-22T12:23:04.959Z"
+      },
+      "scores": {
+        "users": {
+          "count": 73,
+          "average100": 75.39
+        },
+        "jury": {
+          "count": 3,
+          "average100": 66.33
+        }
+      },
+      "avatarUrl": "avatars/hantezone.png"
+    }
+  },
+  "a0bc91a3-1be9-4bf4-af6d-365e6e4df3b0": {
+    "match": {
+      "id": "a0bc91a3-1be9-4bf4-af6d-365e6e4df3b0",
+      "order": 7,
+      "status": "FINISHED",
+      "winnerId": "306ed306-ff88-4010-9ff1-943c39776b11",
+      "scoreA": 55.47,
+      "scoreB": 71.81
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "f1676313-574f-47a1-8fc1-d39726f70b55",
+      "username": "sku1l8",
+      "nickname": "El Cranéo",
+      "instagram": "https://www.instagram.com/sku1l8/",
+      "youtube": "https://www.youtube.com/@sku1l8ong",
+      "avatar": "avatars/sku1l8.png",
+      "submission": {
+        "id": "dbc5bd43-9eae-4b75-9354-0b25f5369a12",
+        "userId": "f1676313-574f-47a1-8fc1-d39726f70b55",
+        "videoUrl": "https://www.youtube.com/watch?v=GYDmJntFxz4",
+        "embedUrl": "https://www.youtube.com/embed/GYDmJntFxz4",
+        "description": "Had to rush this edit last minute or i had a risk of losing my job \nThis was an old concept I’d been holding onto, so I finished it for the tourney since time was tight.\nGlad I got it done in time.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-23T00:08:26.808Z",
+        "updatedAt": "2026-04-25T05:12:03.426Z"
+      },
+      "scores": {
+        "users": {
+          "count": 66,
+          "average100": 59.27
+        },
+        "jury": {
+          "count": 3,
+          "average100": 51.67
+        }
+      },
+      "avatarUrl": "avatars/sku1l8.png"
+    },
+    "participantB": {
+      "id": "306ed306-ff88-4010-9ff1-943c39776b11",
+      "username": "bluexamasu",
+      "nickname": "bluexamasu",
+      "instagram": "https://www.instagram.com/xamasu.am",
+      "youtube": "https://youtube.com/@bluexamasu",
+      "avatar": "avatars/bluexamasu.png",
+      "submission": {
+        "id": "10298cc1-faa6-4ffe-a780-e931c73635fe",
+        "userId": "306ed306-ff88-4010-9ff1-943c39776b11",
+        "videoUrl": "https://www.youtube.com/watch?v=cMpndD3cAV8",
+        "embedUrl": "https://www.youtube.com/embed/cMpndD3cAV8",
+        "description": "(Everything is made from scratch, vector drawings n animations n all, i honestly researched n learned a lot like povs, designs n simplicity stuff) hope y'all enjoy it ",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T13:09:43.554Z",
+        "updatedAt": "2026-04-22T13:09:43.554Z"
+      },
+      "scores": {
+        "users": {
+          "count": 77,
+          "average100": 70.29
+        },
+        "jury": {
+          "count": 3,
+          "average100": 73.33
+        }
+      },
+      "avatarUrl": "avatars/bluexamasu.png"
+    }
+  },
+  "8a21b9d0-a667-4b06-9807-729284419231": {
+    "match": {
+      "id": "8a21b9d0-a667-4b06-9807-729284419231",
+      "order": 8,
+      "status": "FINISHED",
+      "winnerId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "scoreA": 75.41,
+      "scoreB": 49.25
+    },
+    "round": {
+      "id": "e3ae2369-7123-4ba4-84e2-2e5045cba2ed",
+      "title": "Round 2",
+      "name": "Round 2",
+      "roundNumber": 2,
+      "startsAt": "2026-04-07T21:00:00.000Z",
+      "submissionDeadline": "2026-04-23T01:00:00.000Z",
+      "votingDeadline": "2026-04-25T21:00:00.000Z",
+      "endsAt": "2026-04-25T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "username": "walsiii",
+      "nickname": "walsiii",
+      "instagram": "https://instagram.com/w6lxy",
+      "youtube": "https://youtube.com/@walsiiiii",
+      "avatar": "avatars/walsiii.png",
+      "submission": {
+        "id": "737e8c3b-671c-42d2-b215-795f7d510e8b",
+        "userId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+        "videoUrl": "https://www.youtube.com/watch?v=-9yYozkBxx8",
+        "embedUrl": "https://www.youtube.com/embed/-9yYozkBxx8",
+        "description": "Mister yes",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-20T18:14:24.391Z",
+        "updatedAt": "2026-04-20T18:14:24.391Z"
+      },
+      "scores": {
+        "users": {
+          "count": 76,
+          "average100": 77.83
+        },
+        "jury": {
+          "count": 3,
+          "average100": 73
+        }
+      },
+      "avatarUrl": "avatars/walsiii.png"
+    },
+    "participantB": {
+      "id": "3a1a229e-3dc3-4e8f-bce7-b5fbae3f8ac9",
+      "username": "bynexn",
+      "nickname": "bynexn",
+      "instagram": "https://www.instagram.com/bynexn/",
+      "youtube": "https://www.youtube.com/@bynexn",
+      "avatar": "avatars/bynexn.png",
+      "submission": {
+        "id": "9fe28891-eb8c-4732-9d3e-614337b990cb",
+        "userId": "3a1a229e-3dc3-4e8f-bce7-b5fbae3f8ac9",
+        "videoUrl": "https://www.youtube.com/watch?v=HXoMxp2A1Kw",
+        "embedUrl": "https://www.youtube.com/embed/HXoMxp2A1Kw",
+        "description": "BLUE DRAGON",
+        "status": "SUBMITTED",
+        "createdAt": "2026-04-22T21:36:31.562Z",
+        "updatedAt": "2026-04-22T22:46:50.175Z"
+      },
+      "scores": {
+        "users": {
+          "count": 78,
+          "average100": 48.67
+        },
+        "jury": {
+          "count": 3,
+          "average100": 49.83
+        }
+      },
+      "avatarUrl": "avatars/bynexn.png"
+    }
+  },
+  "499ee237-3fbf-4fe0-8163-55bdb35faf80": {
+    "match": {
+      "id": "499ee237-3fbf-4fe0-8163-55bdb35faf80",
+      "order": 1,
+      "status": "FINISHED",
+      "winnerId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "scoreA": 73.93,
+      "scoreB": 58.42
+    },
+    "round": {
+      "id": "e52822bc-917e-4e5d-a98f-80a407dd48e1",
+      "title": "Round 3",
+      "name": "Round 3",
+      "roundNumber": 3,
+      "startsAt": "2026-04-24T21:00:00.000Z",
+      "submissionDeadline": "2026-05-12T21:00:00.000Z",
+      "votingDeadline": "2026-05-15T16:00:00.000Z",
+      "endsAt": "2026-05-15T16:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "username": "goof21",
+      "nickname": "goof",
+      "instagram": "https://www.instagram.com/goofyatwood/",
+      "youtube": "https://www.youtube.com/@goofyatwood",
+      "avatar": "avatars/goof21.png",
+      "submission": {
+        "id": "93a9c2bc-2afc-43b8-befa-14c12a048c38",
+        "userId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+        "videoUrl": "https://www.youtube.com/watch?v=4Xa5hvQf5zo",
+        "embedUrl": "https://www.youtube.com/embed/4Xa5hvQf5zo",
+        "description": "didn't get time to edit sorry",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-12T19:49:08.396Z",
+        "updatedAt": "2026-05-12T19:49:08.396Z"
+      },
+      "scores": {
+        "users": {
+          "count": 78,
+          "average100": 74.47
+        },
+        "jury": {
+          "count": 4,
+          "average100": 73.38
+        }
+      },
+      "avatarUrl": "avatars/goof21.png"
+    },
+    "participantB": {
+      "id": "d536cd2e-fad2-469f-b660-078a2359e435",
+      "username": "pola",
+      "nickname": "pola",
+      "instagram": "https://www.instagram.com/pola.on/?hl=fr",
+      "youtube": "https://www.youtube.com/@thispolaa",
+      "avatar": "avatars/pola.png",
+      "submission": {
+        "id": "6c1abf4a-f543-4889-9cfa-c644a238a663",
+        "userId": "d536cd2e-fad2-469f-b660-078a2359e435",
+        "videoUrl": "https://www.youtube.com/watch?v=GdNKpX_XcY0",
+        "embedUrl": "https://www.youtube.com/embed/GdNKpX_XcY0",
+        "description": "So  its a special things  unfinished  im gonna  archive  after the  judging",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-12T21:46:09.292Z",
+        "updatedAt": "2026-05-12T21:46:09.292Z"
+      },
+      "scores": {
+        "users": {
+          "count": 60,
+          "average100": 61.83
+        },
+        "jury": {
+          "count": 4,
+          "average100": 55
+        }
+      },
+      "avatarUrl": "avatars/pola.png"
+    }
+  },
+  "bd2fe29f-ab83-4f9a-a14f-bf39897741f5": {
+    "match": {
+      "id": "bd2fe29f-ab83-4f9a-a14f-bf39897741f5",
+      "order": 2,
+      "status": "FINISHED",
+      "winnerId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "scoreA": 78.63,
+      "scoreB": 78.05
+    },
+    "round": {
+      "id": "e52822bc-917e-4e5d-a98f-80a407dd48e1",
+      "title": "Round 3",
+      "name": "Round 3",
+      "roundNumber": 3,
+      "startsAt": "2026-04-24T21:00:00.000Z",
+      "submissionDeadline": "2026-05-12T21:00:00.000Z",
+      "votingDeadline": "2026-05-15T16:00:00.000Z",
+      "endsAt": "2026-05-15T16:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "username": "troubled_duck",
+      "nickname": "troubled_duck",
+      "instagram": null,
+      "youtube": "https://www.youtube.com/@troubled_duck",
+      "avatar": "avatars/troubled_duck.png",
+      "submission": {
+        "id": "6aeb2a45-e368-4355-a401-9ca8df6c624c",
+        "userId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+        "videoUrl": "https://www.youtube.com/watch?v=1liipcC6Vmk",
+        "embedUrl": "https://www.youtube.com/embed/1liipcC6Vmk",
+        "description": "I can submit a before/after if you guys want but i dont think its necessary if you have watched sonny boy",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-12T13:28:18.451Z",
+        "updatedAt": "2026-05-12T13:28:18.451Z"
+      },
+      "scores": {
+        "users": {
+          "count": 100,
+          "average100": 80.38
+        },
+        "jury": {
+          "count": 4,
+          "average100": 76.88
+        }
+      },
+      "avatarUrl": "avatars/troubled_duck.png"
+    },
+    "participantB": {
+      "id": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+      "username": "lucas19471",
+      "nickname": "goon",
+      "instagram": "https://www.instagram.com/goon._900/",
+      "youtube": "https://www.youtube.com/@Goon_900",
+      "avatar": "avatars/lucas19471.png",
+      "submission": {
+        "id": "39eb8065-bef5-4342-87b8-dfaffe45e8cf",
+        "userId": "533ad40e-39f2-49f4-abe2-8fdd6c28f755",
+        "videoUrl": "https://www.youtube.com/watch?v=rkgJknUgbcM",
+        "embedUrl": "https://www.youtube.com/embed/rkgJknUgbcM",
+        "description": null,
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-12T20:58:25.232Z",
+        "updatedAt": "2026-05-12T22:21:44.762Z"
+      },
+      "scores": {
+        "users": {
+          "count": 97,
+          "average100": 80.72
+        },
+        "jury": {
+          "count": 4,
+          "average100": 75.38
+        }
+      },
+      "avatarUrl": "avatars/lucas19471.png"
+    }
+  },
+  "562896e2-3ee4-423e-9265-e7189024c1f9": {
+    "match": {
+      "id": "562896e2-3ee4-423e-9265-e7189024c1f9",
+      "order": 3,
+      "status": "FINISHED",
+      "winnerId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "scoreA": 70.72,
+      "scoreB": 12.03
+    },
+    "round": {
+      "id": "e52822bc-917e-4e5d-a98f-80a407dd48e1",
+      "title": "Round 3",
+      "name": "Round 3",
+      "roundNumber": 3,
+      "startsAt": "2026-04-24T21:00:00.000Z",
+      "submissionDeadline": "2026-05-12T21:00:00.000Z",
+      "votingDeadline": "2026-05-15T16:00:00.000Z",
+      "endsAt": "2026-05-15T16:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "username": "shxrtfuze",
+      "nickname": "Fuze",
+      "instagram": "https://www.instagram.com/shxrtfuze/",
+      "youtube": "https://www.youtube.com/@ShxrtFuze",
+      "avatar": "avatars/shxrtfuze.png",
+      "submission": {
+        "id": "85f26903-4a38-43c3-b3e3-4858ecebdfd9",
+        "userId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+        "videoUrl": "https://www.youtube.com/watch?v=b7--mCEIHPI",
+        "embedUrl": "https://www.youtube.com/embed/b7--mCEIHPI",
+        "description": "I LOVE THE LOVE",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-10T21:04:14.713Z",
+        "updatedAt": "2026-05-11T00:56:55.127Z"
+      },
+      "scores": {
+        "users": {
+          "count": 66,
+          "average100": 71.2
+        },
+        "jury": {
+          "count": 4,
+          "average100": 70.25
+        }
+      },
+      "avatarUrl": "avatars/shxrtfuze.png"
+    },
+    "participantB": {
+      "id": "df675360-8892-4940-901a-6bbf783d6ff6",
+      "username": "hantezone",
+      "nickname": "Hante",
+      "instagram": "https://www.instagram.com/hantezone/",
+      "youtube": "https://www.youtube.com/@hantezone",
+      "avatar": "avatars/hantezone.png",
+      "submission": {
+        "id": "084bc86f-e9c7-4d9f-bdfb-e2f66161fcee",
+        "userId": "df675360-8892-4940-901a-6bbf783d6ff6",
+        "videoUrl": "https://www.youtube.com/watch?v=i5Uv56KrS88",
+        "embedUrl": "https://www.youtube.com/embed/i5Uv56KrS88",
+        "description": "DON'T HATE AND SAY GG FUZE <333333333333",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-12T14:09:57.309Z",
+        "updatedAt": "2026-05-12T14:09:57.309Z"
+      },
+      "scores": {
+        "users": {
+          "count": 24,
+          "average100": 24.06
+        },
+        "jury": {
+          "count": 4,
+          "average100": 0
+        }
+      },
+      "avatarUrl": "avatars/hantezone.png"
+    }
+  },
+  "ba839109-0570-4f54-b623-bcd1bb725fbb": {
+    "match": {
+      "id": "ba839109-0570-4f54-b623-bcd1bb725fbb",
+      "order": 4,
+      "status": "FINISHED",
+      "winnerId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "scoreA": 70.35,
+      "scoreB": 76.66
+    },
+    "round": {
+      "id": "e52822bc-917e-4e5d-a98f-80a407dd48e1",
+      "title": "Round 3",
+      "name": "Round 3",
+      "roundNumber": 3,
+      "startsAt": "2026-04-24T21:00:00.000Z",
+      "submissionDeadline": "2026-05-12T21:00:00.000Z",
+      "votingDeadline": "2026-05-15T16:00:00.000Z",
+      "endsAt": "2026-05-15T16:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "306ed306-ff88-4010-9ff1-943c39776b11",
+      "username": "bluexamasu",
+      "nickname": "xamasu",
+      "instagram": "https://www.instagram.com/xamasu.am",
+      "youtube": "https://youtube.com/@bluexamasu",
+      "avatar": "avatars/bluexamasu.png",
+      "submission": {
+        "id": "1ee0295c-662b-4d37-8286-ed72cb38e6d9",
+        "userId": "306ed306-ff88-4010-9ff1-943c39776b11",
+        "videoUrl": "https://www.youtube.com/watch?v=NB9Onle00lk",
+        "embedUrl": "https://www.youtube.com/embed/NB9Onle00lk",
+        "description": "Yes everything is drawn and animated by me :3",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-12T20:59:17.086Z",
+        "updatedAt": "2026-05-12T20:59:17.086Z"
+      },
+      "scores": {
+        "users": {
+          "count": 70,
+          "average100": 76.71
+        },
+        "jury": {
+          "count": 4,
+          "average100": 64
+        }
+      },
+      "avatarUrl": "avatars/bluexamasu.png"
+    },
+    "participantB": {
+      "id": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "username": "walsiii",
+      "nickname": "walsiii",
+      "instagram": "https://instagram.com/w6lxy",
+      "youtube": "https://youtube.com/@walsiiiii",
+      "avatar": "avatars/walsiii.png",
+      "submission": {
+        "id": "ee75275d-f5a6-4e2c-aa02-a72c2c8288d7",
+        "userId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+        "videoUrl": "https://www.youtube.com/watch?v=iXkE2o3C0Fg",
+        "embedUrl": "https://www.youtube.com/embed/iXkE2o3C0Fg",
+        "description": "my edit mister ronde 3 salam misterboss kiki maula, fryan ilham satriya, dwi elfarindu, aiwewenk, happpy sunday monday misterboss rispek ... #msiter",
+        "status": "SUBMITTED",
+        "createdAt": "2026-05-10T12:24:39.015Z",
+        "updatedAt": "2026-05-10T12:24:39.015Z"
+      },
+      "scores": {
+        "users": {
+          "count": 74,
+          "average100": 77.95
+        },
+        "jury": {
+          "count": 4,
+          "average100": 75.38
+        }
+      },
+      "avatarUrl": "avatars/walsiii.png"
+    }
+  },
+  "cf3748c0-731c-46c5-b9df-29d52d42a58c": {
+    "match": {
+      "id": "cf3748c0-731c-46c5-b9df-29d52d42a58c",
+      "order": 1,
+      "status": "FINISHED",
+      "winnerId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "scoreA": 74.44,
+      "scoreB": 68.42
+    },
+    "round": {
+      "id": "7a75a49a-2ecd-4df8-a3a3-785e98858c5e",
+      "title": "Round 4",
+      "name": "Round 4",
+      "roundNumber": 4,
+      "startsAt": "2026-05-15T00:00:00.000Z",
+      "submissionDeadline": "2026-06-05T22:00:00.000Z",
+      "votingDeadline": "2026-06-07T21:00:00.000Z",
+      "endsAt": "2026-06-07T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "username": "goof21",
+      "nickname": "goof",
+      "instagram": "https://www.instagram.com/goofyatwood/",
+      "youtube": "https://www.youtube.com/@goofyatwood",
+      "avatar": "avatars/goof21.png",
+      "submission": {
+        "id": "a844e69b-78d0-411f-a214-0c67e9986ba4",
+        "userId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+        "videoUrl": "https://www.youtube.com/watch?v=YgFuGOCwC8k",
+        "embedUrl": "https://www.youtube.com/embed/YgFuGOCwC8k",
+        "description": "unfinished again sorry",
+        "status": "SUBMITTED",
+        "createdAt": "2026-06-05T16:25:57.148Z",
+        "updatedAt": "2026-06-05T16:25:57.148Z"
+      },
+      "scores": {
+        "users": {
+          "count": 84,
+          "average100": 74.26
+        },
+        "jury": {
+          "count": 4,
+          "average100": 74.63
+        }
+      },
+      "avatarUrl": "avatars/goof21.png"
+    },
+    "participantB": {
+      "id": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+      "username": "troubled_duck",
+      "nickname": "troubled_duck",
+      "instagram": null,
+      "youtube": "https://www.youtube.com/@troubled_duck",
+      "avatar": "avatars/troubled_duck.png",
+      "submission": {
+        "id": "259cef3b-26ec-4fb4-8e4e-1c1ec618e280",
+        "userId": "a1bdd623-4057-4d73-8ccc-e909fc35212d",
+        "videoUrl": "https://www.youtube.com/watch?v=RUhUD-NOFa4",
+        "embedUrl": "https://www.youtube.com/embed/RUhUD-NOFa4",
+        "description": "ive been busy this round so i havent been able to do my absolute best, but im still happy with the results. If i make it to the next round i can make something cooler",
+        "status": "SUBMITTED",
+        "createdAt": "2026-06-05T15:40:25.079Z",
+        "updatedAt": "2026-06-05T15:40:25.079Z"
+      },
+      "scores": {
+        "users": {
+          "count": 85,
+          "average100": 68.59
+        },
+        "jury": {
+          "count": 4,
+          "average100": 68.25
+        }
+      },
+      "avatarUrl": "avatars/troubled_duck.png"
+    }
+  },
+  "2e9a30c9-1ba9-4309-8ec1-2724fadaa0b2": {
+    "match": {
+      "id": "2e9a30c9-1ba9-4309-8ec1-2724fadaa0b2",
+      "order": 2,
+      "status": "FINISHED",
+      "winnerId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "scoreA": 73.5,
+      "scoreB": 82.79
+    },
+    "round": {
+      "id": "7a75a49a-2ecd-4df8-a3a3-785e98858c5e",
+      "title": "Round 4",
+      "name": "Round 4",
+      "roundNumber": 4,
+      "startsAt": "2026-05-15T00:00:00.000Z",
+      "submissionDeadline": "2026-06-05T22:00:00.000Z",
+      "votingDeadline": "2026-06-07T21:00:00.000Z",
+      "endsAt": "2026-06-07T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+      "username": "shxrtfuze",
+      "nickname": "fuze",
+      "instagram": "https://www.instagram.com/shxrtfuze/",
+      "youtube": "https://www.youtube.com/@ShxrtFuze",
+      "avatar": "avatars/shxrtfuze.png",
+      "submission": {
+        "id": "f9379ad6-0bb4-4460-9489-9b8e1b3ba9a1",
+        "userId": "1f3d1a65-62d1-4f3e-b53a-06cf782df142",
+        "videoUrl": "https://www.youtube.com/watch?v=GCYxwteV-gY",
+        "embedUrl": "https://www.youtube.com/embed/GCYxwteV-gY",
+        "description": "Into everything.",
+        "status": "SUBMITTED",
+        "createdAt": "2026-06-05T22:03:28.409Z",
+        "updatedAt": "2026-06-05T22:03:28.409Z"
+      },
+      "scores": {
+        "users": {
+          "count": 73,
+          "average100": 75.12
+        },
+        "jury": {
+          "count": 4,
+          "average100": 71.88
+        }
+      },
+      "avatarUrl": "avatars/shxrtfuze.png"
+    },
+    "participantB": {
+      "id": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "username": "walsiii",
+      "nickname": "walsiii",
+      "instagram": "https://instagram.com/w6lxy",
+      "youtube": "https://youtube.com/@walsiiiii",
+      "avatar": "avatars/walsiii.png",
+      "submission": {
+        "id": "4e0c1e90-15f4-4ab5-acd2-2aa6370b35d7",
+        "userId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+        "videoUrl": "https://www.youtube.com/watch?v=JQxGSUnXoaI",
+        "embedUrl": "https://www.youtube.com/embed/JQxGSUnXoaI",
+        "description": "rispek 123 67 69 777 mister ",
+        "status": "SUBMITTED",
+        "createdAt": "2026-06-05T13:34:27.342Z",
+        "updatedAt": "2026-06-05T13:34:27.342Z"
+      },
+      "scores": {
+        "users": {
+          "count": 76,
+          "average100": 82.44
+        },
+        "jury": {
+          "count": 4,
+          "average100": 83.13
+        }
+      },
+      "avatarUrl": "avatars/walsiii.png"
+    }
+  },
+  "d4dc8b7d-0f36-4281-a74b-df3339c69d33": {
+    "match": {
+      "id": "d4dc8b7d-0f36-4281-a74b-df3339c69d33",
+      "order": 1,
+      "status": "FINISHED",
+      "winnerId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "scoreA": 84.09,
+      "scoreB": 86.74
+    },
+    "round": {
+      "id": "46543c0f-d054-4d95-b4d3-00fa9616d4ae",
+      "title": "Final",
+      "name": "Final",
+      "roundNumber": 5,
+      "startsAt": "2026-06-07T21:00:00.000Z",
+      "submissionDeadline": "2026-07-03T21:00:00.000Z",
+      "votingDeadline": "2026-07-07T21:00:00.000Z",
+      "endsAt": "2026-07-07T21:00:00.000Z",
+      "status": "FINISHED",
+      "conditions": "",
+      "juryRevealEnabled": true
+    },
+    "participantA": {
+      "id": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+      "username": "goof21",
+      "nickname": "goof",
+      "instagram": "https://www.instagram.com/goofyatwood/",
+      "youtube": "https://www.youtube.com/@goofyatwood",
+      "avatar": "avatars/goof21.png",
+      "submission": {
+        "id": "7d4e3bb3-f006-4923-aab9-bf9697677317",
+        "userId": "cc7ed953-07cb-4efe-a2ee-17cf14ba262b",
+        "videoUrl": "https://www.youtube.com/watch?v=bFxdAqdswuY",
+        "embedUrl": "https://www.youtube.com/embed/bFxdAqdswuY",
+        "description": "i need sleep",
+        "status": "SUBMITTED",
+        "createdAt": "2026-07-03T19:19:30.176Z",
+        "updatedAt": "2026-07-03T19:19:30.176Z"
+      },
+      "scores": {
+        "users": {
+          "count": 68,
+          "average100": 84.42
+        },
+        "jury": {
+          "count": 4,
+          "average100": 83.75
+        }
+      },
+      "avatarUrl": "avatars/goof21.png"
+    },
+    "participantB": {
+      "id": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+      "username": "walsiii",
+      "nickname": "walsiii",
+      "instagram": "https://instagram.com/w6lxy",
+      "youtube": "https://youtube.com/@walsiiiii",
+      "avatar": "avatars/walsiii.png",
+      "submission": {
+        "id": "e29331aa-ee6d-4841-a2e7-effe5b694286",
+        "userId": "ce76c800-f117-48c2-aabd-4e14ecd714ef",
+        "videoUrl": "https://www.youtube.com/watch?v=wCZbORNqcBg",
+        "embedUrl": "https://www.youtube.com/embed/wCZbORNqcBg",
+        "description": "hello bos i make sadboy video miste r  and  sadboy description youtube yes , #indonesiamerdeka #karyaanakbangsa #rispek #tapirdisembelih  xxxtentaction top 5 lofi saddest song rip juice wrld freerobux",
+        "status": "SUBMITTED",
+        "createdAt": "2026-07-03T15:55:42.288Z",
+        "updatedAt": "2026-07-03T15:55:42.288Z"
+      },
+      "scores": {
+        "users": {
+          "count": 67,
+          "average100": 87.73
+        },
+        "jury": {
+          "count": 4,
+          "average100": 85.75
+        }
+      },
+      "avatarUrl": "avatars/walsiii.png"
+    }
+  }
+}
