@@ -39,6 +39,43 @@ async function seedAdmin() {
 }
 
 /**
+ * Safely parses MongoDB URI metadata for logging without exposing credentials.
+ */
+function getSafeDbDiagnostics() {
+  const rawUri = process.env.MONGODB_URI;
+  if (!rawUri) {
+    return { configured: false, reason: 'MONGODB_URI is not set in environment.' };
+  }
+
+  let sanitized = rawUri.trim();
+  if ((sanitized.startsWith('"') && sanitized.endsWith('"')) || (sanitized.startsWith("'") && sanitized.endsWith("'"))) {
+    sanitized = sanitized.slice(1, -1).trim();
+  }
+
+  try {
+    const url = new URL(sanitized);
+    return {
+      configured: true,
+      protocol: url.protocol.replace(':', ''),
+      username: url.username || null,
+      hasPassword: Boolean(url.password),
+      host: url.host,
+      database: url.pathname ? url.pathname.replace(/^\//, '') : 'test (default)',
+      readyState: mongoose.connection.readyState,
+      readyStateText: ['disconnected', 'connected', 'connecting', 'disconnecting'][mongoose.connection.readyState] || 'unknown'
+    };
+  } catch (err) {
+    return {
+      configured: true,
+      malformed: true,
+      parseError: err.message,
+      maskedPreview: sanitized.replace(/\/\/[^:]+:[^@]+@/, '//***:***@'),
+      readyState: mongoose.connection.readyState
+    };
+  }
+}
+
+/**
  * Connects to MongoDB Atlas with connection caching for serverless environments.
  */
 async function connectDB() {
@@ -80,16 +117,29 @@ async function connectDB() {
       family: 4 // Enforce IPv4 to bypass delays/timeouts on serverless environments without IPv6 routing for Atlas
     };
 
-    console.log('🔄 Connecting to MongoDB Atlas...');
+    const diag = getSafeDbDiagnostics();
+    console.log(`🔄 Connecting to MongoDB Atlas (Host: ${diag.host || 'unknown'}, DB: ${diag.database || 'test'})...`);
+
     cached.promise = mongoose.connect(uri, opts).then(async (mongooseInstance) => {
-      console.log('✅ MongoDB Atlas connected successfully');
+      console.log(`✅ MongoDB Atlas connected successfully to host: ${diag.host || 'unknown'}, database: ${mongooseInstance.connection.name}`);
       cached.conn = mongooseInstance;
       await seedAdmin();
       return mongooseInstance;
     }).catch((err) => {
       cached.promise = null;
       cached.conn = null;
-      console.error('❌ MongoDB Atlas connection error:', err.name, err.message);
+      console.error('❌ MongoDB Atlas connection error:');
+      console.error('   Name:', err.name);
+      console.error('   Code:', err.code || 'N/A');
+      console.error('   Message:', err.message);
+
+      if (err.message && (err.message.includes('bad auth') || err.message.includes('Authentication failed'))) {
+        console.error('   👉 Diagnostic: Authentication failed. Verify that database username and password in MONGODB_URI are correct.');
+      } else if (err.message && err.message.includes('Invalid connection string')) {
+        console.error('   👉 Diagnostic: Invalid connection string. If your password contains special characters (@, :, /, ?, #, %), ensure it is URL-encoded.');
+      } else if (err.name === 'MongooseServerSelectionError') {
+        console.error('   👉 Diagnostic: Server selection timeout. MongoDB Atlas network access must allow 0.0.0.0/0 for Vercel dynamic IPs.');
+      }
       throw err;
     });
   }
@@ -112,5 +162,7 @@ mongoose.connection.on('disconnected', () => {
   }
 });
 
+connectDB.getSafeDiagnostics = getSafeDbDiagnostics;
 module.exports = connectDB;
+
 

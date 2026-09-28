@@ -119,14 +119,24 @@ app.use(['/api', '/auth', '/tournament', '/profile'], async (req, res, next) => 
     console.error('API Database Error:', err.name, err.message);
     const isAtlasWhitelist = err.name === 'MongooseServerSelectionError' ||
       (err.message && (err.message.includes('whitelist') || err.message.includes('Could not connect to any servers')));
+    const isAuthFailure = err.message && (err.message.includes('bad auth') || err.message.includes('Authentication failed'));
+    const isInvalidUri = err.message && err.message.includes('Invalid connection string');
+
+    let hint;
+    if (isAuthFailure) {
+      hint = 'Authentication failed. Check your database username and password in Vercel environment variables.';
+    } else if (isInvalidUri) {
+      hint = 'Invalid connection string. If your password contains special characters (@, :, /, ?, #, %), ensure it is URL-encoded.';
+    } else if (isAtlasWhitelist) {
+      hint = 'MongoDB Atlas rejected or dropped the connection. In Vercel serverless environments, your Atlas cluster Network Access IP Access List must contain 0.0.0.0/0 (Allow Access from Anywhere).';
+    }
+
     return res.status(503).json({
       error: 'Database Connection Error',
       name: err.name || 'Error',
       code: err.code || null,
       message: err.message || 'Could not connect to database.',
-      details: isAtlasWhitelist
-        ? 'MongoDB Atlas rejected or dropped the connection. In Vercel serverless environments, your Atlas cluster Network Access IP Access List must contain 0.0.0.0/0 (Allow Access from Anywhere).'
-        : undefined
+      hint
     });
   }
 });
@@ -154,18 +164,21 @@ app.get(['/api/health', '/health'], async (req, res) => {
       dbStatus = 'error';
       dbError = {
         name: err.name,
-        code: err.code,
+        code: err.code || null,
         message: err.message
       };
     }
   }
+
+  const safeDiag = connectDB.getSafeDiagnostics ? connectDB.getSafeDiagnostics() : null;
 
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
     database: dbStatus,
     readyState: mongoose.connection.readyState,
-    dbError: dbError || undefined,
+    dbCheck: dbError || (dbStatus === 'connected' ? { connected: true, dbName: mongoose.connection.name } : undefined),
+    diagnostics: safeDiag || undefined,
     config: {
       hasMongoUri: Boolean(process.env.MONGODB_URI),
       hasSessionSecret: Boolean(process.env.SESSION_SECRET),
