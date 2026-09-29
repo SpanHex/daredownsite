@@ -1570,6 +1570,9 @@ html[data-theme="girl"] .mobile-nav-footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
     transform: none !important;
+    translate: none !important; /* Tailwind v4 uses standalone 'translate' property — must override separately */
+    --tw-translate-x: 0 !important;
+    --tw-translate-y: 0 !important;
     z-index: 1000 !important;
   }
 
